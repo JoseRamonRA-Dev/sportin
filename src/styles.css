@@ -1,0 +1,203 @@
+/* You can add global styles to this file, and also import other style files */
+/* Color Theme Swatches in Hex */
+.Couleur-01-1-hex {
+  color: #1a76e8;
+}
+.Couleur-01-2-hex {
+  color: #26d474;
+}
+.Couleur-01-3-hex {
+  color: #ffd417;
+}
+.Couleur-01-4-hex {
+  color: #ff6f1c;
+}
+.Couleur-01-5-hex {
+  color: #eb2d40;
+}
+
+
+
+
+
+.header {
+  background-color: #ffd417;
+}
+
+.hero {
+  margin: 0px;
+}
+
+.menu_nav{
+  align-items: center;
+}
+
+#menu,
+#menu a,
+#menu span {
+  background: #1a76e8;
+  color: white;
+  font-family: "Work Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.logo {
+  width: 55px;
+}
+body {
+  font-family: "Work Sans", sans-serif;
+  text-align: center;
+}
+
+.presentacion {
+
+
+  border-color: white;
+  padding: 70px;
+}
+
+.presentacion p {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.1;
+}
+
+.productos {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.productos img {
+  width: 150px;
+}
+.productos .card {
+  margin: 20px;
+  border-radius: 5px;
+}
+.baner {
+  background-color: #eb2d40;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.pro {
+  display: flex;
+  padding: 10px;
+
+  flex-wrap:wrap;
+}
+
+.pro .pro_cupon {
+  width: 70%;
+  margin-left: 10px;
+}
+
+.pie{
+  background-color: #000000;
+  padding: 20%;
+  color: #ffffff;
+  text-align:left ;
+
+}
+
+
+
+.ancla_s, .ancla_s a{
+  background-color: #ff6f1c;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 30px;
+  height: 40px;
+}
+.ancla_s{
+  padding: 5px;
+}
+.ancla_s a{
+  text-decoration: none;
+}
+
+.pie_component{
+  width: 50%;
+}
+
+.pie_component a{
+  text-decoration: none;
+  color: white;
+}
+
+
+
+
+.presentacion .presentacion-img {
+  width: 150px;
+}
+
+
+@media only screen and (min-width: 340px){
+  .pro .pro_cupon{
+    width: 30%;
+    text-align: center;
+  }
+  .pro .sec iframe{
+    width:"400px";
+    height:"250px";
+  }
+  .presentacion .presentacion-img {
+    width: 150px;
+  }
+  .pie{
+    font-size: 15px;
+    padding: 5%;
+  }
+  .pie .red{
+    font-size: 20px;
+  }
+
+}
+
+@media only screen and (min-width: 780px){
+  .sec{
+    width: 50%;
+  }
+  .pro .pro_cupon{
+    width: 50%;
+    text-align: center;
+  }
+  .presentacion .presentacion-img {
+    width: 200px;
+  }
+  .pie{
+    font-size: 15px;
+    padding: 10%;
+  }
+  .pie .red{
+    font-size: 25px;
+  }
+}
+
+
+@media only screen and (min-width: 1024px){
+  .pro .pro_cupon{
+    width: 70%;
+  }
+  .presentacion .presentacion-img {
+    width: 300px;
+  }
+  .pie{
+    font-size: 20px;
+    padding: 20%;
+  }
+  .pie .red{
+    font-size: 30px;
+  }
+}
+
+
+/*----------------*/
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";

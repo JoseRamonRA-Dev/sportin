@@ -1,0 +1,24 @@
+<!--<app-header></app-header>
+<app-navbar></app-navbar>
+<div class="hero">
+  <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>
+
+
+
+-->
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav role="navigation">
+    <app-navbar (sidenavClose)="sidenav.close()"></app-navbar>
+  </mat-sidenav>
+  <mat-divider></mat-divider>
+  <mat-sidenav-content fxFlexFill>
+    <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

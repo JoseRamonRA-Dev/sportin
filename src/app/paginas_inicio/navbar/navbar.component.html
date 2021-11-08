@@ -1,0 +1,77 @@
+<!--<nav id="menu" class="navbar navbar-expand-sm bg">
+  <a class="navbar-brand" href="#"><img class="logo" src="../../../assets/img/logo4.png" alt=""></a>
+  <button id="menu_btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="text-danger" class="navbar-toggler-icon"><i class="fa fa-bars"></i></span>
+  </button>
+  <div class="collapse navbar-collapse row justify-content-around" id="collapsibleNavbar">
+    <ul class="navbar-nav menu_nav">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['inicio']">Inicio</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['acercade']">Acerca de</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['contacto']">Contacto</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['preguntasf']">FAQ</a>
+      </li>
+    </ul>
+  </div>-->
+
+<!--Boton Iniciar sesion-->
+<!--
+  <button type="button" class="btn btn-light text-primary" data-toggle="modal" data-target="#exampleModal"
+    data-whatever="@mdo">Iniciar Sesion</button>
+  <div class="modal fade text-dark" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-black-50" id="exampleModalLabel">Iniciar Sesion</h5>
+          <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="text-danger bg-light">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">Usuario:</label>
+              <input type="text" class="form-control" id="recipient-name">
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Constrasena:</label>
+              <input type="text" class="form-control" id="recipient-contra">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+          <button type="button" class="btn btn-primary">INICIAR</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</nav>
+
+-->
+
+<mat-nav-list>
+  <a mat-list-item routerLink="/inicio" (click)="onSidenavClose()">
+    <mat-icon>home</mat-icon> <span class="nav-caption">Inicio</span>
+  </a>
+  <a mat-list-item routerLink="/acercade" (click)="onSidenavClose()">
+    <mat-icon>assignment_ind</mat-icon> <span class="nav-caption">Acerca de</span>
+  </a>
+  <a mat-list-item routerLink="/contacto" (click)="onSidenavClose()">
+    <mat-icon>assignment_ind</mat-icon> <span class="nav-caption">Contacto</span>
+  </a>
+  <a mat-list-item routerLink="/preguntasf" (click)="onSidenavClose()">
+    <mat-icon>assignment_ind</mat-icon> <span class="nav-caption">Preguntas Frecuentes</span>
+  </a>
+  <a mat-list-item routerLink="" (click)="onSidenavClose()">
+    <mat-icon>assignment_ind</mat-icon> <span class="nav-caption">Iniciar Sesion</span>
+  </a>
+</mat-nav-list>

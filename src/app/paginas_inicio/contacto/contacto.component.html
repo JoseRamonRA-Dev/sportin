@@ -1,0 +1,176 @@
+<!-- <div class="">
+  <h2>Haznos saber tu opinino</h2>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre:</mat-label>
+    <input matInput required>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Apellido:</mat-label>
+    <input matInput>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Mensaje</mat-label>
+    <textarea matInput required></textarea>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your email</mat-label>
+    <input matInput placeholder="pat@example.com" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+  <br>
+  <button mat-raised-button color="primary" matBadgeColor="accent">
+    Enviar
+  </button>
+<hr>
+  <p class="text-muted">Este formulario te puede ayudar para hacer cotizaciones, pedidos o crititcas constructivas.</p>
+</div> -->
+<!-- 
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="well well-sm">
+        <form class="form-horizontal" method="post">
+          <fieldset>
+            <legend class="text-center header bg-light">Contactanos</legend>
+            <div class="form-group">
+              
+              <div class="col-md-6">
+                <span class="col-md-2 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                
+                <input id="fname" name="name" type="text" placeholder="First Name" class="form-control">
+              </div>
+            </div>
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+              <div class="col-md-8">
+                <input id="lname" name="name" type="text" placeholder="Last Name" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-envelope-o bigicon"></i></span>
+              <div class="col-md-8">
+                <input id="email" name="email" type="text" placeholder="Email Address" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone-square bigicon"></i></span>
+              <div class="col-md-8">
+                <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
+              <div class="col-md-8">
+                <textarea class="form-control" id="message" name="message"
+                  placeholder="Enter your massage for us here. We will get back to you within 2 business days."
+                  rows="7"></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-12 text-center">
+                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="p-3 row">
+  <div>
+    <h2>
+      CONTACTANOS
+    </h2>
+  </div>
+  <div class="col-6">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d237006.05376654398!2d-102.4639112038119!3d21.84906402944559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8429f267d1a9220f%3A0xddcb8eb1f443ac04!2sAguascalientes%2C%20Ags.!5e0!3m2!1ses-419!2smx!4v1636404444824!5m2!1ses-419!2smx"
+      width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+  <div class="col-6">
+    <form class="example-form">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Enviar a:</mat-label>
+        <input matInput disabled value="SportIN">
+      </mat-form-field>
+
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Nombre: </mat-label>
+              <input matInput>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Long Last Name That Will Be Truncated</mat-label>
+              <input matInput>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+               placeholder="Ex. pat@example.com">
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <p>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Address</mat-label>
+          <textarea matInput placeholder="Ex. 100 Main St">1600 Amphitheatre Pkwy</textarea>
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Address 2</mat-label>
+          <textarea matInput></textarea>
+        </mat-form-field>
+      </p>
+
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>City</mat-label>
+              <input matInput placeholder="Ex. San Francisco">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>State</mat-label>
+              <input matInput placeholder="Ex. California">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Postal Code</mat-label>
+              <input matInput #postalCode maxlength="5" placeholder="Ex. 94105" value="94043">
+              <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <section>
+        <button mat-raised-button color="primary">Primary</button>
+      </section>
+    </form>
+  </div>
+
+</div>
