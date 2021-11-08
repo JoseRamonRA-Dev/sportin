@@ -31,11 +31,30 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Acerca de</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" href="#">Categorias</a>
-        </li>
+        </li> -->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Categorias
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" [routerLink]="['/basquetbol']">  Basquetbol</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" [routerLink]="['/futbol']">Futbol</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" [routerLink]="['/natacion']">Natación</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" [routerLink]="['/run']">Running</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" [routerLink]="['/ciclismo']">Ciclismo</a>
+            </div>
+          </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Contacto</a>
+            <a class="nav-link" [routerLink]="['/']">Contacto</a>
+          </li>
+          <li *ngIf="this.bandera" class="nav-item">
+            <a class="nav-link" [routerLink]="['/administrador']">Administrador</a>
           </li>
       </ul>
       <button type="button" data-toggle="modal" data-target="#logIn" class="btn btn-outline-dark">Iniciar sesión</button>
@@ -68,11 +87,15 @@
                         <form>
                             <select class="input-select">
                                 <option value="0">Categorias</option>
-                                <option value="1">Categoria 1</option>
-                                <option value="1">Categoria 2</option>
+                                <option value="1">Natación</option>
+                                <option value="2">Futbol</option>
+                                <option value="3">Basquetbol</option>
+                                <option value="4">Ciclismo</option>
+                                <option value="5">Running</option>
+
                             </select>
-                            <input class="input" placeholder="Search here">
-                            <button class="search-btn">Search</button>
+                            <input class="input" placeholder="Buscar producto">
+                            <button class="search-btn" [routerLink]="['/buscadorcat']">Buscar</button>
                         </form>
                     </div>
                 </div>
@@ -83,65 +106,24 @@
                     <div class="header-ctn">
                         <!-- Wishlist -->
                         <div>
-                            <a href="#">
-                                <i class="fa fa-heart-o"></i>
-                                <span>Your Wishlist</span>
-                                <div class="qty">2</div>
+                            <a [routerLink]="['/wishlist']">
+                              <i class="fas fa-heart"></i>
+                                <span>Wishlist</span>
+                                <!-- <div class="qty">2</div> -->
                             </a>
                         </div>
                         <!-- /Wishlist -->
 
                         <!-- Cart -->
-                        <div class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                        <div >
+                            <a [routerLink]="['/carrito']">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span>Your Cart</span>
-                                <div class="qty">3</div>
+                                <span>Carrito</span>
+                                <!-- <div class="qty">3</div> -->
                             </a>
-                            <div class="cart-dropdown">
-                                <div class="cart-list">
-                                    <div class="product-widget">
-                                        <div class="product-img">
-                                            <img src="../../../assets/images/product.jpg" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">1x</span>$980.00</h4>
-                                        </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div>
-
-                                    <div class="product-widget">
-                                        <div class="product-img">
-                                            <img src="../../../assets/images/product_10.jpg" alt="">
-                                        </div>
-                                        <div class="product-body">
-                                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                            <h4 class="product-price"><span class="qty">3x</span>$980.00</h4>
-                                        </div>
-                                        <button class="delete"><i class="fa fa-close"></i></button>
-                                    </div>
-                                </div>
-                                <div class="cart-summary">
-                                    <small>3 Item(s) selected</small>
-                                    <h5>SUBTOTAL: $2940.00</h5>
-                                </div>
-                                <div class="cart-btns">
-                                    <a href="#">View Cart</a>
-                                    <a href="#">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-                            </div>
+              
                         </div>
                         <!-- /Cart -->
-
-                        <!-- Menu Toogle -->
-                        <div class="menu-toggle">
-                            <a href="#">
-                                <i class="fa fa-bars"></i>
-                                <span>Menu</span>
-                            </a>
-                        </div>
-                        <!-- /Menu Toogle -->
                     </div>
                 </div>
                 <!-- /ACCOUNT -->
@@ -159,7 +141,7 @@
     <div class="modal-dialog modal-sm" role="document">
       <div class="modal-content" style="background-color:  rgb(245, 251, 255);">
         <div class="modal-header"  style="background-color: #142b3b">
-          <h1 class="modal-title text-white" id="exampleModal3Label"> <b> Iniciar sesion</b></h1>
+          <h4 class="modal-title text-white" id="exampleModal3Label"> <b> Iniciar sesion</b></h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
@@ -175,7 +157,7 @@
         <div style="text-align: center;">
             <!-- (click)="iniciar(usr.value, pass.value)" -->
           <button type="button"  class="btn text-white " style="background-color: #D10024" data-dismiss="modal" >Iniciar Sesión </button> <br>
-          <button  type="button" class="btn" style="color: #5ebdb2;" data-dismiss="modal"> <small>Registrarte</small></button>
+          <button [routerLink]="['/registro']" type="button" class="btn" style="color: #5ebdb2;" data-dismiss="modal"> <small>Registrarte</small></button>
         </div>
       </div>
     </div>

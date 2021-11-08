@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponentComponent } from './footer-component/footer-component.component';
-
+import {RouterModule} from '@angular/router';
 
 
 @NgModule({
@@ -9,7 +9,7 @@ import { FooterComponentComponent } from './footer-component/footer-component.co
     FooterComponentComponent
   ],
   imports: [
-    CommonModule
+    CommonModule, RouterModule
   ],
   exports:[FooterComponentComponent]
 })
