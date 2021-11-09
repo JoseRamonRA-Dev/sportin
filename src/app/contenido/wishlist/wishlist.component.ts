@@ -6,9 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wishlist.component.css']
 })
 export class WishlistComponent implements OnInit {
-
-  constructor() { }
-
+  datos:any;
+  constructor() {
+    this.datos = [];
+    for(let i=0; i<10; i++){
+      let producto = "prod";
+      this.datos.push(producto);
+    }
+   }
   ngOnInit(): void {
   }
 
