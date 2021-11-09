@@ -1,3 +1,11 @@
-.pro{
+.pro {
   padding: 20px;
+}
+
+.autores {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5%;
+  padding-top: 0%;
+  justify-content: space-between;
 }
