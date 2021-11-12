@@ -34,6 +34,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { AcercadeComponent } from './acercade/acercade.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { MatInputModule } from '@angular/material/input';
     BuscadorcategoriaComponent,
     AcercaComponent,
     ContactoComponent,
-    PreguntasfComponent
+    PreguntasfComponent,
+    AcercadeComponent
   ],
   imports: [
     CommonModule,
