@@ -8,7 +8,11 @@ const Direccion = new Schema({
     Colonia: { type: String, default: "" },
     Calle: { type: String, default: "" },
     Numero_int: { type: Number, default: 0 },
-    Codigo_postal: { type: Number, default: 0 },
+    Codigo_postal: {
+        type: [Schema.Types.ObjectId],
+        ref: "CodigoPostal",
+        default: undefined,
+    },
 });
 
 module.exports = mongoose.model("Direccion", Direccion, "Direccion");
