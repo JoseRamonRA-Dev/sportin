@@ -7,11 +7,6 @@ const Proveedor = new Schema({
     ApeMat: { type: String, default: "" },
     Telefono: { type: String, default: "" },
     Email: { type: String, default: "" },
-    Listadir: {
-        type: [Schema.Types.ObjectId],
-        ref: "Direccion",
-        default: undefined,
-    },
 });
 
 module.exports = m;

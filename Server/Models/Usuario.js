@@ -14,16 +14,6 @@ const Usuario = new Schema({
     Contrasena: { type: String, default: "" },
     Telefono: { type: String, default: "" },
     Email: { type: String, default: "" },
-    ID_MEMBRESIA: {
-        type: Schema.Types.ObjectId,
-        ref: "Membresia",
-        default: undefined,
-    },
-    Listadir: {
-        type: [Schema.Types.ObjectId],
-        ref: "Direccion",
-        default: undefined,
-    },
     Tipo: {
         type: Tipo,
         default: () => ({}),

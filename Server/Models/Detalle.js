@@ -2,9 +2,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const Detalle = new Schema({
-    ID_PRODDUCTO: {
+    ID_Producto: {
         type: Schema.Types.ObjectId,
         ref: "Producto",
+        default: undefined,
+    },
+    ID_Pedido: {
+        type: Schema.Types.ObjectId,
+        ref: "Pedido",
         default: undefined,
     },
     Cantidad: { type: Number, default: 0 },

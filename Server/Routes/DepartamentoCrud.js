@@ -46,6 +46,13 @@ router.get("/MostrarTodos", (req, res) => {
     });
 });
 
+router.get("/Buscar/:id", (req, res) => {
+    const id = req.params.id;
+    Departamento.find({ _id: id }).then((doc) => {
+        res.json({ departamento: doc, error: null });
+    });
+});
+
 router.get("/Eliminar/:id", (req, res) => {
     const id = req.params.id;
     Departamento.findByIdAndDelete({ _id: id })

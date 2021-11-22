@@ -2,12 +2,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const Direccion = new Schema({
-    Pais: { type: String, default: "" },
-    Estado: { type: String, default: "" },
-    Ciudad: { type: String, default: "" },
-    Colonia: { type: String, default: "" },
+    Id_usuario: {
+        type: Schema.Types.ObjectId,
+        ref: "Usuario",
+        default: undefined,
+    },
     Calle: { type: String, default: "" },
     Numero_int: { type: Number, default: 0 },
+    Numero_ext: { type: Number, default: 0 },
     Codigo_postal: {
         type: [Schema.Types.ObjectId],
         ref: "CodigoPostal",

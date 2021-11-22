@@ -37,10 +37,6 @@ const Pedido = new Schema({
     },
     Total: { type: Number, default: 0 },
     Detalle_Envio: { type: String, default: "" },
-    ListaDetalle: [{
-        type: Detalle,
-        default: () => ({}),
-    }, ],
 });
 
 module.exports = mongoose.model("Pedido", Pedido, "Pedido");

@@ -47,7 +47,7 @@ router.put("/Modificar/:id", (req, res) => {
 
 router.get("/MostrarTodos", (req, res) => {
     Cod_postal.find({}).then((doc) => {
-        res.json({ users: doc, error: null });
+        res.json({ cod_postal: doc, error: null });
     });
 });
 
