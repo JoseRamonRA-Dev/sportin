@@ -5,7 +5,7 @@ var mongoose = require("mongoose");
 //Añadir Proveedor
 router.post("/Insertar", async(req, res) => {
     try {
-        const prov = new editorial({
+        const prov = new Proveedor({
             Nombre: req.body.Nombre,
             ApePat: req.body.ApePat,
             ApeMat: req.body.ApeMat,
@@ -32,7 +32,7 @@ router.get("/Ver/:id", (req, res) => {
     });
 });
 
-//Ver todas las proveedores
+//Ver todos las proveedores
 router.get("/VerTodos", (req, res) => {
     Proveedor.find({}).then((doc) => {
         res.json({ edit: doc, error: null });
@@ -54,7 +54,7 @@ router.put("/Modificar/:id", (req, res) => {
             },
         })
         .then((doc) => {
-            res.json({ response: "Editorial Modificado" });
+            res.json({ response: "Proveedor Modificado" });
         })
         .catch((err) => {
             console.log("error al cambiar", err.message);
@@ -66,7 +66,7 @@ router.get("/Eliminar/:id", (req, res) => {
     const id = req.params.id;
     Proveedor.findByIdAndDelete({ _id: id })
         .then((doc) => {
-            res.json({ response: "Proveedor eliminada" });
+            res.json({ response: "Proveedor eliminado" });
         })
         .catch((err) => {
             console.log("error al cambiar", err.message);

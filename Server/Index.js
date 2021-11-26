@@ -35,24 +35,28 @@ const DepaRoutes = require("./Routes/DepartamentoCrud");
 const DetailRoutes = require("./Routes/DetalleCrud");
 const DirRoutes = require("./Routes/DireccionCrud");
 const MemberRoutes = require("./Routes/MembresiaCrud");
+const ProvRoutes = require("./Routes/ProveedorCrud");
+
 const PedRoutes = require("./Routes/PedidoCrud");
 const ProdRoutes = require("./Routes/ProductoCrud");
-const ProvRoutes = require("./Routes/ProveedorCrud");
 const TrackRoutes = require("./Routes/RatreoCrud");
 const WishRoutes = require("./Routes/WishlistCrud");
 
 app.use("/CP", CPRoutes);
 app.use("/Departamento", DepaRoutes);
-/*app.use("/Usuario", UserRoutes);
-
+app.use("/Usuario", UserRoutes);
 app.use("/Detalle", DetailRoutes);
-app.use("/Direccion", DirRoutes);
 app.use("/Membresia", MemberRoutes);
+app.use("/Proveedor", ProvRoutes);
+app.use("/Direccion", DirRoutes);
+app.use("/Wish", WishRoutes);
+
+/*
 app.use("/Pedido", PedRoutes);
 app.use("/Producto", ProdRoutes);
-app.use("/Proveedor", ProvRoutes);
 app.use("/Rastreo", TrackRoutes);
-app.use("/Wish", WishRoutes);*/
+
+*/
 //app.use("/logo", express.static("template"));
 
 app.listen(port, function() {
