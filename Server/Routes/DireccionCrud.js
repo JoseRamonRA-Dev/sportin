@@ -31,8 +31,9 @@ router.put("/Insertar", (req, res) => {
     }
 });
 
-//Modificar dirección
-router.put("/ModificarDireccion/:id_dir", (req, res) => {
+//Modificar dirección de un usuario
+router.put("/Modificar/:id_dir", (req, res) => {
+    const id_dir = req.params.id_dir;
     const id_us = req.body.id_us;
     const calle = req.body.calle;
     const numero_int = req.body.int;
@@ -55,11 +56,11 @@ router.put("/ModificarDireccion/:id_dir", (req, res) => {
         });
 });
 
-//Eliminar dirección
-router.get("/EliminarDireccion/:id_us/:id_dir", (req, res) => {
+//Eliminar dirección de un usuario
+router.get("/Eliminar/:id_us/:id_dir", (req, res) => {
     const id = req.params.id_us;
     const id_dir = req.params.id_dir;
-    Direccion.updateOne({ _id: id_dir, Id_Usuario: id })
+    Direccion.findByIdAndDelete({ _id: id_dir, Id_Usuario: id })
         .then((doc) => {
             res.json({ response: "Dirección eliminada" });
         })
@@ -68,7 +69,7 @@ router.get("/EliminarDireccion/:id_us/:id_dir", (req, res) => {
         });
 });
 
-router.get("/MostarDireccion/:id_us/:id_dir", (req, res) => {
+router.get("/MostrarPorUsuario/:id_us/:id_dir", (req, res) => {
     const id = req.params.id_us;
     const id_dir = req.params.id_dir;
     Direccion.find({ _id: id_dir, Id_Usuario: id }).then((doc) => {
@@ -76,7 +77,7 @@ router.get("/MostarDireccion/:id_us/:id_dir", (req, res) => {
     });
 });
 
-router.get("/MostarDirecciones/:id_us", (req, res) => {
+router.get("/MostrarTodasPorUsuario/:id_us", (req, res) => {
     const id = req.params.id_us;
 
     Direccion.find({ Id_Usuario: id }).then((doc) => {

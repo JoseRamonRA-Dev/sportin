@@ -49,12 +49,13 @@ app.use("/Detalle", DetailRoutes);
 app.use("/Membresia", MemberRoutes);
 app.use("/Proveedor", ProvRoutes);
 app.use("/Direccion", DirRoutes);
+app.use("/Wish", WishRoutes);
 
 /*
 app.use("/Pedido", PedRoutes);
 app.use("/Producto", ProdRoutes);
 app.use("/Rastreo", TrackRoutes);
-app.use("/Wish", WishRoutes);
+
 */
 //app.use("/logo", express.static("template"));
 
