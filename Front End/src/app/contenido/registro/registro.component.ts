@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import {  Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -29,7 +30,24 @@ export class RegistroComponent implements OnInit {
 
   guardarCambios():void{
     this.datos = this.forma.value
-
+    if(this.datos.contra == this.datos.contra2){
+      
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Registro realizado con éxito',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      this.router.navigate(["/home"]);
+      
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Contraseñas',
+        text: 'Las contraseñas no coinciden'
+      })
+    }
    }
   ngOnInit(): void {
   }

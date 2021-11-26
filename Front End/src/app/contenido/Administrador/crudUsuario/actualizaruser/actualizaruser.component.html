@@ -1,1 +1,140 @@
-<p>actualizaruser works!</p>
+<div class="container" style="margin-top: 20px;" class="card m-3" style="background-color: rgb(244, 245, 250);">
+    <div class="card-body">
+        <h1 style="color: #e43d0a; text-align: center;"> Actualizar usuario </h1>
+        
+    </div>
+    <div class="row">
+        <form  [formGroup]="forma" (ngSubmit)="guardarCambios()"  >
+
+            <div class="container">
+             <div class="row mt-3">
+                <div class="col-2"></div>
+               <div class="col-10">
+                <h4>Actualizar  <small> Ingrese todos los datos que quiera actualizar, y despues dar clic en el botón "Actualizar usuario" para actualizar en la base de datos</small></h4>
+                <hr>
+                  <hr>
+              <div class="form-group row">
+                <label class="col-4 col-form-label">Nombre:</label>
+                <div class="col-8">
+          
+                  <input class="form-control"
+          
+                  type="text"
+                  placeholder="Nombre"
+                  formControlName="nombre">
+          
+          
+                </div>
+              </div>
+          
+              <div class="form-group row">
+                <label class="col-4 col-form-label">Apellido Paterno:</label>
+                <div class="col-8">
+          
+                  <input class="form-control"
+                         type="text"
+                         placeholder="Apellido"
+                         formControlName="apep">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-4 col-form-label">Apellido Materno:</label>
+                <div class="col-8">
+          
+                  <input class="form-control"
+                  type="text"
+                  placeholder="Apellido Materno"
+                  formControlName="apem">
+                </div>
+              </div>
+                <h4>Domicilio y contacto</h4>
+                  <hr>
+                <div class="form-group row">
+                  <label class="col-4 col-form-label">Calle:</label>
+                  <div class="col-8">
+            
+                    <input class="form-control"
+                    type="text"
+                    placeholder="Calle"
+                    formControlName="calle">
+                  </div>
+                </div>
+                
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label">Numero interior:</label>
+                    <div class="col-8">
+                      <input class="form-control"
+                      type="text"
+                      placeholder="Numero interior"
+                      formControlName="numinterior">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label">Numero exterior:</label>
+                    <div class="col-8">
+                      <input class="form-control"
+                      type="text"
+                      placeholder="Numero exterior"
+                      formControlName="numexterior">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label">Código postal:</label>
+                    <div class="col-8">
+                      <input class="form-control"
+                      type="text"
+                      placeholder="Código"
+                      formControlName="codigo">
+                    </div>
+                  </div>
+        
+                 <div class="form-group row">
+                  <label class="col-4 col-form-label">Correo:</label>
+                  <div class="col-8">
+            
+                    <input class="form-control"
+            
+                    type="text"
+                    placeholder="Correo electronico"
+                    formControlName="correo">
+            
+            
+                  </div>
+                </div>
+          
+                <div class="form-group row">
+                  <label class="col-4 col-form-label">Numero de celular: </label>
+                  <div class="col-8">
+                    <input class="form-control"
+                    type="text"
+                    placeholder="Numero de celular"
+                    formControlName="celular">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="col-4 col-form-label">Tipo usuario: </label>
+                  <div class="col-8">
+                      <select class="form-control" formControlName="tipousuario" id="tipousuario" name="tipousuario" required>
+                          <option value="" selected> Seleccionar </option>
+                              <option value="1"> Administrador </option>
+                              <option value="0"> Cliente </option>
+                          </select>
+                  </div>
+                </div>
+              <br><br><br>
+             <div class="form-group row">
+              <label class="col-2 col-form-label">&nbsp;</label>
+              <div class="input-group col-md-8">
+                <button type="button" class="btn btn-warning mb-2 mr-3"><i class="fas fa-pencil-alt"> Actualizar usuario</i></button>
+                <!-- <button type="submit" class="btn btn-outline-success"  >
+                  Actualizar usuario
+                </button> -->
+              </div>
+            </div>
+            </div>
+            
+          </div>
+          </div>
+          </form>
+    </div>
+  </div>

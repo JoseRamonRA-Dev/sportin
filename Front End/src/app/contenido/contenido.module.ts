@@ -35,8 +35,18 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { AcercadeComponent } from './acercade/acercade.component';
-
-
+import { BuscadorPipe } from './pipe/buscador.pipe';
+import { PagooxxoComponent } from './pago/pagooxxo/pagooxxo.component';
+import { PagobancoComponent } from './pago/pagobanco/pagobanco.component';
+import { OpcionesComponent } from './pago/opciones/opciones.component';
+import { InsertarComponent } from './Administrador/crudProvedor/insertar/insertar.component';
+import { ActualizarComponent } from './Administrador/crudProvedor/actualizar/actualizar.component';
+import { ConsultarComponent } from './Administrador/crudProvedor/consultar/consultar.component';
+import { MenuprovComponent } from './Administrador/menu/menuprov/menuprov.component';
+import { InsertarrastreoComponent } from './Administrador/Rastreo/insertarrastreo/insertarrastreo.component';
+import { ActualizarrastreoComponent } from './Administrador/Rastreo/actualizarrastreo/actualizarrastreo.component';
+import { ConsultarrastreoComponent } from './Administrador/Rastreo/consultarrastreo/consultarrastreo.component';
+import { MenurastreoComponent } from './Administrador/menu/menurastreo/menurastreo.component';
 @NgModule({
   declarations: [
     PrincipalComponent,
@@ -63,7 +73,13 @@ import { AcercadeComponent } from './acercade/acercade.component';
     AcercaComponent,
     ContactoComponent,
     PreguntasfComponent,
-    AcercadeComponent
+    AcercadeComponent,
+    BuscadorPipe,
+    PagooxxoComponent,
+    PagobancoComponent, OpcionesComponent, 
+    InsertarComponent, ActualizarComponent, ConsultarComponent, MenuprovComponent, 
+    InsertarrastreoComponent, ActualizarrastreoComponent, ConsultarrastreoComponent,
+    MenurastreoComponent
   ],
   imports: [
     CommonModule,
