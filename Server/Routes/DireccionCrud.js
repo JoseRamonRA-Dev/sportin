@@ -83,3 +83,5 @@ router.get("/MostarDirecciones/:id_us", (req, res) => {
         res.json({ users: doc, error: null });
     });
 });
+
+module.exports = router;
