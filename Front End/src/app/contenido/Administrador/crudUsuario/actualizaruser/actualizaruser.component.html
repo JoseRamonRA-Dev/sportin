@@ -21,7 +21,7 @@
           
                   type="text"
                   placeholder="Nombre"
-                  formControlName="nombre">
+                  formControlName="Nombre">
           
           
                 </div>
@@ -34,7 +34,7 @@
                   <input class="form-control"
                          type="text"
                          placeholder="Apellido"
-                         formControlName="apep">
+                         formControlName="ApePat">
                 </div>
               </div>
               <div class="form-group row">
@@ -44,7 +44,7 @@
                   <input class="form-control"
                   type="text"
                   placeholder="Apellido Materno"
-                  formControlName="apem">
+                  formControlName="ApeMat">
                 </div>
               </div>
                 <h4>Domicilio y contacto</h4>
@@ -96,31 +96,56 @@
             
                     type="text"
                     placeholder="Correo electronico"
-                    formControlName="correo">
+                    formControlName="Email">
             
             
                   </div>
                 </div>
           
                 <div class="form-group row">
-                  <label class="col-4 col-form-label">Numero de celular: </label>
+                  <label class="col-4 col-form-label">Numero de telefono: </label>
                   <div class="col-8">
                     <input class="form-control"
                     type="text"
                     placeholder="Numero de celular"
-                    formControlName="celular">
+                    formControlName="Telefono">
                   </div>
                 </div>
                 <div class="form-group row">
                   <label class="col-4 col-form-label">Tipo usuario: </label>
                   <div class="col-8">
-                      <select class="form-control" formControlName="tipousuario" id="tipousuario" name="tipousuario" required>
+                      <select class="form-control" formControlName="Tipo" id="Tipo" name="Tipo" required>
                           <option value="" selected> Seleccionar </option>
                               <option value="1"> Administrador </option>
                               <option value="0"> Cliente </option>
                           </select>
                   </div>
                 </div>
+                 <hr>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Contraseña: </label>
+        <div class="col-8">
+  
+          <input class="form-control"
+  
+          type="password"
+          placeholder="Ingresa contraseña"
+          formControlName="Contrasena">
+  
+         </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Confirma la contraseña: </label>
+          <div class="col-8">
+    
+            <input class="form-control"
+    
+            type="password"
+            placeholder="Ingresa nuevamente la contraseña"
+            formControlName="contra2">
+    
+           </div>
+          </div>
               <br><br><br>
              <div class="form-group row">
               <label class="col-2 col-form-label">&nbsp;</label>

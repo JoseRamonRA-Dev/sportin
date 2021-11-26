@@ -9,5 +9,4 @@ const Proveedor = new Schema({
     Email: { type: String, default: "" },
 });
 
-module.exports = m;
-ongoose.model("Proveedor", Proveedor, "Proveedor");
+module.exports = mongoose.model("Proveedor", Proveedor, "Proveedor");
