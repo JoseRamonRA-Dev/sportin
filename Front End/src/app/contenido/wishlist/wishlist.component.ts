@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WishlistComponent implements OnInit {
   datos:any;
-  public bandera: boolean = false;
+  public bandera: boolean = true;
   constructor() {
     this.datos = [];
     for(let i=0; i<10; i++){

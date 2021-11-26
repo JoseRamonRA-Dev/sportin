@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import {  Router } from '@angular/router';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-insertarprod',
   templateUrl: './insertarprod.component.html',
@@ -28,7 +29,14 @@ export class InsertarprodComponent implements OnInit {
 
   guardarCambios():void{
     this.datos = this.forma.value
-
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Se inserto correctamente el producto',
+      showConfirmButton: false,
+      timer: 1500
+    });
+    this.router.navigate(["/menuproducto"]);
    }
   ngOnInit(): void {
   }

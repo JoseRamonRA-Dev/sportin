@@ -24,6 +24,18 @@ import { BuscadorcategoriaComponent } from './contenido/buscadorcategoria/buscad
 import { AcercaComponent } from './contenido/acerca/acerca.component';
 import { ContactoComponent } from './contenido/contacto/contacto.component';
 import { PreguntasfComponent } from './contenido/preguntasf/preguntasf.component';
+import { OpcionesComponent } from './contenido/pago/opciones/opciones.component';
+import { PagooxxoComponent } from './contenido/pago/pagooxxo/pagooxxo.component';
+import { PagobancoComponent } from './contenido/pago/pagobanco/pagobanco.component';
+import { InsertarComponent } from './contenido/Administrador/crudProvedor/insertar/insertar.component';
+import { ConsultarComponent } from './contenido/Administrador/crudProvedor/consultar/consultar.component';
+import { AcercadeComponent } from './contenido/acercade/acercade.component';
+import { MenuprovComponent } from './contenido/Administrador/menu/menuprov/menuprov.component';
+import { ActualizarComponent } from './contenido/Administrador/crudProvedor/actualizar/actualizar.component';
+import { InsertarrastreoComponent } from './contenido/Administrador/Rastreo/insertarrastreo/insertarrastreo.component';
+import { ConsultarrastreoComponent } from './contenido/Administrador/Rastreo/consultarrastreo/consultarrastreo.component';
+import { ActualizarrastreoComponent } from './contenido/Administrador/Rastreo/actualizarrastreo/actualizarrastreo.component';
+import { MenurastreoComponent } from './contenido/Administrador/menu/menurastreo/menurastreo.component';
 
 
 const routes: Routes = [
@@ -42,17 +54,40 @@ const routes: Routes = [
   {path: 'administrador', component: MenuComponent},
   {path: 'menuusuario', component: MenuserComponent},
   {path: 'menuproducto', component: MenuprodComponent},
+  {path: 'menuproveedor', component: MenuprovComponent},
+  {path: 'menurastreo', component: MenurastreoComponent},
   {path: 'altaprod', component: InsertarprodComponent},
   {path: 'bajaprod', component: EliminarprodComponent},
-  {path: 'consultaprod', component: ConsultarprodComponent},
-  {path: 'actualizarprod', component: ActualizarprodComponent},
+  {path: 'consultaprod', component: ConsultarprodComponent,
+    children:[
+      {path: 'actualizarprod/:id', component: ActualizarprodComponent}
+    ]
+  },
   {path: 'altauser', component: InsertaruserComponent},
   {path: 'bajauser', component: EliminaruserComponent},
-  {path: 'consultauser', component: ConsultaruserComponent},
-  {path: 'actualizaruser', component: ActualizaruserComponent},
+  {path: 'consultauser', component: ConsultaruserComponent,
+  children:[
+    {path: 'actualizaruser/:id', component: ActualizaruserComponent},
+  ]
+  },
+  {path: 'altaproveedor', component: InsertarComponent},
+  {path: 'consultapro', component: ConsultarComponent,
+  children:[
+    {path: 'actualizarpro/:id', component: ActualizarComponent},
+  ]
+  },
   {path: 'carrito', component: CarritoComponent},
   {path: 'wishlist', component: WishlistComponent},
-  {path: 'buscadorcat', component: BuscadorcategoriaComponent},
+  {path: 'buscadorcat/:nom/:cat', component: BuscadorcategoriaComponent},
+  {path: 'opcionespago', component: OpcionesComponent,
+   children:[
+     {path: 'pagooxxo', component: PagooxxoComponent},
+     {path: 'pagobanco', component: PagobancoComponent}
+   ]
+  },
+  {path: 'altarastreo', component: InsertarrastreoComponent},
+  {path: 'consultarastreo', component: ConsultarrastreoComponent},
+  {path: 'actualizarrastreo/:id', component: ActualizarrastreoComponent},
    {path: '**', pathMatch: 'full', redirectTo: 'home'},
 ];
 
