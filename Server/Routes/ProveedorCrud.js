@@ -17,7 +17,7 @@ router.post("/Insertar", async(req, res) => {
         res.json({
             error: null,
             response: "Añadido",
-            data: savedEdit,
+            data: saved,
         });
     } catch (error) {
         res.status(400).json({ error });
@@ -28,14 +28,14 @@ router.post("/Insertar", async(req, res) => {
 router.get("/Ver/:id", (req, res) => {
     const id = req.params.id;
     Proveedor.findById({ _id: id }).then((doc) => {
-        res.json({ edit: doc, error: null });
+        res.json({ prov: doc, error: null });
     });
 });
 
 //Ver todos las proveedores
 router.get("/VerTodos", (req, res) => {
     Proveedor.find({}).then((doc) => {
-        res.json({ edit: doc, error: null });
+        res.json({ prov: doc, error: null });
     });
 });
 
