@@ -1,1 +1,130 @@
-<p>actualizarprod works!</p>
+<div class="container" style="margin-top: 20px;" class="card m-3" style="background-color: rgb(244, 245, 250);">
+    <div class="card-body">
+        <h1 style="color: #e43d0a; text-align: center;"> Actualizar Producto </h1>
+    </div>
+    <div class="row">
+        <form  [formGroup]="forma" (ngSubmit)="guardarCambios()"  >
+
+            <div class="container">
+             <div class="row mt-3">
+                <div class="col-2"></div>
+               <div class="col-10">
+                <h4>Actualización  <small> Ingrese los datos que quiere actualizar, y despues dar clic en el botón "Actualizar producto" para hacer la Actualización en la base de datos</small></h4>
+                <hr>
+                  <hr>
+              <div class="form-group row">
+                <label class="col-4 col-form-label">Nombre:</label>
+                <div class="col-8">
+          
+                  <input class="form-control"
+          
+                  type="text"
+                  placeholder="Nombre"
+                  formControlName="Nombre">
+          
+          
+                </div>
+              </div>
+          
+              <div class="form-group row">
+                <label class="col-4 col-form-label">Marca:</label>
+                <div class="col-8">
+          
+                  <input class="form-control"
+                         type="text"
+                         placeholder="Marca del producto"
+                         formControlName="Marca">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-4 col-form-label">Precio:</label>
+                <div class="col-8">
+          
+                  <input class="form-control"
+                  type="number"
+                  placeholder="Precio del producto"
+                  formControlName="Precio">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-4 col-form-label">Stock: </label>
+                <div class="col-8">
+          
+                  <input class="form-control"
+                  type="number"
+                  placeholder="Stock del producto"
+                  formControlName="Stock">
+                </div>
+              </div>
+                <h4>Caracteristicas</h4>
+                  <hr>
+                <div class="form-group row">
+                  <label class="col-4 col-form-label">Color: </label>
+                  <div class="col-8">
+            
+                    <input class="form-control"
+                    type="text"
+                    placeholder="Color"
+                    formControlName="Color">
+                  </div>
+                </div>
+                
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label">Tamaño:</label>
+                    <div class="col-8">
+                      <input class="form-control"
+                      type="text"
+                      placeholder="Tamaño del producto"
+                      formControlName="Tamaño">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label">Descripción: </label>
+                    <div class="col-8">
+                      <input class="form-control"
+                      type="text"
+                      placeholder="Descripción del producto"
+                      formControlName="Descripcion">
+                    </div>
+                  </div>
+               
+                <div class="form-group row">
+                  <label class="col-4 col-form-label">Nombre del proveedor: </label>
+                  <div class="col-8">
+                    <input class="form-control"
+                    type="text"
+                    placeholder="Proveedor que suministra el producto"
+                    formControlName="Proveedor">
+                  </div>
+                </div>
+              
+                <div class="form-group row">
+                    <label class="col-4 col-form-label">Departamento: </label>
+                    <div class="col-8">
+                        <select class="form-control" formControlName="Departamento" id="Departamento" name="Departamento" required>
+                            <option value="" selected> Seleccionar </option>
+                                <option value="Futbol"> Futbol </option>
+                                <option value="Basquetbol"> Basquetbol </option>
+                                <option value="Natacion"> Natación </option>
+                                <option value="Running"> Running </option>
+                                <option value="Ciclismo"> Ciclismo </option>
+                            </select>
+                    </div>
+                  </div>
+                
+             <div class="form-group row">
+              <label class="col-2 col-form-label">&nbsp;</label>
+              <div class="input-group col-md-8">
+                <button type="button" class="btn btn-warning mb-2 mr-3"><i class="fas fa-pencil-alt"> Actualizar producto</i></button>
+                <!-- <button type="submit" class="btn btn-outline-success"  >
+                  Actualizar producto
+                </button> -->
+              </div>
+            </div>
+            </div>
+            
+          </div>
+          </div>
+          </form>
+    </div>
+  </div>

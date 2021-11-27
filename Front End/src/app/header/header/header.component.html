@@ -38,14 +38,12 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/preguntasf']">Preguntas Frecuentes</a>
         </li>
-
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Categorias
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" [routerLink]="['/basquetbol']"> Basquetbol</a>
+            <a class="dropdown-item" [routerLink]="['/basquetbol']">  Basquetbol</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" [routerLink]="['/futbol']">Futbol</a>
             <div class="dropdown-divider"></div>
@@ -88,18 +86,19 @@
         <!-- SEARCH BAR -->
         <div class="col-md-6">
           <div class="header-search">
-            <form>
-              <select class="input-select">
-                <option value="0">Categorias</option>
-                <option value="1">Natación</option>
-                <option value="2">Futbol</option>
-                <option value="3">Basquetbol</option>
-                <option value="4">Ciclismo</option>
-                <option value="5">Running</option>
+            <form [formGroup]="forma" (ngSubmit)="guardarCambios()">
+              <select formControlName="categoria" class="input-select">
+                <option value="" selected disabled>Seleccionar</option>
+                <option value="todas">Todas</option>
+                <option value="natacion">Natación</option>
+                <option value="futbol">Futbol</option>
+                <option value="basquetbol">Basquetbol</option>
+                <option value="ciclismo">Ciclismo</option>
+                <option value="running">Running</option>
 
               </select>
-              <input class="input" placeholder="Buscar producto">
-              <button class="search-btn" [routerLink]="['/buscadorcat']">Buscar</button>
+              <input class="input" formControlName="nombre" placeholder="Buscar producto">
+              <button class="search-btn">Buscar</button>
             </form>
           </div>
         </div>
@@ -161,8 +160,8 @@
 
       </div>
       <div style="text-align: center;">
-        <!-- (click)="iniciar(usr.value, pass.value)" -->
-        <button type="button" class="btn text-white " style="background-color: #D10024" data-dismiss="modal">Iniciar
+        
+        <button (click)="iniciar(usr.value, pass.value)" type="button" class="btn text-white " style="background-color: #D10024" data-dismiss="modal">Iniciar
           Sesión </button> <br>
         <button [routerLink]="['/registro']" type="button" class="btn" style="color: #5ebdb2;" data-dismiss="modal">
           <small>Registrarte</small></button>
