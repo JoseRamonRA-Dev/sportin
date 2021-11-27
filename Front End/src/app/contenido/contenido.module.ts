@@ -47,6 +47,7 @@ import { InsertarrastreoComponent } from './Administrador/Rastreo/insertarrastre
 import { ActualizarrastreoComponent } from './Administrador/Rastreo/actualizarrastreo/actualizarrastreo.component';
 import { ConsultarrastreoComponent } from './Administrador/Rastreo/consultarrastreo/consultarrastreo.component';
 import { MenurastreoComponent } from './Administrador/menu/menurastreo/menurastreo.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     PrincipalComponent,
@@ -92,7 +93,7 @@ import { MenurastreoComponent } from './Administrador/menu/menurastreo/menurastr
     MatExpansionModule,
     MatDividerModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule, HttpClientModule
 
   ],
   exports: [PrincipalComponent, BasquetComponent, AcercaComponent]

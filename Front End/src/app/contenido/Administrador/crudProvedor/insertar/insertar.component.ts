@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import {  Router } from '@angular/router';
+import { CrudproveedorService } from 'src/app/contenido/servicios/crudproveedor.service';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-insertar',
@@ -11,7 +12,7 @@ export class InsertarComponent implements OnInit {
   forma: FormGroup;
   datos: any;
   constructor(private formBuilder: FormBuilder,
-    private router: Router){
+    private router: Router, public servicio: CrudproveedorService){
     this.forma = new FormGroup({
       'Nombre': new FormControl('', [Validators.required, Validators.minLength(3)]),
       'ApePat': new FormControl('',Validators.required),
@@ -28,8 +29,7 @@ export class InsertarComponent implements OnInit {
 
   guardarCambios():void{
     this.datos = this.forma.value
-
-
+  this.servicio.insertarProveedor(this.datos).subscribe((res)=>{
     Swal.fire({
       position: 'top-end',
       icon: 'success',
@@ -37,7 +37,10 @@ export class InsertarComponent implements OnInit {
       showConfirmButton: false,
       timer: 1500
     });
+    console.log(res);
     this.router.navigate(["/menuproveedor"]);
+  });
+
    }
   ngOnInit(): void {
   }

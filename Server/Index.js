@@ -9,10 +9,10 @@ const port = 3000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "/public/"));
-app.use((req, res, next) => {
-    req.io = io;
-    next();
-});
+// app.use((req, res, next) => {
+//     req.io = io;
+//     next();
+// });
 
 //conexion
 
