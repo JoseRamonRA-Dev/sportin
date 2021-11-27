@@ -3,7 +3,7 @@ const Wish = require("../Models/Wishlist");
 var mongoose = require("mongoose");
 
 //
-router.put("/Insertar", (req, res) => {
+router.post("/Insertar", (req, res) => {
     const id_us = mongoose.Types.ObjectId(req.body.id_us);
     const id_prod = mongoose.Types.ObjectId(req.body.id_prod);
     const pi = req.body.pi;
