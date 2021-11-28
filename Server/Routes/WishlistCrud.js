@@ -68,7 +68,7 @@ router.get("/MostrarWishes/:id_us", (req, res) => {
     const id = req.params.id_us;
 
     Wish.find({ Id_Usuario: id }).then((doc) => {
-        res.json({ users: doc, error: null });
+        res.json({ wish: doc, error: null });
     });
 });
 
