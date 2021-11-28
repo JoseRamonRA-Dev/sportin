@@ -22,11 +22,6 @@ const Pedido = new Schema({
     },
     FechaPedido: { type: Date, default: 0 },
     FechaEntrega: { type: Date, default: 0 },
-    No_Rastreo: {
-        type: Schema.Types.ObjectId,
-        ref: "Rastreo",
-        default: undefined,
-    },
     Estado: {
         type: Estado,
         default: () => ({}),

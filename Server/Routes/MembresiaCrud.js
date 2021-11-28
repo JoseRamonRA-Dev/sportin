@@ -56,7 +56,7 @@ router.put("/Modificar/:id", (req, res) => {
 
 router.get("/MostrarTodos", (req, res) => {
     Membresia.find({}).then((doc) => {
-        res.json({ cod_postal: doc, error: null });
+        res.json({ membresia: doc, error: null });
     });
 });
 
@@ -64,7 +64,7 @@ router.get("/MembresiaUsuario/:id_us/:id_mem", (req, res) => {
     const id = req.params.id_mem;
     const id_us = req.body.id_us;
     Membresia.find({ _id: id, Id_usuario: id_us }).then((doc) => {
-        res.json({ cod_postal: doc, error: null });
+        res.json({ membresia: doc, error: null });
     });
 });
 

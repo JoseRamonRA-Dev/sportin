@@ -42,7 +42,7 @@ router.put("/Modificar/:id", (req, res) => {
 
 router.get("/MostrarTodos", (req, res) => {
     Departamento.find({}).then((doc) => {
-        res.json({ users: doc, error: null });
+        res.json({ departamentos: doc, error: null });
     });
 });
 
