@@ -10,7 +10,7 @@ router.post("/Insertar", async(req, res) => {
             Municipio: req.body.mun,
             Estado: req.body.state,
         });
-        const saved = cod.save();
+        const saved = await cod.save();
 
         res.json({
             error: null,
@@ -47,6 +47,13 @@ router.put("/Modificar/:id", (req, res) => {
 
 router.get("/MostrarTodos", (req, res) => {
     Cod_postal.find({}).then((doc) => {
+        res.json({ cod_postal: doc, error: null });
+    });
+});
+
+router.get("/Mostrar/:id", (req, res) => {
+    const id = req.params.id;
+    Cod_postal.find({ _id: id }).then((doc) => {
         res.json({ cod_postal: doc, error: null });
     });
 });

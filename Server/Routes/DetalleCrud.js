@@ -25,7 +25,7 @@ router.post("/Insertar", async(req, res) => {
             Total: total,
             Estado: estado,
         });
-        const saved = det.save();
+        const saved = await det.save();
 
         res.json({
             error: null,
@@ -70,7 +70,15 @@ router.put("/Modificar/:id", (req, res) => {
 
 router.get("/MostrarTodos", (req, res) => {
     Detalle.find({}).then((doc) => {
-        res.json({ users: doc, error: null });
+        res.json({ detalles: doc, error: null });
+    });
+});
+
+//Ver por pedido
+router.get("/MostrarPedido/:id_ped", (req, res) => {
+    const id_ped = req.params.id_ped;
+    Detalle.find({ ID_Pedido: id_ped }).then((doc) => {
+        res.json({ detalles: doc, error: null });
     });
 });
 

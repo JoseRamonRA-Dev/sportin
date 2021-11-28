@@ -8,7 +8,7 @@ router.post("/Insertar", async(req, res) => {
             Nombre: req.body.nom,
             Descripcion: req.body.des,
         });
-        const saved = dep.save();
+        const saved = await dep.save();
 
         res.json({
             error: null,
@@ -42,7 +42,7 @@ router.put("/Modificar/:id", (req, res) => {
 
 router.get("/MostrarTodos", (req, res) => {
     Departamento.find({}).then((doc) => {
-        res.json({ users: doc, error: null });
+        res.json({ departamentos: doc, error: null });
     });
 });
 

@@ -10,6 +10,11 @@ const Detalle = new Schema({
 const Rastreo = new Schema({
     Distribuidor: { type: String, default: "" },
     Observaciones: { type: String, default: "" },
+    Id_Pedido: {
+        type: Schema.Types.ObjectId,
+        ref: "Pedido",
+        default: undefined,
+    },
     Detalle: [{
         type: Detalle,
         default: () => ({}),

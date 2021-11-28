@@ -3,7 +3,7 @@ const router = express.Router();
 const Direccion = require("../Models/Direccion");
 var mongoose = require("mongoose");
 
-router.put("/Insertar", (req, res) => {
+router.post("/Insertar", async(req, res) => {
     const id_us = req.body.id_us;
     const calle = req.body.calle;
     const numero_int = req.body.int;
@@ -18,7 +18,7 @@ router.put("/Insertar", (req, res) => {
             Numero_ext: numero_ext,
             Codigo_postal: codigo,
         });
-        const saved = dir.save();
+        const saved = await dir.save();
 
         res.json({
             error: null,
@@ -73,7 +73,7 @@ router.get("/MostrarPorUsuario/:id_us/:id_dir", (req, res) => {
     const id = req.params.id_us;
     const id_dir = req.params.id_dir;
     Direccion.find({ _id: id_dir, Id_Usuario: id }).then((doc) => {
-        res.json({ users: doc, error: null });
+        res.json({ dirs: doc, error: null });
     });
 });
 
@@ -81,7 +81,7 @@ router.get("/MostrarTodasPorUsuario/:id_us", (req, res) => {
     const id = req.params.id_us;
 
     Direccion.find({ Id_Usuario: id }).then((doc) => {
-        res.json({ users: doc, error: null });
+        res.json({ dirs: doc, error: null });
     });
 });
 

@@ -26,6 +26,7 @@ const Producto = new Schema({
         type: Caracteristicas,
         default: () => ({}),
     },
+    Imagen: { type: String, default: "" },
 });
 
 module.exports = mongoose.model("Producto", Producto, "Producto");

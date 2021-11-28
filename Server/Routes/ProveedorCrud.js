@@ -12,8 +12,13 @@ router.post("/Insertar", async(req, res) => {
             Telefono: req.body.Telefono,
             Email: req.body.Email,
         });
+<<<<<<< HEAD
           console.log("Holaa");
         const saved = prov.save();
+=======
+
+        const saved = await prov.save();
+>>>>>>> 81c77be594d5c33d1eced033cbbe541521efa68c
         res.json({
             error: null,
             response: "Añadido",
@@ -29,14 +34,14 @@ router.post("/Insertar", async(req, res) => {
 router.get("/Ver/:id", (req, res) => {
     const id = req.params.id;
     Proveedor.findById({ _id: id }).then((doc) => {
-        res.json({ edit: doc, error: null });
+        res.json({ prov: doc, error: null });
     });
 });
 
 //Ver todos las proveedores
 router.get("/VerTodos", (req, res) => {
     Proveedor.find({}).then((doc) => {
-        res.json({ edit: doc, error: null });
+        res.json({ prov: doc, error: null });
     });
 });
 
