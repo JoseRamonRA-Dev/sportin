@@ -10,6 +10,7 @@ router.post("/Insertar", async(req, res) => {
     const precio = req.body.precio;
     const stock = req.body.stock;
     const Id_dep = req.body.id_dep;
+    const img = req.body.img;
     const caracteristicas = {
         Color: req.body.color,
         Tamaño: req.body.tam,
@@ -23,6 +24,7 @@ router.post("/Insertar", async(req, res) => {
             Precio: precio,
             Stock: stock,
             ID_Departamento: Id_dep,
+            Imagen: img,
             Caracteristicas: caracteristicas,
         });
 
@@ -46,6 +48,7 @@ router.put("/Modificar/:id_prod", async(req, res) => {
     const precio = req.body.precio;
     const stock = req.body.stock;
     const Id_dep = req.body.id_dep;
+    const img = req.body.img;
     const caracteristicas = {
         Color: req.body.color,
         Tamaño: req.body.tam,
@@ -59,6 +62,7 @@ router.put("/Modificar/:id_prod", async(req, res) => {
                 Precio: precio,
                 Stock: stock,
                 ID_Departamento: Id_dep,
+                Imagen: img,
                 Caracteristicas: caracteristicas,
             },
         })
