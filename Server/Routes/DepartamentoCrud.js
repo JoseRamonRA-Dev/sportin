@@ -8,7 +8,7 @@ router.post("/Insertar", async(req, res) => {
             Nombre: req.body.nom,
             Descripcion: req.body.des,
         });
-        const saved = dep.save();
+        const saved = await dep.save();
 
         res.json({
             error: null,

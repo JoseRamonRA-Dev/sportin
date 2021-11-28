@@ -17,7 +17,7 @@ router.post("/Insertar", async(req, res) => {
             FechaInicio: fechaInicio,
             FechaVencimiento: fechaVencimiento,
         });
-        const saved = mem.save();
+        const saved = await mem.save();
 
         res.json({
             error: null,

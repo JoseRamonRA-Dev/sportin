@@ -10,7 +10,7 @@ router.post("/Insertar", async(req, res) => {
             Municipio: req.body.mun,
             Estado: req.body.state,
         });
-        const saved = cod.save();
+        const saved = await cod.save();
 
         res.json({
             error: null,

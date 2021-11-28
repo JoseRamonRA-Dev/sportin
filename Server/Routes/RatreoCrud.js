@@ -15,7 +15,8 @@ router.post("/Insertar", async(req, res) => {
             Id_Pedido: Id_ped,
         });
 
-        const saved = ras.save();
+        const saved = await ras.save();
+        console.log(saved);
         res.json({
             error: null,
             response: "Añadido",

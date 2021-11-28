@@ -26,7 +26,7 @@ router.post("/Insertar", async(req, res) => {
             Caracteristicas: caracteristicas,
         });
 
-        const saved = prod.save();
+        const saved = await prod.save();
         res.json({
             error: null,
             response: "Añadido",

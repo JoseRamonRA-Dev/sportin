@@ -13,7 +13,7 @@ router.post("/Insertar", async(req, res) => {
             Email: req.body.Email,
         });
 
-        const saved = prov.save();
+        const saved = await prov.save();
         res.json({
             error: null,
             response: "Añadido",

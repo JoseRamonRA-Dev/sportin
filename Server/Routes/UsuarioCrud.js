@@ -46,7 +46,7 @@ router.post("/Registro", async(req, res) => {
             Email: req.body.Email,
         });
 
-        const savedUser = user.save();
+        const savedUser = await user.save();
         res.json({
             error: null,
             response: "Añadido",
@@ -78,8 +78,8 @@ router.post("/Insertar", async(req, res) => {
             Tipo: Object.assign({}, req.body.Tipo),
         });
 
-        const savedUser = user.save();
-        console.log(savedUser);
+        const savedUser = await user.save();
+
         res.json({
             error: null,
             response: "Añadido",
@@ -106,12 +106,12 @@ router.post("/login", async(req, res) => {
     try {
         // create token
         /*
-                            const token = jwt.sign({
-                                    name: user.Nombre,
-                                    id: user._id,
-                                },
-                                "secret"
-                            );*/
+                                        const token = jwt.sign({
+                                                name: user.Nombre,
+                                                id: user._id,
+                                            },
+                                            "secret"
+                                        );*/
 
         res.json({
             error: null,

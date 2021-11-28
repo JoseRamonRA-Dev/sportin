@@ -25,7 +25,7 @@ router.post("/Insertar", async(req, res) => {
             Total: total,
             Estado: estado,
         });
-        const saved = det.save();
+        const saved = await det.save();
 
         res.json({
             error: null,

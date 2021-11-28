@@ -47,11 +47,12 @@ app.use("/Proveedor", ProvRoutes);
 app.use("/Direccion", DirRoutes);
 app.use("/Wish", WishRoutes);
 app.use("/Producto", ProdRoutes);
+app.use("/Rastreo", TrackRoutes);
 
 /*
 app.use("/Pedido", PedRoutes);
 
-app.use("/Rastreo", TrackRoutes);
+
 
 */
 //app.use("/logo", express.static("template"));

@@ -3,7 +3,7 @@ const router = express.Router();
 const Direccion = require("../Models/Direccion");
 var mongoose = require("mongoose");
 
-router.post("/Insertar", (req, res) => {
+router.post("/Insertar", async(req, res) => {
     const id_us = req.body.id_us;
     const calle = req.body.calle;
     const numero_int = req.body.int;
@@ -18,7 +18,7 @@ router.post("/Insertar", (req, res) => {
             Numero_ext: numero_ext,
             Codigo_postal: codigo,
         });
-        const saved = dir.save();
+        const saved = await dir.save();
 
         res.json({
             error: null,
