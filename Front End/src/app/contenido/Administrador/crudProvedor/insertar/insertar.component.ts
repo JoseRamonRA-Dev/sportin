@@ -29,8 +29,16 @@ export class InsertarComponent implements OnInit {
 
   guardarCambios():void{
     this.datos = this.forma.value
-  this.servicio.insertarProveedor(this.datos).subscribe((res)=>{
-    Swal.fire({
+    if(this.forma.invalid){
+      Swal.fire({
+        icon: 'error',
+        title: 'ERROR',
+        text: 'Tienes que añadir todos los campos requeridos',
+        footer: 'Intenta de nuevo'
+      })
+     }else{
+        this.servicio.insertarProveedor(this.datos).subscribe((res)=>{
+        Swal.fire({
       position: 'top-end',
       icon: 'success',
       title: 'Se inserto correctamente el proveedor',
@@ -39,7 +47,10 @@ export class InsertarComponent implements OnInit {
     });
     console.log(res);
     this.router.navigate(["/menuproveedor"]);
-  });
+        });
+     }
+     
+ 
 
    }
   ngOnInit(): void {

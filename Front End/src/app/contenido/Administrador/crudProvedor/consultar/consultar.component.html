@@ -30,17 +30,19 @@
                       <div class="profile-name">
                           
                       </div>
-                      <div class="profile-description">Maria Fernanda</div>
+                      <div class="profile-description"> {{item.Nombre}}
+
+                      </div>
                       <div class="row">
                           <div class="col-6">
                               <div class="profile-overview">
                                   <p>Email:</p>
-                                  <h4>jose@hotmail.com</h4></div>
+                                  <h4> {{item.Email}} </h4></div>
                           </div>
                           <div class="col-6">
                               <div class="profile-overview">
                                   <p>Telefono:</p>
-                                  <h4>449-12-01-23</h4></div>
+                                  <h4> {{item.Telefono}} </h4></div>
                           </div>
                           
                       </div>
@@ -50,11 +52,11 @@
                               data-placement="right" title="Eliminar"><i class="fas fa-times"></i></button> -->
                               <div class="col-2"></div>
                               <div class="col-2">
-                                  <button [routerLink]="['/consultapro/actualizarpro','123']"   type="button" class="btn btn-warning mb-2 mr-3"><i class="fas fa-pencil-alt"></i></button>
+                                  <button [routerLink]="['/consultapro/actualizarpro',item._id]"   type="button" class="btn btn-warning mb-2 mr-3"><i class="fas fa-pencil-alt"></i></button>
                               </div>
                               <div class="col-2"></div>
                               <div class="col-2">
-                                  <button (click)="eliminar('Producto')"  type="button" class="btn btn-danger mb-2 ml-3" data-toggle="tooltip"
+                                  <button (click)="eliminar(item._id)"  type="button" class="btn btn-danger mb-2 ml-3" data-toggle="tooltip"
                                   data-placement="right" title="Eliminar"><i class="fas fa-times"></i></button>
                               </div>
                   

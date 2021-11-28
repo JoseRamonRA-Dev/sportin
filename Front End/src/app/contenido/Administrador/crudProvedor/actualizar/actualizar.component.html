@@ -7,22 +7,22 @@
         <form  [formGroup]="forma" (ngSubmit)="guardarCambios()"  >
 
             <div class="container">
-             <div class="row mt-3">
-                <div class="col-2"></div>
-               <div class="col-10">
+             <div class="row mt-1">
+               
+               <div class="col-12">
                 <h4>Actualizar  <small> Ingrese todos los datos que quiera actualizar, y despues dar clic en el botón "Actualizar proveedor" para actualizar en la base de datos</small></h4>
                 <hr>
                   <hr>
               <div class="form-group row">
-                <label class="col-4 col-form-label">Nombre:</label>
+                <label class="col-4 col-form-label">Nombre:  </label>
                 <div class="col-8">
           
                   <input class="form-control"
-          
+                  value="datos.Nombre"
                   type="text"
                   placeholder="Nombre"
                   formControlName="Nombre">
-          
+             
           
                 </div>
               </div>
@@ -32,6 +32,7 @@
                 <div class="col-8">
           
                   <input class="form-control"
+                  value="datos.ApePat"
                          type="text"
                          placeholder="Apellido"
                          formControlName="ApePat">
@@ -43,6 +44,7 @@
           
                   <input class="form-control"
                   type="text"
+                  value="datos.ApeMat"
                   placeholder="Apellido Materno"
                   formControlName="ApeMat">
                 </div>
@@ -55,6 +57,7 @@
             
                     <input class="form-control"
                     type="text"
+                    value=""
                     placeholder="Calle"
                     formControlName="calle">
                   </div>
@@ -93,7 +96,7 @@
                   <div class="col-8">
             
                     <input class="form-control"
-            
+                    value="datos.Email"
                     type="text"
                     placeholder="Correo electronico"
                     formControlName="Email">
@@ -107,6 +110,7 @@
                   <div class="col-8">
                     <input class="form-control"
                     type="text"
+                    value="datos.Telefono"
                     placeholder="Numero de telefono"
                     formControlName="Telefono">
                   </div>
@@ -115,7 +119,7 @@
              <div class="form-group row">
               <label class="col-2 col-form-label">&nbsp;</label>
               <div class="input-group col-md-8">
-                <button type="button" class="btn btn-warning mb-2 mr-3"><i class="fas fa-pencil-alt"> Actualizar proveedor</i></button>
+                <button type="submit" class="btn btn-warning mb-2 mr-3"><i class="fas fa-pencil-alt"> Actualizar proveedor</i></button>
                 <!-- <button type="submit" class="btn btn-outline-success"  >
                   Actualizar usuario
                 </button> -->

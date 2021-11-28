@@ -12,14 +12,15 @@ router.post("/Insertar", async(req, res) => {
             Telefono: req.body.Telefono,
             Email: req.body.Email,
         });
-
+          console.log("Holaa");
         const saved = prov.save();
         res.json({
             error: null,
             response: "Añadido",
-            data: savedEdit,
+            data: saved,
         });
     } catch (error) {
+        console.log(error.message);
         res.status(400).json({ error });
     }
 });

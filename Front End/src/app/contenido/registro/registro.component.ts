@@ -31,15 +31,24 @@ export class RegistroComponent implements OnInit {
   guardarCambios():void{
     this.datos = this.forma.value
     if(this.datos.contra == this.datos.contra2){
+      if(this.forma.invalid){
+        Swal.fire({
+          icon: 'error',
+          title: 'ERROR',
+          text: 'Tienes que añadir todos los campos requeridos',
+          footer: 'Intenta de nuevo'
+        })
+       }else{
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Registro realizado con éxito',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        this.router.navigate(["/home"]);
+       }
       
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Registro realizado con éxito',
-        showConfirmButton: false,
-        timer: 1500
-      });
-      this.router.navigate(["/home"]);
       
     }else{
       Swal.fire({

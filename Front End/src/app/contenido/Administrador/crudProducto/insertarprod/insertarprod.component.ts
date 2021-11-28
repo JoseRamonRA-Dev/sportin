@@ -14,29 +14,39 @@ export class InsertarprodComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private router: Router){
     this.forma = new FormGroup({
-      'Nombre': new FormControl('', [Validators.required, Validators.minLength(3)]),
-      'Marca': new FormControl('',Validators.required),
-      'Precio': new FormControl('',Validators.required),
-      'Stock': new FormControl('',Validators.required),
-      'Color': new FormControl('',Validators.required),
-      'Tamaño': new FormControl('',Validators.required),
-      'Descripcion': new FormControl('',Validators.required),
-      'Proveedor': new FormControl('',Validators.required),
-      'Departamento': new FormControl('',Validators.required)
+      'nom': new FormControl('', [Validators.required, Validators.minLength(3)]),
+      'marca': new FormControl('',Validators.required),
+      'precio': new FormControl('',Validators.required),
+      'stock': new FormControl('',Validators.required),
+      'color': new FormControl('',Validators.required),
+      'tam': new FormControl('',Validators.required),
+      'desc': new FormControl('',Validators.required),
+      'id_us': new FormControl('',Validators.required),
+      'id_dep': new FormControl('',Validators.required)
      });
 
   }
 
   guardarCambios():void{
     this.datos = this.forma.value
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Se inserto correctamente el producto',
-      showConfirmButton: false,
-      timer: 1500
-    });
-    this.router.navigate(["/menuproducto"]);
+    if(this.forma.invalid){
+      Swal.fire({
+        icon: 'error',
+        title: 'ERROR',
+        text: 'Tienes que añadir todos los campos requeridos',
+        footer: 'Intenta de nuevo'
+      })
+     }else{
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Se inserto correctamente el producto',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      this.router.navigate(["/menuproducto"]);
+     }
+   
    }
   ngOnInit(): void {
   }

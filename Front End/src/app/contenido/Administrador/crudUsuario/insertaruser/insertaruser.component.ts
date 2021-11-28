@@ -31,14 +31,24 @@ export class InsertaruserComponent implements OnInit {
 
   guardarCambios():void{
     this.datos = this.forma.value
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Se inserto correctamente el usuario',
-      showConfirmButton: false,
-      timer: 1500
-    });
-    this.router.navigate(["/menuusuario"]);
+    if(this.forma.invalid){
+      Swal.fire({
+        icon: 'error',
+        title: 'ERROR',
+        text: 'Tienes que añadir todos los campos requeridos',
+        footer: 'Intenta de nuevo'
+      })
+     }else{
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Se inserto correctamente el usuario',
+        showConfirmButton: false,
+        timer: 1500
+      });
+      this.router.navigate(["/menuusuario"]);
+     }
+    
    }
   ngOnInit(): void {
   }

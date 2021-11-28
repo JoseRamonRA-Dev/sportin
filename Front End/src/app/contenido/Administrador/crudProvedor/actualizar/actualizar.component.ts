@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import {  Router } from '@angular/router';
+import {  ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { CrudproveedorService } from 'src/app/contenido/servicios/crudproveedor.service';
 @Component({
   selector: 'app-actualizar',
   templateUrl: './actualizar.component.html',
@@ -9,8 +11,14 @@ import {  Router } from '@angular/router';
 export class ActualizarComponent implements OnInit {
   forma: FormGroup;
   datos: any;
+  public id: any;
   constructor(private formBuilder: FormBuilder,
-    private router: Router){
+    private router: Router, private activated: ActivatedRoute, private servicio: CrudproveedorService){
+      this.id = this.activated.snapshot.params.id;
+      this.servicio.obtenerProveedorActualizar(this.id).subscribe((res)=>{
+        console.log(res.Nombre);
+        this.datos = res;
+     });
       this.forma = new FormGroup({
         'Nombre': new FormControl('', [Validators.required, Validators.minLength(3)]),
         'ApePat': new FormControl('',Validators.required),
@@ -26,9 +34,11 @@ export class ActualizarComponent implements OnInit {
   }
   guardarCambios():void{
     this.datos = this.forma.value
-
+    
+    
    }
   ngOnInit(): void {
+     
   }
 
 }

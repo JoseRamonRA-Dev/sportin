@@ -5,9 +5,9 @@ var mongoose = require("mongoose");
 //
 router.post("/Insertar", (req, res) => {
   
-    const detallepago = {
-        Tipo:
-    }
+    // const detallepago = {
+    //     Tipo:
+    // }
     try {
         const ped = new Pedido({
             ID_Usuario: id_us,

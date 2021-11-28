@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CrudproveedorService } from 'src/app/contenido/servicios/crudproveedor.service';
 import Swal from 'sweetalert2'
 @Component({
   selector: 'app-consultar',
@@ -9,15 +10,15 @@ import Swal from 'sweetalert2'
 export class ConsultarComponent implements OnInit {
   public datos:any;
   public buscar = '';
-  constructor(private router: Router) {
+  constructor(private router: Router, private servicio: CrudproveedorService) {
     this.datos = [];
-    for(let i=0; i<10; i++){
-      let producto = "prod";
-      let categoria = "Algo";
-      this.datos.push(producto);
-    }
+    
    }
   ngOnInit(): void {
+    this.servicio.obtenerProveedores().subscribe((res)=>{
+      console.log(res);
+      this.datos = res;
+    })
   }
   eliminar(id:any){
     const swalWithBootstrapButtons = Swal.mixin({
