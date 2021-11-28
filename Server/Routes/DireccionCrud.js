@@ -3,7 +3,7 @@ const router = express.Router();
 const Direccion = require("../Models/Direccion");
 var mongoose = require("mongoose");
 
-router.put("/Insertar", (req, res) => {
+router.post("/Insertar", (req, res) => {
     const id_us = req.body.id_us;
     const calle = req.body.calle;
     const numero_int = req.body.int;

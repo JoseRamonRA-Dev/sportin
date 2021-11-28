@@ -75,4 +75,66 @@ router.get("/MostrarTodos", (req, res) => {
     });
 });
 
+//Añadir detalle
+router.put("/InsertarDetalle/:id_ras", (req, res) => {
+    const id = req.params.id_ras;
+    const estado = req.body.est;
+    const fecha = req.body.fec;
+    const hora = req.body.hora;
+
+    Rastreo.findByIdAndUpdate({ _id: id }, {
+            $push: {
+                Detalle: {
+                    Estado: estado,
+                    Fecha: fecha,
+                    Hora: hora,
+                },
+            },
+        })
+        .then((doc) => {
+            res.json({ response: "Detalle agregado" });
+        })
+        .catch((err) => {
+            console.log("error al cambiar", err.message);
+        });
+});
+
+//Modificar detalle
+router.put("/ModificarDetalle/:id_ras/:id_det", (req, res) => {
+    const id = req.params.id_ras;
+    const id_det = mongoose.Types.ObjectId(req.params.id_det);
+    const estado = req.body.est;
+    const fecha = req.body.fec;
+    const hora = req.body.hora;
+
+    Rastreo.updateOne({ _id: id, "Detalle._id": id_det }, {
+            $set: {
+                "Detalle.$": {
+                    Estado: estado,
+                    Fecha: fecha,
+                    Hora: hora,
+                },
+            },
+        })
+        .then((doc) => {
+            res.json({ response: "Detalle modificado" });
+        })
+        .catch((err) => {
+            console.log("error al cambiar", err);
+        });
+});
+
+//Eliminar detalle
+router.get("/EliminarDetalle/:id_ras/:id_det", (req, res) => {
+    const id = req.params.id_ras;
+    const id_det = req.params.id_det;
+    Rastreo.updateOne({ _id: id }, { $pull: { Detalle: { _id: id_det } } })
+        .then((doc) => {
+            res.json({ response: "Detalle eliminado" });
+        })
+        .catch((err) => {
+            console.log("error al eliminar", err.message);
+        });
+});
+
 module.exports = router;
