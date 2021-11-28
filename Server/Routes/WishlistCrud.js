@@ -64,7 +64,7 @@ router.get("/Eliminar/:id_wish", (req, res) => {
 });
 
 //Wishes por usuario
-router.get("/MostarWishes/:id_us", (req, res) => {
+router.get("/MostrarWishes/:id_us", (req, res) => {
     const id = req.params.id_us;
 
     Wish.find({ Id_Usuario: id }).then((doc) => {

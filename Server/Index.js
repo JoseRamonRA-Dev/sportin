@@ -46,10 +46,11 @@ app.use("/Membresia", MemberRoutes);
 app.use("/Proveedor", ProvRoutes);
 app.use("/Direccion", DirRoutes);
 app.use("/Wish", WishRoutes);
+app.use("/Producto", ProdRoutes);
 
 /*
 app.use("/Pedido", PedRoutes);
-app.use("/Producto", ProdRoutes);
+
 app.use("/Rastreo", TrackRoutes);
 
 */

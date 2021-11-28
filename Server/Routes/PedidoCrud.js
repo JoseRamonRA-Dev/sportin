@@ -2,12 +2,8 @@ const router = require("express").Router();
 const Pedido = require("../Models/Pedido");
 var mongoose = require("mongoose");
 
-//
+/*
 router.post("/Insertar", (req, res) => {
-  
-    const detallepago = {
-        Tipo:
-    }
     try {
         const ped = new Pedido({
             ID_Usuario: id_us,
@@ -26,4 +22,4 @@ router.post("/Insertar", (req, res) => {
         console.log(error.message);
         res.status(400).json({ error });
     }
-});
+});*/

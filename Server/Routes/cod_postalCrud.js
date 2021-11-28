@@ -51,6 +51,13 @@ router.get("/MostrarTodos", (req, res) => {
     });
 });
 
+router.get("/Mostrar/:id", (req, res) => {
+    const id = req.params.id;
+    Cod_postal.find({ _id: id }).then((doc) => {
+        res.json({ cod_postal: doc, error: null });
+    });
+});
+
 router.get("/Eliminar/:id", (req, res) => {
     const id = req.params.id;
     Cod_postal.findByIdAndDelete({ _id: id })
