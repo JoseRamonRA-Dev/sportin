@@ -67,6 +67,11 @@ router.post("/Insertar", async(req, res) => {
         }
         const salt = await bcrypt.genSalt(10);
         const password = await bcrypt.hash(req.body.Contrasena, salt);
+        const Tip = {
+            Nivel: req.body.nivel,
+            Salario: req.body.sal,
+            FechaIngreso: req.body.fi,
+        };
 
         const user = new usuario({
             Nombre: req.body.Nombre,
@@ -75,7 +80,7 @@ router.post("/Insertar", async(req, res) => {
             Contrasena: password,
             Telefono: req.body.Telefono,
             Email: req.body.Email,
-            Tipo: Object.assign({}, req.body.Tipo),
+            Tipo: Tip,
         });
 
         const savedUser = await user.save();
@@ -106,12 +111,12 @@ router.post("/login", async(req, res) => {
     try {
         // create token
         /*
-                                        const token = jwt.sign({
-                                                name: user.Nombre,
-                                                id: user._id,
-                                            },
-                                            "secret"
-                                        );*/
+                                                    const token = jwt.sign({
+                                                            name: user.Nombre,
+                                                            id: user._id,
+                                                        },
+                                                        "secret"
+                                                    );*/
 
         res.json({
             error: null,
@@ -160,7 +165,11 @@ router.put("/Modificar/:id", (req, res) => {
     const apep = req.body.ApePat;
     const apem = req.body.ApeMat;
     const tel = req.body.Telefono;
-    const Tip = Object.assign({}, req.body.Tipo);
+    const Tip = {
+        Nivel: req.body.nivel,
+        Salario: req.body.sal,
+        FechaIngreso: req.body.fi,
+    };
 
     Usuario.findByIdAndUpdate({ _id: id }, {
             $set: {
@@ -196,6 +205,14 @@ router.get("/Eliminar/:id", (req, res) => {
 //Ver todos los usuarios
 router.get("/MostrarTodos", (req, res) => {
     Usuario.find({}).then((doc) => {
+        res.json({ users: doc, error: null });
+    });
+});
+
+//Ver un usuario
+router.get("/Mostrar/:id", (req, res) => {
+    const id = req.params.id;
+    Usuario.find({ _id: id }).then((doc) => {
         res.json({ users: doc, error: null });
     });
 });

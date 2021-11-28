@@ -3,15 +3,12 @@ const Pedido = require("../Models/Pedido");
 var mongoose = require("mongoose");
 
 /*
-router.post("/Insertar", (req, res) => {
+router.post("/Insertar", async (req, res) => {
     try {
         const ped = new Pedido({
-            ID_Usuario: id_us,
-            ID_PRODDUCTO: id_prod,
-            PrecioInicial: pi,
-            Diferencia: def,
+  
         });
-        const saved = ped.save();
+        const saved = await ped.save();
 
         res.json({
             error: null,
