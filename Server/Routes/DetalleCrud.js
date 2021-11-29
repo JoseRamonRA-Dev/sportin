@@ -13,6 +13,15 @@ router.post("/Insertar", async(req, res) => {
     const descuento = req.body.descuento;
     const total = sub_total + iva - descuento * (sub_total + iva);
     const estado = req.body.estado;
+
+    const isExist = await Wish.findOne({
+        ID_Producto: id_prod,
+        ID_Pedido: id_ped,
+    });
+
+    if (isExist) {
+        return res.status(400).json({ error: "El producto esta en la lista" });
+    }
     try {
         const det = new Detalle({
             ID_Producto: id_prod,
