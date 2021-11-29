@@ -2,22 +2,12 @@ const router = require("express").Router();
 const Pedido = require("../Models/Pedido");
 var mongoose = require("mongoose");
 
-<<<<<<< HEAD
-/*
-router.post("/Insertar", (req, res) => {
-<<<<<<< HEAD
-  
-    // const detallepago = {
-    //     Tipo:
-    // }
-=======
->>>>>>> 81c77be594d5c33d1eced033cbbe541521efa68c
-=======
+
+
 //Crear carrito
 router.post("/Insertar", async(req, res) => {
     const id_us = req.body.id_us;
 
->>>>>>> 1d845c47f27c14da1de218325013267faf2f1a24
     try {
         const ped = new Pedido({
             ID_Usuario: id_us,
