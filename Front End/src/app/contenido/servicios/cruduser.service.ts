@@ -33,7 +33,11 @@ export class CruduserService {
   registrarUsuario(usuario:any){
     return this.http.post(`${environment.ip}/Usuario/Registro`,usuario,{headers:this.getHeaders()});
   }
-  iniciarSesion(usuario:any){
-    return this.http.post(`${environment.ip}/Usuario/Registro`,usuario,{headers:this.getHeaders()});
+  iniciarSesion(usuario:any, contrasena:any){
+    const body = {
+      email: usuario,
+      contra: contrasena
+    }
+    return this.http.post(`${environment.ip}/Usuario/login`,body,{headers:this.getHeaders()});
   }
 }

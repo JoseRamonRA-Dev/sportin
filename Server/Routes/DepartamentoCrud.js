@@ -53,6 +53,15 @@ router.get("/Buscar/:id", (req, res) => {
     });
 });
 
+//Para obtener el nombre del dep e id
+router.get("/BuscarNombre/:nombre", (req, res) => {
+    const nomb = req.params.nombre;
+    console.log(nomb);
+    Departamento.find({ Nombre: { $regex: nomb, $options: "?" } }).then((doc) => {
+        res.json({ departamento: doc, error: null });
+    });
+});
+
 router.get("/Eliminar/:id", (req, res) => {
     const id = req.params.id;
     Departamento.findByIdAndDelete({ _id: id })

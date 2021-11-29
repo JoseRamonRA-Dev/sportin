@@ -12,8 +12,6 @@ import { MenuprodComponent } from './contenido/Administrador/menu/menuprod/menup
 import { MenuserComponent } from './contenido/Administrador/menu/menuser/menuser.component';
 import { InsertarprodComponent } from './contenido/Administrador/crudProducto/insertarprod/insertarprod.component';
 import { InsertaruserComponent } from './contenido/Administrador/crudUsuario/insertaruser/insertaruser.component';
-import { EliminarprodComponent } from './contenido/Administrador/crudProducto/eliminarprod/eliminarprod.component';
-import { EliminaruserComponent } from './contenido/Administrador/crudUsuario/eliminaruser/eliminaruser.component';
 import { ConsultarprodComponent } from './contenido/Administrador/crudProducto/consultarprod/consultarprod.component';
 import { ConsultaruserComponent } from './contenido/Administrador/crudUsuario/consultaruser/consultaruser.component';
 import { ActualizarprodComponent } from './contenido/Administrador/crudProducto/actualizarprod/actualizarprod.component';
@@ -57,14 +55,12 @@ const routes: Routes = [
   {path: 'menuproveedor', component: MenuprovComponent},
   {path: 'menurastreo', component: MenurastreoComponent},
   {path: 'altaprod', component: InsertarprodComponent},
-  {path: 'bajaprod', component: EliminarprodComponent},
   {path: 'consultaprod', component: ConsultarprodComponent,
     children:[
       {path: 'actualizarprod/:id', component: ActualizarprodComponent}
     ]
   },
   {path: 'altauser', component: InsertaruserComponent},
-  {path: 'bajauser', component: EliminaruserComponent},
   {path: 'consultauser', component: ConsultaruserComponent,
   children:[
     {path: 'actualizaruser/:id', component: ActualizaruserComponent},

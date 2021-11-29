@@ -3,7 +3,7 @@
         <h1 style="color: #e43d0a; text-align: center;"> Actualizar Producto </h1>
     </div>
     <div class="row">
-        <form  [formGroup]="forma" (ngSubmit)="guardarCambios()"  >
+        <form  [formGroup]="forma"   >
 
             <div class="container">
              <div class="row mt-1">
@@ -13,14 +13,14 @@
                 <hr>
                   <hr>
               <div class="form-group row">
-                <label class="col-4 col-form-label">Nombre:</label>
+                <label class="col-4 col-form-label">Nombre: {{this.datos2.Nombre}} </label>
                 <div class="col-8">
           
                   <input class="form-control"
-          
+                  value="{{this.nombre}}"
                   type="text"
                   placeholder="Nombre"
-                  formControlName="Nombre">
+                  formControlName="nom">
           
           
                 </div>
@@ -33,7 +33,7 @@
                   <input class="form-control"
                          type="text"
                          placeholder="Marca del producto"
-                         formControlName="Marca">
+                         formControlName="marca">
                 </div>
               </div>
               <div class="form-group row">
@@ -43,7 +43,7 @@
                   <input class="form-control"
                   type="number"
                   placeholder="Precio del producto"
-                  formControlName="Precio">
+                  formControlName="precio">
                 </div>
               </div>
               <div class="form-group row">
@@ -53,7 +53,7 @@
                   <input class="form-control"
                   type="number"
                   placeholder="Stock del producto"
-                  formControlName="Stock">
+                  formControlName="stock">
                 </div>
               </div>
                 <h4>Caracteristicas</h4>
@@ -65,7 +65,7 @@
                     <input class="form-control"
                     type="text"
                     placeholder="Color"
-                    formControlName="Color">
+                    formControlName="color">
                   </div>
                 </div>
                 
@@ -75,7 +75,7 @@
                       <input class="form-control"
                       type="text"
                       placeholder="Tamaño del producto"
-                      formControlName="Tamaño">
+                      formControlName="tam">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -84,7 +84,7 @@
                       <input class="form-control"
                       type="text"
                       placeholder="Descripción del producto"
-                      formControlName="Descripcion">
+                      formControlName="id_desc">
                     </div>
                   </div>
                
@@ -94,14 +94,14 @@
                     <input class="form-control"
                     type="text"
                     placeholder="Proveedor que suministra el producto"
-                    formControlName="Proveedor">
+                    formControlName="id_prov">
                   </div>
                 </div>
               
                 <div class="form-group row">
                     <label class="col-4 col-form-label">Departamento: </label>
                     <div class="col-8">
-                        <select class="form-control" formControlName="Departamento" id="Departamento" name="Departamento" required>
+                        <select class="form-control" formControlName="id_dep" id="Departamento" name="Departamento" required>
                             <option value="" selected> Seleccionar </option>
                                 <option value="Futbol"> Futbol </option>
                                 <option value="Basquetbol"> Basquetbol </option>
@@ -115,7 +115,7 @@
              <div class="form-group row">
               <label class="col-2 col-form-label">&nbsp;</label>
               <div class="input-group col-md-8">
-                <button type="button" class="btn btn-warning mb-2 mr-3"><i class="fas fa-pencil-alt"> Actualizar producto</i></button>
+                <button clic="guardarCambios()" type="button" class="btn btn-warning mb-2 mr-3"><i class="fas fa-pencil-alt"> Actualizar producto</i></button>
                 <!-- <button type="submit" class="btn btn-outline-success"  >
                   Actualizar producto
                 </button> -->

@@ -14,11 +14,9 @@ import { MenuComponent } from './Administrador/menu/menu.component';
 import { MenuserComponent } from './Administrador/menu/menuser/menuser.component';
 import { MenuprodComponent } from './Administrador/menu/menuprod/menuprod.component';
 import { InsertarprodComponent } from './Administrador/crudProducto/insertarprod/insertarprod.component';
-import { EliminarprodComponent } from './Administrador/crudProducto/eliminarprod/eliminarprod.component';
 import { ConsultarprodComponent } from './Administrador/crudProducto/consultarprod/consultarprod.component';
 import { ActualizarprodComponent } from './Administrador/crudProducto/actualizarprod/actualizarprod.component';
 import { InsertaruserComponent } from './Administrador/crudUsuario/insertaruser/insertaruser.component';
-import { EliminaruserComponent } from './Administrador/crudUsuario/eliminaruser/eliminaruser.component';
 import { ActualizaruserComponent } from './Administrador/crudUsuario/actualizaruser/actualizaruser.component';
 import { ConsultaruserComponent } from './Administrador/crudUsuario/consultaruser/consultaruser.component';
 import { CarritoComponent } from './carrito/carrito.component';
@@ -61,11 +59,9 @@ import { HttpClientModule } from '@angular/common/http';
     MenuserComponent,
     MenuprodComponent,
     InsertarprodComponent,
-    EliminarprodComponent,
     ConsultarprodComponent,
     ActualizarprodComponent,
     InsertaruserComponent,
-    EliminaruserComponent,
     ActualizaruserComponent,
     ConsultaruserComponent,
     CarritoComponent,

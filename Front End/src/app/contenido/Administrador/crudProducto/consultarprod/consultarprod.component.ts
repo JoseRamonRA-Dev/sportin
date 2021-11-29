@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CrudproductoService } from 'src/app/contenido/servicios/crudproducto.service';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -10,13 +11,11 @@ import Swal from 'sweetalert2'
 export class ConsultarprodComponent implements OnInit {
   public datos:any;
   public buscar = '';
-  constructor(private router: Router) {
+  constructor(private router: Router, public servicio: CrudproductoService) {
     this.datos = [];
-    for(let i=0; i<10; i++){
-      let producto = "prod";
-      let categoria = "Algo";
-      this.datos.push(producto);
-    }
+    this.servicio.obtenerProductos().subscribe((res)=>{
+      this.datos = res;
+    });
    }
   ngOnInit(): void {
   }
@@ -39,12 +38,15 @@ export class ConsultarprodComponent implements OnInit {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        swalWithBootstrapButtons.fire(
-          '¡Eliminado!',
-          'El producto ha sido eliminado..',
-          'success'
-        )
-        this.router.navigate(['/menuproducto']);
+        this.servicio.eliminarProducto(id).subscribe((res)=>{
+          swalWithBootstrapButtons.fire(
+            '¡Eliminado!',
+            'El producto ha sido eliminado..',
+            'success'
+          )
+          this.router.navigate(['/menuproducto']);
+        });
+        
       } else if (
         result.dismiss === Swal.DismissReason.cancel
       ) {

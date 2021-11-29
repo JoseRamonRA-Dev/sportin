@@ -125,4 +125,13 @@ router.get("/MostrarNombre/:nom", (req, res) => {
     });
 });
 
+//Buscar productos por categoria y nombre de producto
+router.get("/Buscador1/:categoria/:prod", (req, res) => {
+    const nom = req.params.prod;
+    const cat = req.params.categoria;
+    Producto.find( { ID_Departamento: cat },{ Nombre: { $regex: nom, $options: "?" } }).then((doc) => {
+        res.json({ Productos: doc, error: null });
+    });
+});
+
 module.exports = router;

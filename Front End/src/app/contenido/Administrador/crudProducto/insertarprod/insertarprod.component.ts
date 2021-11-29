@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import {  Router } from '@angular/router';
+import { CrudproductoService } from 'src/app/contenido/servicios/crudproducto.service';
+import { CrudproveedorService } from 'src/app/contenido/servicios/crudproveedor.service';
+import { ServicioGeneralService } from 'src/app/contenido/servicios/servicio-general.service';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-insertarprod',
@@ -11,8 +14,17 @@ export class InsertarprodComponent implements OnInit {
 
   forma: FormGroup;
   datos: any;
+  departamentos: any;
+  proveedores:any;
   constructor(private formBuilder: FormBuilder,
-    private router: Router){
+    private router: Router, public servicio: CrudproveedorService, public servicio2: ServicioGeneralService, 
+    public servicio3: CrudproductoService){
+      this.servicio.obtenerProveedores().subscribe((res)=>{
+        this.proveedores = res;
+      });
+      this.servicio2.obtenerDepartementos().subscribe((res)=>{
+        this.departamentos = res;
+      });
     this.forma = new FormGroup({
       'nom': new FormControl('', [Validators.required, Validators.minLength(3)]),
       'marca': new FormControl('',Validators.required),
@@ -20,8 +32,8 @@ export class InsertarprodComponent implements OnInit {
       'stock': new FormControl('',Validators.required),
       'color': new FormControl('',Validators.required),
       'tam': new FormControl('',Validators.required),
-      'desc': new FormControl('',Validators.required),
-      'id_us': new FormControl('',Validators.required),
+      'id_desc': new FormControl('',Validators.required),
+      'id_prov': new FormControl('',Validators.required),
       'id_dep': new FormControl('',Validators.required)
      });
 
@@ -37,14 +49,18 @@ export class InsertarprodComponent implements OnInit {
         footer: 'Intenta de nuevo'
       })
      }else{
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Se inserto correctamente el producto',
-        showConfirmButton: false,
-        timer: 1500
-      });
-      this.router.navigate(["/menuproducto"]);
+       this.servicio3.insertarProducto(this.forma.value).subscribe((res)=>{
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Se inserto correctamente el producto',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        this.router.navigate(["/menuproducto"]);
+       });
+       //console.log(this.forma.value);
+      
      }
    
    }

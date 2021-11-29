@@ -18,10 +18,10 @@ export class CrudproveedorService {
     return this.http.post(`${environment.ip}/Proveedor/Insertar`,proveedor,{headers:this.getHeaders()});
   }
   obtenerProveedores(){
-    return this.http.get(`${environment.ip}/Proveedor/VerTodos`,{headers:this.getHeaders()}).pipe(map (  data => data['edit']));
+    return this.http.get(`${environment.ip}/Proveedor/VerTodos`,{headers:this.getHeaders()}).pipe(map (  data => data['prov']));
   }
    obtenerProveedorActualizar(id:any){
-    return this.http.get(`${environment.ip}/Proveedor/Ver/${id}`,{headers:this.getHeaders()}).pipe(map (  data => data['edit']));
+    return this.http.get(`${environment.ip}/Proveedor/Ver/${id}`,{headers:this.getHeaders()}).pipe(map (  data => data['prov']));
   }
   eliminarProveedor(id:any){
     return this.http.get(`${environment.ip}/Proveedor/Eliminar/${id}`,{headers:this.getHeaders()});

@@ -12,13 +12,8 @@ router.post("/Insertar", async(req, res) => {
             Telefono: req.body.Telefono,
             Email: req.body.Email,
         });
-<<<<<<< HEAD
-          console.log("Holaa");
-        const saved = prov.save();
-=======
 
         const saved = await prov.save();
->>>>>>> 81c77be594d5c33d1eced033cbbe541521efa68c
         res.json({
             error: null,
             response: "Añadido",
