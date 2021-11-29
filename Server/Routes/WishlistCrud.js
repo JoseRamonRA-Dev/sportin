@@ -9,6 +9,15 @@ router.post("/Insertar", async(req, res) => {
     const pi = req.body.pi;
     const def = req.body.def;
 
+    const isExist = await Wish.findOne({
+        ID_Usuario: id_us,
+        ID_PRODDUCTO: id_prod,
+    });
+
+    if (isExist) {
+        return res.status(400).json({ error: "El producto esta en la lista" });
+    }
+
     try {
         const wish = new Wish({
             ID_Usuario: id_us,
