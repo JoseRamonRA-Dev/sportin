@@ -39,7 +39,7 @@ export class RegistroComponent implements OnInit {
           title: 'ERROR',
           text: 'Tienes que añadir todos los campos requeridos',
           footer: 'Intenta de nuevo'
-        })
+        });
        }else{
 
           this.servicio.buscarCodigo(this.datos.cod).subscribe((res)=>{
@@ -57,14 +57,23 @@ export class RegistroComponent implements OnInit {
             this.servicio.registrarUsuario(body1).subscribe((resp)=>{
               console.log(resp);
               console.log(resp._id);
-              let body ={
-                   id_us: resp._id,
-                   cod:res[0]._id,
-                   calle: this.datos.calle,
-                   int: this.datos.int,
-                   ext: this.datos.ext
-              }
-                this.servicio.crearDireccion(body).subscribe((respu)=>{
+              if(resp == "Email registrado" ){
+                Swal.fire({
+                  icon: 'error',
+                  title: 'ERROR',
+                  text: 'El email ingresado ya esta registrado',
+                  footer: 'Intenta de nuevo'
+                });
+
+              }else{
+                let body ={
+                  id_us: resp._id,
+                  cod:res[0]._id,
+                  calle: this.datos.calle,
+                  int: this.datos.int,
+                  ext: this.datos.ext
+                 }
+                 this.servicio.crearDireccion(body).subscribe((respu)=>{
                   console.log(respu);
                   Swal.fire({
                     position: 'top-end',
@@ -75,6 +84,8 @@ export class RegistroComponent implements OnInit {
                   });
                   this.router.navigate(["/home"]);
                 });
+              }
+              
             });
            }else{
             Swal.fire({

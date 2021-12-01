@@ -31,7 +31,7 @@ router.post("/Registro", async(req, res) => {
         const isEmailExist = await Usuario.findOne({ Email: req.body.Email });
 
         if (isEmailExist) {
-            return res.status(400).json({ error: "Email ya registrado" });
+            return res.json({ error: "Email ya registrado", data: "Email registrado" });
         }
         // hash contraseña
         const salt = await bcrypt.genSalt(10);
@@ -63,7 +63,7 @@ router.post("/Insertar", async(req, res) => {
         const isEmailExist = await Usuario.findOne({ Email: req.body.Email });
 
         if (isEmailExist) {
-            return res.status(400).json({ error: "Email ya registrado" });
+            return res.json({ error: "Email ya registrado", data: "Email registrado" });
         }
         const salt = await bcrypt.genSalt(10);
         const password = await bcrypt.hash(req.body.Contrasena, salt);

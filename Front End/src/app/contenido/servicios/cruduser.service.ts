@@ -16,7 +16,7 @@ export class CruduserService {
     return headers
   }
   insertarUsuario(usuario: any){
-    return this.http.post(`${environment.ip}/Usuario/Insertar`,usuario,{headers:this.getHeaders()});
+    return this.http.post(`${environment.ip}/Usuario/Insertar`,usuario,{headers:this.getHeaders()}).pipe(map (  data => data['data']));
   }
   obtenerUsuarios(){
     return this.http.get(`${environment.ip}/Productos/MostrarTodos`,{headers:this.getHeaders()});
