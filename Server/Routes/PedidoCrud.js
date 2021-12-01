@@ -4,11 +4,6 @@ var mongoose = require("mongoose");
 
 
 
-//router.post("/Insertar", (req, res) => {
-
-    // const detallepago = {
-    //     Tipo:
-    // }
 //Crear carrito
 router.post("/Insertar", async(req, res) => {
     const id_us = req.body.id_us;

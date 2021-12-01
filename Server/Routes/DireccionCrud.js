@@ -8,11 +8,11 @@ router.post("/Insertar", async(req, res) => {
     const calle = req.body.calle;
     const numero_int = req.body.int;
     const numero_ext = req.body.ext;
-    const codigo = mongoose.Types.ObjectId(req.body.cod);
-     console.log(id_us);
+    const codigo = req.body.cod;
+
     try {
         const dir = new Direccion({
-            Id_Usuario: id_us,
+            Id_usuario: id_us,
             Calle: calle,
             Numero_int: numero_int,
             Numero_ext: numero_ext,
@@ -38,9 +38,9 @@ router.put("/Modificar/:id_dir", (req, res) => {
     const calle = req.body.calle;
     const numero_int = req.body.int;
     const numero_ext = req.body.ext;
-    const codigo = mongoose.Types.ObjectId(req.body.cod);
+    const codigo = req.body.cod;
 
-    Direccion.updateOne({ _id: id_dir, Id_Usuario: id_us }, {
+    Direccion.updateOne({ _id: id_dir, Id_usuario: id_us }, {
             $set: {
                 Calle: calle,
                 Numero_int: numero_int,
@@ -60,7 +60,7 @@ router.put("/Modificar/:id_dir", (req, res) => {
 router.get("/Eliminar/:id_us/:id_dir", (req, res) => {
     const id = req.params.id_us;
     const id_dir = req.params.id_dir;
-    Direccion.findByIdAndDelete({ _id: id_dir, Id_Usuario: id })
+    Direccion.findByIdAndDelete({ _id: id_dir, Id_usuario: id })
         .then((doc) => {
             res.json({ response: "Dirección eliminada" });
         })
@@ -72,7 +72,7 @@ router.get("/Eliminar/:id_us/:id_dir", (req, res) => {
 router.get("/MostrarPorUsuario/:id_us/:id_dir", (req, res) => {
     const id = req.params.id_us;
     const id_dir = req.params.id_dir;
-    Direccion.find({ _id: id_dir, Id_Usuario: id }).then((doc) => {
+    Direccion.find({ _id: id_dir, Id_usuario: id }).then((doc) => {
         res.json({ dirs: doc, error: null });
     });
 });
@@ -80,7 +80,7 @@ router.get("/MostrarPorUsuario/:id_us/:id_dir", (req, res) => {
 router.get("/MostrarTodasPorUsuario/:id_us", (req, res) => {
     const id = req.params.id_us;
 
-    Direccion.find({ Id_Usuario: id }).then((doc) => {
+    Direccion.find({ Id_usuario: id }).then((doc) => {
         res.json({ dirs: doc, error: null });
     });
 });

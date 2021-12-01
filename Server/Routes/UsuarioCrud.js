@@ -67,13 +67,12 @@ router.post("/Insertar", async(req, res) => {
         }
         const salt = await bcrypt.genSalt(10);
         const password = await bcrypt.hash(req.body.Contrasena, salt);
-            const Tip = {
-                Nivel: req.body.nivel,
-                Salario: req.body.sal,
-                FechaIngreso: req.body.fi,
-            };
-    
-        
+        const Tip = {
+            Nivel: req.body.nivel,
+            Salario: req.body.sal,
+            FechaIngreso: req.body.fi,
+        };
+
         const user = new Usuario({
             Nombre: req.body.Nombre,
             ApePat: req.body.ApePat,
@@ -101,7 +100,7 @@ router.post("/login", async(req, res) => {
     // validaciones
     // const { error } = schemaLogin.validate(req.body);
     // if (error) return res.status(400).json({ error: error.details[0].message });
- 
+
     const user = await Usuario.findOne({ Email: req.body.email });
     if (!user) return res.status(400).json({ error: "Usuario no encontrado" });
     //console.log(user);
@@ -112,18 +111,18 @@ router.post("/login", async(req, res) => {
     try {
         // create token
         /*
-                                                    const token = jwt.sign({
-                                                            name: user.Nombre,
-                                                            id: user._id,
-                                                        },
-                                                        "secret"
-                                                    );*/
+                                                                    const token = jwt.sign({
+                                                                            name: user.Nombre,
+                                                                            id: user._id,
+                                                                        },
+                                                                        "secret"
+                                                                    );*/
 
         res.json({
             error: null,
             data: "exito bienvenido",
             id: user._id,
-            Tipo: user.Tipo.Nivel
+            Tipo: user.Tipo.Nivel,
         });
     } catch (e) {
         return res.status(400).json({
