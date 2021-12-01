@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +31,7 @@ export class CruduserService {
     return this.http.get(`${environment.ip}/Usuario/Modificar/${id}`,{headers:this.getHeaders()});
   }
   registrarUsuario(usuario:any){
-    return this.http.post(`${environment.ip}/Usuario/Registro`,usuario,{headers:this.getHeaders()});
+    return this.http.post(`${environment.ip}/Usuario/Registro`,usuario,{headers:this.getHeaders()}).pipe(map (  data => data['data']));
   }
   iniciarSesion(usuario:any, contrasena:any){
     const body = {
@@ -39,5 +39,12 @@ export class CruduserService {
       contra: contrasena
     }
     return this.http.post(`${environment.ip}/Usuario/login`,body,{headers:this.getHeaders()});
+  }
+
+  buscarCodigo(cod:any){
+    return this.http.get(`${environment.ip}/CP/RegresarIDCod/${cod}`,{headers:this.getHeaders()}).pipe(map (  data => data['cod_postal']));
+  }
+  crearDireccion(dir: any){
+    return this.http.post(`${environment.ip}/Direccion/Insertar`,dir,{headers:this.getHeaders()});
   }
 }

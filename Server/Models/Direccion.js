@@ -11,7 +11,7 @@ const Direccion = new Schema({
     Numero_int: { type: Number, default: 0 },
     Numero_ext: { type: Number, default: 0 },
     Codigo_postal: {
-        type: [Schema.Types.ObjectId],
+        type: Schema.Types.ObjectId,
         ref: "CodigoPostal",
         default: undefined,
     },

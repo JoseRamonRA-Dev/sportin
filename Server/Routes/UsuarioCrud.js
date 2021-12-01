@@ -9,8 +9,8 @@ const bcrypt = require("bcrypt");
 const Joi = require("@hapi/joi");
 const schemaRegister = Joi.object({
     Nombre: Joi.string().min(2).max(255).required(),
-    ApePat: Joi.string().min(2).max(255).required(),
-    ApeMat: Joi.string().min(2).max(255).required(),
+    ApePat: Joi.string().min(2).max(255),
+    ApeMat: Joi.string().min(2).max(255),
     Telefono: Joi.string().min(2).max(10).required(),
     Email: Joi.string().max(255).required().email(),
     Contrasena: Joi.string().min(2).max(1024).required(),
@@ -37,7 +37,7 @@ router.post("/Registro", async(req, res) => {
         const salt = await bcrypt.genSalt(10);
         const password = await bcrypt.hash(req.body.Contrasena, salt);
 
-        const user = new usuario({
+        const user = new Usuario({
             Nombre: req.body.Nombre,
             ApePat: req.body.ApePat,
             ApeMat: req.body.ApeMat,
@@ -67,13 +67,14 @@ router.post("/Insertar", async(req, res) => {
         }
         const salt = await bcrypt.genSalt(10);
         const password = await bcrypt.hash(req.body.Contrasena, salt);
-        const Tip = {
-            Nivel: req.body.nivel,
-            Salario: req.body.sal,
-            FechaIngreso: req.body.fi,
-        };
-
-        const user = new usuario({
+            const Tip = {
+                Nivel: req.body.nivel,
+                Salario: req.body.sal,
+                FechaIngreso: req.body.fi,
+            };
+    
+        
+        const user = new Usuario({
             Nombre: req.body.Nombre,
             ApePat: req.body.ApePat,
             ApeMat: req.body.ApeMat,
@@ -150,7 +151,7 @@ router.get("/Ver/:id", async(req, res) => {
             Tipo: user.Tipo,
         });
     } catch (e) {
-        return status(400).json({
+        return res.status(400).json({
             error: "Hubo un error, por favor intenta de nuevo",
         });
     }
