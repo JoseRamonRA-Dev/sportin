@@ -15,7 +15,7 @@ router.post("/Insertar", async(req, res) => {
     });
 
     if (isExist) {
-        return res.status(400).json({ error: "El producto esta en la lista" });
+        return res.json({ error: "El producto esta en la lista" });
     }
 
     try {

@@ -19,7 +19,7 @@ export class CruduserService {
     return this.http.post(`${environment.ip}/Usuario/Insertar`,usuario,{headers:this.getHeaders()}).pipe(map (  data => data['data']));
   }
   obtenerUsuarios(){
-    return this.http.get(`${environment.ip}/Productos/MostrarTodos`,{headers:this.getHeaders()});
+    return this.http.get(`${environment.ip}/Usuario/MostrarTodos`,{headers:this.getHeaders()}).pipe(map (  data => data['users']));
   }
   obtenerUsuarioActualizar(id:any){
     return this.http.get(`${environment.ip}/Usuario/Ver/${id}`,{headers:this.getHeaders()});

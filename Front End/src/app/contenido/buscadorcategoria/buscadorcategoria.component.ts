@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CrudproductoService } from '../servicios/crudproducto.service';
 import { ServicioGeneralService } from '../servicios/servicio-general.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-buscadorcategoria',
   templateUrl: './buscadorcategoria.component.html',

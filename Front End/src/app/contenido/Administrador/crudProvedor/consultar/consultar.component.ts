@@ -39,12 +39,25 @@ export class ConsultarComponent implements OnInit {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        swalWithBootstrapButtons.fire(
-          '¡Eliminado!',
-          'El proveedor ha sido eliminado..',
-          'success'
-        )
-        this.router.navigate(['/menuproveedor']);
+        
+        this.servicio.eliminarProveedor(id).subscribe((res)=>{
+          if(res["response"]=="Proveedor eliminado"){
+            swalWithBootstrapButtons.fire(
+              '¡Eliminado!',
+              'El proveedor ha sido eliminado..',
+              'success'
+            )
+            this.router.navigate(['/menuproveedor']);
+          }else{
+            Swal.fire({
+              icon: 'error',
+              title: 'ERROR',
+              text: 'Ocurrio un error al intentar eliminar al proveedor',
+              footer: 'Intenta de nuevo'
+            })
+          }
+        });
+        
       } else if (
         result.dismiss === Swal.DismissReason.cancel
       ) {

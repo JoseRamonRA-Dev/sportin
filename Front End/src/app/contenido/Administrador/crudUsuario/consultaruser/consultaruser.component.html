@@ -30,19 +30,28 @@
                       <div class="profile-name">
                           
                       </div>
-                      <div class="profile-description">Maria Fernanda</div>
+                      <div class="profile-description"> {{item.Nombre}} </div>
                       <div class="row">
                           <div class="col-6">
                               <div class="profile-overview">
                                   <p>Email:</p>
-                                  <h4>jose@hotmail.com</h4></div>
+                                  <h4> {{item.Email}} </h4></div>
                           </div>
                           <div class="col-6">
                               <div class="profile-overview">
                                   <p>Telefono:</p>
-                                  <h4>449-12-01-23</h4></div>
+                                  <h4>  {{item.Telefono}} </h4></div>
                           </div>
                           
+                      </div>
+                      <div class="row">
+                          <div class="col-12">
+                            <div class="profile-overview">
+                                <p>Tipo de usuario:</p>
+                                <h4 *ngIf="item.Tipo.Nivel == 1">  Administrador </h4>
+                                <h4 *ngIf="item.Tipo.Nivel == 0">  Usuario </h4>
+                            </div>
+                          </div>
                       </div>
                       <div class="row">
                           <!-- <button   type="button" (click)="actualizar(item)" class="btn btn-warning mb-2 mr-3"><i class="fas fa-pencil-alt"></i></button>
@@ -50,11 +59,11 @@
                               data-placement="right" title="Eliminar"><i class="fas fa-times"></i></button> -->
                               <div class="col-2"></div>
                               <div class="col-2">
-                                  <button [routerLink]="['/consultauser/actualizaruser','123']"   type="button" class="btn btn-warning mb-2 mr-3"><i class="fas fa-pencil-alt"></i></button>
+                                  <button [routerLink]="['/consultauser/actualizaruser',item._id]"   type="button" class="btn btn-warning mb-2 mr-3"><i class="fas fa-pencil-alt"></i></button>
                               </div>
                               <div class="col-2"></div>
                               <div class="col-2">
-                                  <button (click)="eliminar('Producto')"  type="button" class="btn btn-danger mb-2 ml-3" data-toggle="tooltip"
+                                  <button (click)="eliminar(item._id)"  type="button" class="btn btn-danger mb-2 ml-3" data-toggle="tooltip"
                                   data-placement="right" title="Eliminar"><i class="fas fa-times"></i></button>
                               </div>
                   

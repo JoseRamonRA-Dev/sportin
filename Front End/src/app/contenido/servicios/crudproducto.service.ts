@@ -34,4 +34,7 @@ export class CrudproductoService {
   modificarProducto(id:any){
     return this.http.get(`${environment.ip}/Producto/Modificar/${id}`,{headers:this.getHeaders()});
   }
+  obtenerProductosCat(id:any){
+    return this.http.get(`${environment.ip}/Producto/MostrarDep/${id}`,{headers:this.getHeaders()}).pipe(map (  data => data['Productos']));
+  }
 }

@@ -38,13 +38,24 @@ export class ConsultarprodComponent implements OnInit {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
+        
         this.servicio.eliminarProducto(id).subscribe((res)=>{
-          swalWithBootstrapButtons.fire(
-            '¡Eliminado!',
-            'El producto ha sido eliminado..',
-            'success'
-          )
-          this.router.navigate(['/menuproducto']);
+          if(res["response"]=="Producto eliminado"){
+            swalWithBootstrapButtons.fire(
+              '¡Eliminado!',
+              'El producto ha sido eliminado..',
+              'success'
+            )
+            this.router.navigate(['/menuproducto']);
+          }else{
+            Swal.fire({
+              icon: 'error',
+              title: 'ERROR',
+              text: 'Ocurrio un error al intentar eliminar al producto',
+              footer: 'Intenta de nuevo'
+            })
+          }
+          
         });
         
       } else if (
