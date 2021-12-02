@@ -23,6 +23,9 @@ export class CrudproveedorService {
    obtenerProveedorActualizar(id:any){
     return this.http.get(`${environment.ip}/Proveedor/Ver/${id}`,{headers:this.getHeaders()}).pipe(map (  data => data['prov']));
   }
+  obtenerProveedorId(id:any){
+    return this.http.get(`${environment.ip}/Proveedor/Ver/${id}`,{headers:this.getHeaders()}).pipe(map (  data => data['prov']));
+  }
   eliminarProveedor(id:any){
     return this.http.get(`${environment.ip}/Proveedor/Eliminar/${id}`,{headers:this.getHeaders()});
   }

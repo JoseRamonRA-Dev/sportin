@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicioGeneralService } from '../servicios/servicio-general.service';
+import Swal from 'sweetalert2';
+import { CrudproductoService } from '../servicios/crudproducto.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -7,13 +10,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WishlistComponent implements OnInit {
   datos:any;
-  public bandera: boolean = true;
-  constructor() {
+  public bandera: boolean = false;
+  constructor(public servicio: ServicioGeneralService, public servicio2: CrudproductoService) {
     this.datos = [];
-    for(let i=0; i<10; i++){
-      let producto = "prod";
-      this.datos.push(producto);
+    if(localStorage.getItem("id_usuario") ==""){
+      Swal.fire({
+        icon: 'error',
+        title: 'ERROR',
+        text: 'Tienes que iniciar sesión',
+        footer: 'Intenta de nuevo'
+      });
+       this.bandera = false;
+    }else{
+      this.servicio.obtenerWish(localStorage.getItem("id_usuario")).subscribe((res)=>{
+        // console.log(res);
+         if(res["length"] == 0){
+              
+         }else{
+           this.bandera = true;
+             for(let dato of res){
+               //console.log(dato);
+               this.servicio2.obtenerPrductoActualizar(dato.ID_PRODDUCTO).subscribe((respuesta)=>{
+                  console.log(respuesta);
+                  let temp ={
+                    Nombre: respuesta[0].Nombre,
+                    Marca: respuesta[0].Marca,
+                    Precio: dato.PrecioInicial
+                  }
+                  this.datos.push(temp);
+               });
+             }
+         }
+      });
     }
+    
    }
   ngOnInit(): void {
   }

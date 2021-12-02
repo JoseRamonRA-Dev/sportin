@@ -27,4 +27,10 @@ export class ServicioGeneralService {
   obtenerNomDepartemento(nombre:any){
     return this.http.get(`${environment.ip}/Departamento/BuscarNombre/${nombre}`,{headers:this.getHeaders()}).pipe(map (  data => data['departamento']));
   }
+  obtenerDepartamento(id:any){
+    return this.http.get(`${environment.ip}/Departamento/Buscar/${id}`,{headers:this.getHeaders()}).pipe(map (  data => data['departamento']));
+  }
+  obtenerWish(id_user:any){
+    return this.http.get(`${environment.ip}/Wish/MostrarWishes/${id_user}`,{headers:this.getHeaders()}).pipe(map (  data => data['wish']));
+  }
 }

@@ -23,11 +23,11 @@
     <div class="row">
         <div class="col-3 m-2" style="max-width: 18rem;" *ngFor="let item of datos">
             <div class="card text-center hov" >
-                <div class="card-header bg-transparent border-success"> <b> Producto: altgo </b></div>
+                <div class="card-header bg-transparent border-success"> <b> Producto: {{item.Nombre}} </b></div>
                 <div class="card-body">
-                  <h5 class="card-title">Descripcion: algo</h5>
+                  <h5 class="card-title">Marca: {{item.Marca}} </h5>
                 </div>
-                <div class="card-footer border-success" style="background-color:rgb(209, 213, 236);">Precio: <b> Precio </b>
+                <div class="card-footer border-success" style="background-color:rgb(209, 213, 236);">Precio: <b> {{item.Precio}} </b>
                   <div>
                     <a [routerLink]="['/carrito']">
                       <i class="fa fa-shopping-cart"></i>
