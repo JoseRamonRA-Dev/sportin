@@ -5,6 +5,7 @@ const cors = require('cors');
 const app = express();
 const port = 3000;
 app.use(cors());
+
 // capturar body
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -52,6 +53,6 @@ app.use("/Pedido", PedRoutes);
 
 //app.use("/logo", express.static("template"));
 
-app.listen(port, function() {
+app.listen(port, function () {
     console.log(`Servidor web escuchando en el puerto ${port}`);
 });
