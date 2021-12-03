@@ -46,6 +46,8 @@ import { ActualizarrastreoComponent } from './Administrador/Rastreo/actualizarra
 import { ConsultarrastreoComponent } from './Administrador/Rastreo/consultarrastreo/consultarrastreo.component';
 import { MenurastreoComponent } from './Administrador/menu/menurastreo/menurastreo.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ChatComponent } from './chat/chat.component';
+
 @NgModule({
   declarations: [
     PrincipalComponent,
@@ -73,10 +75,17 @@ import { HttpClientModule } from '@angular/common/http';
     AcercadeComponent,
     BuscadorPipe,
     PagooxxoComponent,
-    PagobancoComponent, OpcionesComponent, 
-    InsertarComponent, ActualizarComponent, ConsultarComponent, MenuprovComponent, 
-    InsertarrastreoComponent, ActualizarrastreoComponent, ConsultarrastreoComponent,
-    MenurastreoComponent
+    PagobancoComponent, 
+    OpcionesComponent,
+    InsertarComponent, 
+    ActualizarComponent, 
+    ConsultarComponent, 
+    MenuprovComponent,
+    InsertarrastreoComponent, 
+    ActualizarrastreoComponent, 
+    ConsultarrastreoComponent,
+    MenurastreoComponent,
+    ChatComponent
   ],
   imports: [
     CommonModule,

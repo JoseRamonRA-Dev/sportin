@@ -34,6 +34,7 @@ import { InsertarrastreoComponent } from './contenido/Administrador/Rastreo/inse
 import { ConsultarrastreoComponent } from './contenido/Administrador/Rastreo/consultarrastreo/consultarrastreo.component';
 import { ActualizarrastreoComponent } from './contenido/Administrador/Rastreo/actualizarrastreo/actualizarrastreo.component';
 import { MenurastreoComponent } from './contenido/Administrador/menu/menurastreo/menurastreo.component';
+import { ChatComponent } from './contenido/chat/chat.component';
 
 
 const routes: Routes = [
@@ -74,6 +75,7 @@ const routes: Routes = [
   },
   {path: 'carrito', component: CarritoComponent},
   {path: 'wishlist', component: WishlistComponent},
+  {path: 'chat', component: ChatComponent},
   {path: 'buscadorcat/:nom/:cat', component: BuscadorcategoriaComponent},
   {path: 'opcionespago', component: OpcionesComponent,
    children:[
