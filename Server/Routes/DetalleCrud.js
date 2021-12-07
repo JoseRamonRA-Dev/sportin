@@ -14,7 +14,7 @@ router.post("/Insertar", async(req, res) => {
     const total = sub_total + iva - descuento * (sub_total + iva);
     const estado = req.body.estado;
 
-    const isExist = await Wish.findOne({
+    const isExist = await Detalle.findOne({
         ID_Producto: id_prod,
         ID_Pedido: id_ped,
     });

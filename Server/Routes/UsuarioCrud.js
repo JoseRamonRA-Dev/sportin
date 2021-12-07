@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Usuario = require("../Models/Usuario");
 var mongoose = require("mongoose");
+const Pedido = require("../Models/Pedido");
 
 // constraseña
 const bcrypt = require("bcrypt");
@@ -47,6 +48,13 @@ router.post("/Registro", async(req, res) => {
         });
 
         const savedUser = await user.save();
+
+        const ped = new Pedido({
+            ID_Usuario: savedUser._id,
+            Total: 0,
+        });
+        const savedped = await ped.save();
+
         res.json({
             error: null,
             response: "Añadido",
@@ -85,6 +93,13 @@ router.post("/Insertar", async(req, res) => {
 
         const savedUser = await user.save();
 
+        const ped = new Pedido({
+            ID_Usuario: savedUser._id,
+            Total: 0,
+        });
+
+        const savedped = await ped.save();
+
         res.json({
             error: null,
             response: "Añadido",
@@ -98,25 +113,25 @@ router.post("/Insertar", async(req, res) => {
 //Login
 router.post("/login", async(req, res) => {
     // validaciones
-    // const { error } = schemaLogin.validate(req.body);
-    // if (error) return res.status(400).json({ error: error.details[0].message });
+    const { error } = schemaLogin.validate(req.body);
+    if (error) return res.status(400).json({ error: error.details[0].message });
 
     const user = await Usuario.findOne({ Email: req.body.email });
     if (!user) return res.status(400).json({ error: "Usuario no encontrado" });
     //console.log(user);
-    // const validPassword = await bcrypt.compare(req.body.contra, user.Contrasena);
-    // if (!validPassword)
-    //     return res.status(400).json({ error: "contraseña no válida" });
+    const validPassword = await bcrypt.compare(req.body.contra, user.Contrasena);
+    if (!validPassword)
+        return res.status(400).json({ error: "contraseña no válida" });
 
     try {
         // create token
         /*
-                                                                    const token = jwt.sign({
-                                                                            name: user.Nombre,
-                                                                            id: user._id,
-                                                                        },
-                                                                        "secret"
-                                                                    );*/
+                                                                                        const token = jwt.sign({
+                                                                                                name: user.Nombre,
+                                                                                                id: user._id,
+                                                                                            },
+                                                                                            "secret"
+                                                                                        );*/
 
         res.json({
             error: null,
