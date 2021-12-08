@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Usuario = require("../Models/Usuario");
-var mongoose = require("mongoose");
 const Pedido = require("../Models/Pedido");
+var mongoose = require("mongoose");
 
 // constraseña
 const bcrypt = require("bcrypt");
@@ -126,12 +126,12 @@ router.post("/login", async(req, res) => {
     try {
         // create token
         /*
-                                                                                        const token = jwt.sign({
-                                                                                                name: user.Nombre,
-                                                                                                id: user._id,
-                                                                                            },
-                                                                                            "secret"
-                                                                                        );*/
+                                                                                            const token = jwt.sign({
+                                                                                                    name: user.Nombre,
+                                                                                                    id: user._id,
+                                                                                                },
+                                                                                                "secret"
+                                                                                            );*/
 
         res.json({
             error: null,

@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Detalle = require("../Models/Detalle");
+const Pedido = require("../Models/Pedido");
 var mongoose = require("mongoose");
 
 router.post("/Insertar", async(req, res) => {
@@ -22,6 +23,7 @@ router.post("/Insertar", async(req, res) => {
     if (isExist) {
         return res.status(400).json({ error: "El producto esta en la lista" });
     }
+
     try {
         const det = new Detalle({
             ID_Producto: id_prod,
