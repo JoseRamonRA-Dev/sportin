@@ -23,11 +23,12 @@ export class WishlistComponent implements OnInit {
        this.bandera = false;
     }else{
       this.servicio.obtenerWish(localStorage.getItem("id_usuario")).subscribe((res)=>{
-        // console.log(res);
+         console.log(res);
          if(res["length"] == 0){
               
          }else{
            this.bandera = true;
+           let i = 0;
              for(let dato of res){
                //console.log(dato);
                this.servicio2.obtenerPrductoActualizar(dato.ID_PRODDUCTO).subscribe((respuesta)=>{
@@ -35,8 +36,10 @@ export class WishlistComponent implements OnInit {
                   let temp ={
                     Nombre: respuesta[0].Nombre,
                     Marca: respuesta[0].Marca,
-                    Precio: dato.PrecioInicial
+                    Precio: dato.PrecioInicial,
+                    Id_wish: res[i]._id
                   }
+                  i++;
                   this.datos.push(temp);
                });
              }
@@ -46,6 +49,28 @@ export class WishlistComponent implements OnInit {
     
    }
   ngOnInit(): void {
+  }
+  eliminarProd(id:any){
+    console.log(id);
+    this.servicio.eliminarProdWish(id).subscribe((respuesta)=>{
+       if(respuesta["response"] == "Wish eliminado"){
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Se elimino de manera correcta el producto de tu wishlist',
+          showConfirmButton: false,
+          timer: 1500
+        });
+       }else{
+        Swal.fire({
+          icon: 'error',
+          title: 'ERROR',
+          text: 'No se pudo eliminar el producto de tu wishlist',
+          footer: 'Intenta de nuevo'
+        })
+       }
+    });
+
   }
 
 }

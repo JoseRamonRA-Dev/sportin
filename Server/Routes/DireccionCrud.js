@@ -76,7 +76,12 @@ router.get("/MostrarPorUsuario/:id_us/:id_dir", (req, res) => {
         res.json({ dirs: doc, error: null });
     });
 });
-
+router.get("/MostrarPorDireccion/:id_dir", (req, res) => {
+    const id_dir = req.params.id_dir;
+    Direccion.find({ _id: id_dir }).then((doc) => {
+        res.json({ dirs: doc, error: null });
+    });
+});
 router.get("/MostrarTodasPorUsuario/:id_us", (req, res) => {
     const id = req.params.id_us;
 

@@ -98,15 +98,15 @@ router.post("/Insertar", async(req, res) => {
 //Login
 router.post("/login", async(req, res) => {
     // validaciones
-    // const { error } = schemaLogin.validate(req.body);
-    // if (error) return res.status(400).json({ error: error.details[0].message });
+    const { error } = schemaLogin.validate(req.body);
+    if (error) return res.status(400).json({ error: error.details[0].message });
 
-    const user = await Usuario.findOne({ Email: req.body.email });
+    const user = await Usuario.findOne({ Email: req.body.Email });
     if (!user) return res.status(400).json({ error: "Usuario no encontrado" });
     //console.log(user);
-    // const validPassword = await bcrypt.compare(req.body.contra, user.Contrasena);
-    // if (!validPassword)
-    //     return res.status(400).json({ error: "contraseña no válida" });
+    const validPassword = await bcrypt.compare(req.body.Contrasena, user.Contrasena);
+    if (!validPassword)
+        return res.status(400).json({ error: "contraseña no válida" });
 
     try {
         // create token

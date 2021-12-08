@@ -14,6 +14,8 @@ export class ActualizarprodComponent implements OnInit {
   public forma: FormGroup;
   public datos: any;
   public datos2: any;
+  public idDep: string = "";
+  public idProv: string=";"
   public id: any;
   public nombre = "hj";
   public load: boolean = false;
@@ -43,6 +45,8 @@ export class ActualizarprodComponent implements OnInit {
           console.log(respuesta);
           this.NomDepartamento = respuesta[0].Nombre;
           this.NomProveedor = respu.Nombre;
+          this.idDep = respuesta[0]._id;
+          this.idProv = respu._id;
           this.forma = new FormGroup({
             'nom': new FormControl('', [Validators.required, Validators.minLength(3)]),
             'marca': new FormControl('', Validators.required),
@@ -71,6 +75,12 @@ export class ActualizarprodComponent implements OnInit {
 
   guardarCambios(): void {
     this.datos = this.forma.value
+    if(this.forma.value.id_prov ==""){
+      this.forma.controls["id_prov"].setValue(this.idProv);
+    }
+    if(this.forma.value.id_dep ==""){
+      this.forma.controls["id_dep"].setValue(this.idDep);
+    }
     console.log(this.forma.value)
     let timerInterval;
     Swal.fire({
@@ -91,11 +101,25 @@ export class ActualizarprodComponent implements OnInit {
     }).then((result) => {
       /* Read more about handling dismissals below */
       if (result.dismiss === Swal.DismissReason.timer) {
-        console.log('I was closed by the timer')
+        this.servicio.modificarProducto(this.id, this.forma.value).subscribe((respuesta)=>{
+            console.log(respuesta);
+            if(respuesta["response"] == "Producto Modificado"){
+              this.router.navigate(['/menuproducto']);
+            }else{
+              Swal.fire({
+                icon: 'error',
+                title: 'ERROR',
+                text: 'No se pudo actualizar el producto',
+                footer: 'Intenta de nuevo'
+              })
+            }
+            
+        });
+        
       }
     })
 
-    this.router.navigate(['/menuproducto']);
+    
   }
   ngOnInit(): void {
 

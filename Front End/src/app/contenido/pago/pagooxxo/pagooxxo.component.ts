@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 //import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { ServicioGeneralService } from '../../servicios/servicio-general.service';
+import { CrudproductoService } from '../../servicios/crudproducto.service';
 
 @Component({
   selector: 'app-pagooxxo',
@@ -16,14 +18,29 @@ import html2canvas from 'html2canvas';
 })
 export class PagooxxoComponent implements OnInit {
   public datos: any;
-  constructor(public router: Router) {
+  public productos:any
+  public total:number = 0;
+  constructor(public router: Router, public carrito: ServicioGeneralService, public servicio:CrudproductoService) {
     this.datos = [];
-    for(let i=0; i<3; i++){
-      let producto = "prod";
-      this.datos.push(producto);
-    }
+    this.servicio.obtenerProductos().subscribe((res)=>{
+       this.productos = res
+    });
+    this.carrito.mostrarDetalles(localStorage.getItem("id_carrito")).subscribe((respuesta)=>{
+       this.datos = respuesta;
+       console.log(respuesta)
+      
+    });
    }
-
+ 
+  nombreProducto(idprod, total:any){
+    this.total = this.total + total;
+    for(let dato of this.productos){
+      if(dato._id == idprod){
+        return dato.Nombre;
+      }
+    }
+    
+  }
 descargarPDF(){
   //const doc = new jsPDF();
 

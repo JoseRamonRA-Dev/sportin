@@ -14,13 +14,13 @@ router.post("/Insertar", async(req, res) => {
     const total = sub_total + iva - descuento * (sub_total + iva);
     const estado = req.body.estado;
 
-    const isExist = await Wish.findOne({
+    const isExist = await Detalle.findOne({
         ID_Producto: id_prod,
         ID_Pedido: id_ped,
     });
 
     if (isExist) {
-        return res.status(400).json({ error: "El producto esta en la lista" });
+        return res.json({ error: "El producto esta en la lista" });
     }
     try {
         const det = new Detalle({
@@ -58,7 +58,7 @@ router.put("/Modificar/:id", (req, res) => {
     const total = sub_total + iva - descuento * (sub_total + iva);
     const estado = req.body.estado;
 
-    Detalle.findByIdAndUpdate({ _id: id, ID_PRODDUCTO: id_prod }, {
+    Detalle.findByIdAndUpdate({ _id: id, ID_Producto: id_prod }, {
             $set: {
                 Cantidad: cantidad,
                 Precio: precio,

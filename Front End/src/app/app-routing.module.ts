@@ -34,6 +34,9 @@ import { InsertarrastreoComponent } from './contenido/Administrador/Rastreo/inse
 import { ConsultarrastreoComponent } from './contenido/Administrador/Rastreo/consultarrastreo/consultarrastreo.component';
 import { ActualizarrastreoComponent } from './contenido/Administrador/Rastreo/actualizarrastreo/actualizarrastreo.component';
 import { MenurastreoComponent } from './contenido/Administrador/menu/menurastreo/menurastreo.component';
+import { InsertarDirComponent } from './contenido/Administrador/Direc/insertar-dir/insertar-dir.component';
+import { MostrarDirsComponent } from './contenido/Administrador/Direc/mostrar-dirs/mostrar-dirs.component';
+import { ActualizarDirComponent } from './contenido/Administrador/Direc/actualizar-dir/actualizar-dir.component';
 
 
 const routes: Routes = [
@@ -84,6 +87,11 @@ const routes: Routes = [
   {path: 'altarastreo', component: InsertarrastreoComponent},
   {path: 'consultarastreo', component: ConsultarrastreoComponent},
   {path: 'actualizarrastreo/:id', component: ActualizarrastreoComponent},
+  {path: 'insertarDireccion/:iduser', component: InsertarDirComponent},
+  {path: 'mostrarDirecciones/:id', component: MostrarDirsComponent
+  },
+  {path: 'actualizarDir/:idDir', component: ActualizarDirComponent},
+
    {path: '**', pathMatch: 'full', redirectTo: 'home'},
 ];
 

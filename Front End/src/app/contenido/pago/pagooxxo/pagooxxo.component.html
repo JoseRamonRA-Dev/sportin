@@ -33,29 +33,30 @@
         <div class="col-4 mb-5">
         </div> -->
         <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Producto</th>
-                <th scope="col">Cantidad</th>
-                <th scope="col">Precio Unitario</th>
-                <th scope="col">Total</th>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Producto</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Precio Unitario</th>
+              <th scope="col">Total</th>
             
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of datos; let index = index">
-                <th scope="row"> {{index+1}}  </th>
-                <td>Short</td>
-                <td>1
-                  
-                </td>
-                <td>129.34</td>
-                <td>129.34</td>
-               
-              </tr>
-            </tbody>
-          </table>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of datos; let index = index">
+              <th scope="row"> {{index+1}}  </th>
+              <td> {{this.nombreProducto(item.ID_Producto, item.Total)}} </td>
+              <td> {{item.Cantidad}}
+                
+                
+              </td>
+              <td> {{item.Precio}} </td>
+              <td> {{item.Total}} </td>
+           
+            </tr>
+          </tbody>
+        </table>
           <br><br>
           <!-- <table class="table table-hover table-dark">
             <thead>
@@ -91,16 +92,12 @@
     <div class="row">
         <hr color="black" size=3>
        <div class="col-9"></div>
-       <div class="col-3"> IVA: </div>
+       <div class="col-3"> IVA: 16% </div>
     </div>
+   
     <div class="row">
         <hr color="black" size=3>
        <div class="col-9"></div>
-       <div class="col-3"> Subtotal: </div>
-    </div>
-    <div class="row">
-        <hr color="black" size=3>
-       <div class="col-9"></div>
-       <div class="col-3"> Total: </div>
+       <div class="col-3"> Total: {{this.total}} </div>
     </div>
 </div>

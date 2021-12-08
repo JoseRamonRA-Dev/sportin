@@ -46,6 +46,9 @@ import { ActualizarrastreoComponent } from './Administrador/Rastreo/actualizarra
 import { ConsultarrastreoComponent } from './Administrador/Rastreo/consultarrastreo/consultarrastreo.component';
 import { MenurastreoComponent } from './Administrador/menu/menurastreo/menurastreo.component';
 import { HttpClientModule } from '@angular/common/http';
+import { InsertarDirComponent } from './Administrador/Direc/insertar-dir/insertar-dir.component';
+import { MostrarDirsComponent } from './Administrador/Direc/mostrar-dirs/mostrar-dirs.component';
+import { ActualizarDirComponent } from './Administrador/Direc/actualizar-dir/actualizar-dir.component';
 @NgModule({
   declarations: [
     PrincipalComponent,
@@ -76,7 +79,10 @@ import { HttpClientModule } from '@angular/common/http';
     PagobancoComponent, OpcionesComponent, 
     InsertarComponent, ActualizarComponent, ConsultarComponent, MenuprovComponent, 
     InsertarrastreoComponent, ActualizarrastreoComponent, ConsultarrastreoComponent,
-    MenurastreoComponent
+    MenurastreoComponent,
+    InsertarDirComponent,
+    MostrarDirsComponent,
+    ActualizarDirComponent
   ],
   imports: [
     CommonModule,

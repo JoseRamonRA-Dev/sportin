@@ -31,8 +31,8 @@ export class CrudproductoService {
   eliminarProducto(id:any){
     return this.http.get(`${environment.ip}/Producto/Eliminar/${id}`,{headers:this.getHeaders()});
   }
-  modificarProducto(id:any){
-    return this.http.get(`${environment.ip}/Producto/Modificar/${id}`,{headers:this.getHeaders()});
+  modificarProducto(id:any, producto:any){
+    return this.http.put(`${environment.ip}/Producto/Modificar/${id}`,producto,{headers:this.getHeaders()});
   }
   obtenerProductosCat(id:any){
     return this.http.get(`${environment.ip}/Producto/MostrarDep/${id}`,{headers:this.getHeaders()}).pipe(map (  data => data['Productos']));

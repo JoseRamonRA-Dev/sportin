@@ -117,7 +117,7 @@
         <div class="col-md-3 clearfix">
           <div class="header-ctn">
             <!-- Wishlist -->
-            <div>
+            <div *ngIf="this.banderaCliente">
               <a [routerLink]="['/wishlist']">
                 <i class="fas fa-heart"></i>
                 <span>Wishlist</span>
@@ -127,7 +127,7 @@
             <!-- /Wishlist -->
 
             <!-- Cart -->
-            <div>
+            <div *ngIf="this.banderaCliente">
               <a [routerLink]="['/carrito']">
                 <i class="fa fa-shopping-cart"></i>
                 <span>Carrito</span>

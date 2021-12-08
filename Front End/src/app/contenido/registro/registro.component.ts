@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import {  Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { CruduserService } from '../servicios/cruduser.service';
+import { ServicioGeneralService } from '../servicios/servicio-general.service';
 
 @Component({
   selector: 'app-registro',
@@ -12,7 +13,7 @@ import { CruduserService } from '../servicios/cruduser.service';
 export class RegistroComponent implements OnInit {
   forma: FormGroup;
   datos: any;
-  constructor(private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder,public servicioG: ServicioGeneralService,
     private router: Router, public servicio: CruduserService){
       this.forma = new FormGroup({
         'Nombre': new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -73,16 +74,22 @@ export class RegistroComponent implements OnInit {
                   int: this.datos.int,
                   ext: this.datos.ext
                  }
+                 let body2 ={
+                   id_us: resp._id
+                 }
                  this.servicio.crearDireccion(body).subscribe((respu)=>{
                   console.log(respu);
-                  Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Registro realizado con éxito, puedes iniciar sesión',
-                    showConfirmButton: false,
-                    timer: 1500
-                  });
-                  this.router.navigate(["/home"]);
+                   this.servicioG.crearPedido(body2).subscribe((resultado)=>{
+                    Swal.fire({
+                      position: 'top-end',
+                      icon: 'success',
+                      title: 'Registro realizado con éxito, puedes iniciar sesión',
+                      showConfirmButton: false,
+                      timer: 1500
+                    });
+                    this.router.navigate(["/home"]);
+                   });
+                  
                 });
               }
               
