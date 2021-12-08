@@ -282,6 +282,13 @@ router.get("/Confirmados/:id_us", async(req, res) => {
         res.json({ ped: doc, error: null });
     });
 });
+
+//cambiar estado confirmado
+router.get("/PedidosConfirmados", async(req, res) => {
+    Pedido.find({ "Estado.Confirmado": 1 }).then((doc) => {
+        res.json({ ped: doc, error: null });
+    });
+});
 //Obtener pagados por usuario
 router.get("/Pagados/:id_us", async(req, res) => {
     const id_us = req.params.id_us;

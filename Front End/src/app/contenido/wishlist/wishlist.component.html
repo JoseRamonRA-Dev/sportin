@@ -29,7 +29,7 @@
                 </div>
                 <div class="card-footer border-success" style="background-color:rgb(209, 213, 236);">Precio: <b> {{item.Precio}} </b>
                   <div>
-                    <a [routerLink]="['/carrito']">
+                    <a (click)="agregarCarrito(item)">
                       <i class="fa fa-shopping-cart"></i>
                       <span>Comprar</span>
                       <!-- <div class="qty">3</div> -->

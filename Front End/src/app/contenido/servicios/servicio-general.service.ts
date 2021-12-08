@@ -60,12 +60,23 @@ export class ServicioGeneralService {
   mostrarDetalles(carr:any){
     return this.http.get(`${environment.ip}/Detalle/MostrarPedido/${carr}`,{headers:this.getHeaders()}).pipe(map (  data => data['detalles']));
   }
-
+  mostrarPeidios(){
+    return this.http.get(`${environment.ip}/Pedido/PedidosConfirmados`,{headers:this.getHeaders()}).pipe(map (  data => data['ped']));
+  }
   crearRastreo(data:any){
     return this.http.post(`${environment.ip}/Rastreo/Insertar`,data,{headers:this.getHeaders()});
+  }
+  mostrarRastreos(){
+    return this.http.get(`${environment.ip}/Rastreo/MostrarTodos`,{headers:this.getHeaders()}).pipe(map (  data => data['Rastreos']));
+  }
+  eliminarRastreo(id:any){
+    return this.http.get(`${environment.ip}/Rastreo/Eliminar/${id}`,{headers:this.getHeaders()});
+  }
+  crearRastreoDetalle(id:any,data:any){
+    return this.http.put(`${environment.ip}/Rastreo/InsertarDetalle/${id}`,data,{headers:this.getHeaders()});
   }
   obtenerDireccionUserUnica(iddir:any){
     return this.http.get(`${environment.ip}/Direccion/MostrarPorDireccion/${iddir}`,{headers:this.getHeaders()}).pipe(map (  data => data['dirs']));
   }
-  
+ 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 //import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 //import * as pdfMake from 'pdfmake/build/pdfmake';
 // import   pdfMake  from 'pdfmake/build/pdfmake';
@@ -42,7 +43,16 @@ export class PagooxxoComponent implements OnInit {
     
   }
 descargarPDF(){
-  //const doc = new jsPDF();
+  let body ={
+      id_us: localStorage.getItem("id_usuario"),
+      fp: new Date(),
+      de: "Se realizo la compra",
+      Tipo: "Pago Oxxo",
+      NoTarjeta: 0,
+      Banco: ""
+  }
+  this.carrito.carritoAcompra( localStorage.getItem("id_carrito"),body).subscribe((respuesta)=>{
+    //const doc = new jsPDF();
 
   //doc.text('Hello world!', 10, 10);
   //doc.save('hello-world.pdf');
@@ -69,6 +79,17 @@ descargarPDF(){
 }).then((docResult) => {
   docResult.save(`Sportin_${new Date().toISOString()}.pdf`);
 });
+    this.router.navigate(['/home']);
+    localStorage.setItem("id_carrito","" );
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Se realizo la compra',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  });
+  
 
 }
   ngOnInit(): void {

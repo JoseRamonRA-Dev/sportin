@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ServicioGeneralService } from 'src/app/contenido/servicios/servicio-general.service';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -10,13 +11,12 @@ import Swal from 'sweetalert2'
 export class ConsultarrastreoComponent implements OnInit {
   public datos:any;
   public buscar = '';
-  constructor(private router: Router) {
+  constructor(private router: Router, public servicio: ServicioGeneralService) {
     this.datos = [];
-    for(let i=0; i<10; i++){
-      let producto = "prod";
-      let categoria = "Algo";
-      this.datos.push(producto);
-    }
+    this.servicio.mostrarRastreos().subscribe((res)=>{
+     this.datos = res;
+     console.log(res);
+    });
    }
   ngOnInit(): void {
   }
@@ -39,12 +39,17 @@ export class ConsultarrastreoComponent implements OnInit {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        swalWithBootstrapButtons.fire(
-          '¡Eliminado!',
-          'El rastreo ha sido eliminado..',
-          'success'
-        )
-        this.router.navigate(['/menurastreo']);
+        this.servicio.eliminarRastreo(id).subscribe((resultado)=>{
+           if(resultado["response"] == "Rastreo eliminado"){
+            swalWithBootstrapButtons.fire(
+              '¡Eliminado!',
+              'El rastreo ha sido eliminado..',
+              'success'
+            )
+            this.router.navigate(['/menurastreo']);
+           }
+        });
+        
       } else if (
         result.dismiss === Swal.DismissReason.cancel
       ) {

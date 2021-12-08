@@ -9,7 +9,7 @@
               <div class="col-1"><button type="button" class="btn btn-lg" style="background-color: #e43d0a; color: white;" [routerLink]="['/menurastreo']"><i class="fas fa-undo-alt"></i> </button>
               </div>
               <div class="col-8"></div>
-              <div class="col-3">
+              <!-- <div class="col-3">
                   <div class="input-group">
                     <input
                       type="text"
@@ -21,17 +21,18 @@
                       [(ngModel)]="buscar"
                     />
                   </div>
-                </div>
+                </div> -->
               </div>
           </div>
           <div class="row">
             <div class="col-3 m-2" style="max-width: 18rem;" *ngFor="let item of datos">
                 <div class="card text-center hov" >
-                    <div class="card-header bg-transparent border-success"> <b> Número de rastreo: altgo </b></div>
+                    <div class="card-header bg-transparent border-success"> <b> Número de rastreo: {{item._id}} </b></div>
                     <div class="card-body">
-                      <h5 class="card-title">Observaciones: algo</h5>
+                      <h5 class="card-title">Observaciones: {{item.Observaciones}}</h5>
+                      <h5 class="card-title">Distribuidor: {{item.Distribuidor}}</h5>
                     </div>
-                    <div class="card-footer border-success" style="background-color:rgb(209, 213, 236);">Id pedido: <b> Precio </b>
+                    <div class="card-footer border-success" style="background-color:rgb(209, 213, 236);">Id pedido: <b> {{item.Id_Pedido}} </b>
                       <div class="row">
                         <!-- <a [routerLink]="['/actualizarrastreo','123']">
                             <i class="fas fa-pencil-alt"></i>
@@ -44,11 +45,11 @@
                         </a> -->
                         <div class="col-2"></div>
                             <div class="col-2">
-                                <button [routerLink]="['/actualizarrastreo','123']"   type="button" class="btn btn-warning mb-2 mr-3"><i class="fas fa-pencil-alt"></i></button>
+                                <button [routerLink]="['/actualizarrastreo',item._id]"   type="button" class="btn btn-warning mb-2 mr-3"><i class="fas fa-pencil-alt"></i></button>
                             </div>
                             <div class="col-2"></div>
                             <div class="col-2">
-                                <button (click)="eliminar('Producto')"  type="button" class="btn btn-danger mb-2 ml-3" data-toggle="tooltip"
+                                <button (click)="eliminar(item._id)"  type="button" class="btn btn-danger mb-2 ml-3" data-toggle="tooltip"
                                 data-placement="right" title="Eliminar"><i class="fas fa-times"></i></button>
                             </div>
                       </div>
