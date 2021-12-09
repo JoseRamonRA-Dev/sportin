@@ -1,14 +1,26 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const cors = require('cors');
+const cors = require("cors");
 const app = express();
 const port = 3000;
 app.use(cors());
+const io = require('socket.io')(3001);
+
+io.sockets.on('connection', (socket) => {
+    socket.on('create', (room) => {
+        socket.join(room);
+        socket.emit('joined', {});
+    })
+});
 // capturar body
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + "/public/"));
+app.use((req, res, next) => {
+	req.io = io;
+	next();
+})
 
 //conexion
 
@@ -49,8 +61,6 @@ app.use("/Wish", WishRoutes);
 app.use("/Producto", ProdRoutes);
 app.use("/Rastreo", TrackRoutes);
 app.use("/Pedido", PedRoutes);
-
-//app.use("/logo", express.static("template"));
 
 app.listen(port, function() {
     console.log(`Servidor web escuchando en el puerto ${port}`);
