@@ -9,7 +9,8 @@ export class BuscadorPipe implements PipeTransform {
     const coincidencias = [];
     if (args === '') return value;
     for (const res of value) {
-      if ((res.indexOf(args.toLowerCase()) > -1)) {
+     
+      if ((res.Nombre.toLowerCase().indexOf(args.toLowerCase()) > -1)) {
         coincidencias.push(res);
       };
     };

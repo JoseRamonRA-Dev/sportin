@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import Swal from 'sweetalert2'
 import { CruduserService } from 'src/app/contenido/servicios/cruduser.service';
+import { ServicioGeneralService } from 'src/app/contenido/servicios/servicio-general.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
   public banderaEstado: boolean = true;
   forma: FormGroup;
   datos: any;
-  constructor(private formBuilder: FormBuilder, public activatedRoute: ActivatedRoute,
+  constructor(private formBuilder: FormBuilder, public activatedRoute: ActivatedRoute,public servicioGen: ServicioGeneralService,
     private router: Router, public servicio: CruduserService){
     this.forma = new FormGroup({
       'nombre': new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -61,7 +62,12 @@ Swal.fire({
     if(res["Tipo"] == 0){
       //Aqui va para irse al menu del cliente
       this.banderaCliente = true;
-      this.router.navigate([`/home`]);
+      this.servicioGen.obtenerCarrito(res["id"]).subscribe((resultado)=>{
+        console.log(resultado);
+        localStorage.setItem("id_carrito",resultado[0]._id );
+        this.router.navigate([`/home`]);
+      });
+     
     }else{
       this.banderaAdmin=true
       this.router.navigate([`/administrador`]);

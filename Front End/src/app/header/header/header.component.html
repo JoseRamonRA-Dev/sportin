@@ -39,12 +39,11 @@
           <a class="nav-link" [routerLink]="['/preguntasf']">Preguntas Frecuentes</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Categorias
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" [routerLink]="['/basquetbol']"> Basquetbol</a>
+            <a class="dropdown-item" [routerLink]="['/basquetbol']">  Basquetbol</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" [routerLink]="['/futbol']">Futbol</a>
             <div class="dropdown-divider"></div>
@@ -66,11 +65,10 @@
         <button type="button" data-toggle="modal" data-target="#logIn" class="btn btn-outline-dark">Iniciar
           sesión</button>
       </div>
-
-      <div class="form-inline my-2 my-lg-0" *ngIf="!this.banderaEstado">
-        <button (click)="cerrar()" type="button" data-target="#logIn" class="btn btn-outline-dark"> Cerrar Sesión
-        </button>
-      </div>
+      
+        <div class="form-inline my-2 my-lg-0" *ngIf="!this.banderaEstado">
+          <button (click)="cerrar()" type="button" data-target="#logIn" class="btn btn-outline-dark" > Cerrar Sesión </button>
+        </div>
       <!-- <span class="navbar-text">
         Navbar text with an inline element
       </span> -->
@@ -119,31 +117,25 @@
         <div class="col-md-3 clearfix">
           <div class="header-ctn">
             <!-- Wishlist -->
-            <div>
+            <div *ngIf="this.banderaCliente">
               <a [routerLink]="['/wishlist']">
                 <i class="fas fa-heart"></i>
                 <span>Wishlist</span>
+                <!-- <div class="qty">2</div> -->
               </a>
             </div>
             <!-- /Wishlist -->
 
             <!-- Cart -->
-            <div>
+            <div *ngIf="this.banderaCliente">
               <a [routerLink]="['/carrito']">
                 <i class="fa fa-shopping-cart"></i>
                 <span>Carrito</span>
+                <!-- <div class="qty">3</div> -->
               </a>
+
             </div>
             <!-- /Cart -->
-
-            <!-- Chat -->
-            <div>
-              <a [routerLink]="['/chat']">
-                <i class="fas fa-comments"></i>
-                <span>Chat</span>
-              </a>
-            </div>
-            <!-- /Chat -->
           </div>
         </div>
         <!-- /ACCOUNT -->
@@ -177,9 +169,8 @@
 
       </div>
       <div style="text-align: center;">
-
-        <button (click)="iniciar(usr.value, pass.value)" type="button" class="btn text-white "
-          style="background-color: #D10024" data-dismiss="modal">Iniciar
+        
+        <button (click)="iniciar(usr.value, pass.value)" type="button" class="btn text-white " style="background-color: #D10024" data-dismiss="modal">Iniciar
           Sesión </button> <br>
         <button [routerLink]="['/registro']" type="button" class="btn" style="color: #5ebdb2;" data-dismiss="modal">
           <small>Registrarte</small></button>

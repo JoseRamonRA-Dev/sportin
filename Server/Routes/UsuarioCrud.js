@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const Usuario = require("../Models/Usuario");
-const Pedido = require("../Models/Pedido");
 var mongoose = require("mongoose");
 
 // constraseña
@@ -10,8 +9,8 @@ const bcrypt = require("bcrypt");
 const Joi = require("@hapi/joi");
 const schemaRegister = Joi.object({
     Nombre: Joi.string().min(2).max(255).required(),
-    ApePat: Joi.string().min(2).max(255).required(),
-    ApeMat: Joi.string().min(2).max(255).required(),
+    ApePat: Joi.string().min(2).max(255),
+    ApeMat: Joi.string().min(2).max(255),
     Telefono: Joi.string().min(2).max(10).required(),
     Email: Joi.string().max(255).required().email(),
     Contrasena: Joi.string().min(2).max(1024).required(),
@@ -32,7 +31,10 @@ router.post("/Registro", async(req, res) => {
         const isEmailExist = await Usuario.findOne({ Email: req.body.Email });
 
         if (isEmailExist) {
-            return res.status(400).json({ error: "Email ya registrado" });
+            return res.json({
+                error: "Email ya registrado",
+                data: "Email registrado",
+            });
         }
         // hash contraseña
         const salt = await bcrypt.genSalt(10);
@@ -48,13 +50,6 @@ router.post("/Registro", async(req, res) => {
         });
 
         const savedUser = await user.save();
-
-        const ped = new Pedido({
-            ID_Usuario: savedUser._id,
-            Total: 0,
-        });
-        const savedped = await ped.save();
-
         res.json({
             error: null,
             response: "Añadido",
@@ -71,7 +66,10 @@ router.post("/Insertar", async(req, res) => {
         const isEmailExist = await Usuario.findOne({ Email: req.body.Email });
 
         if (isEmailExist) {
-            return res.status(400).json({ error: "Email ya registrado" });
+            return res.json({
+                error: "Email ya registrado",
+                data: "Email registrado",
+            });
         }
         const salt = await bcrypt.genSalt(10);
         const password = await bcrypt.hash(req.body.Contrasena, salt);
@@ -93,13 +91,6 @@ router.post("/Insertar", async(req, res) => {
 
         const savedUser = await user.save();
 
-        const ped = new Pedido({
-            ID_Usuario: savedUser._id,
-            Total: 0,
-        });
-
-        const savedped = await ped.save();
-
         res.json({
             error: null,
             response: "Añadido",
@@ -116,22 +107,35 @@ router.post("/login", async(req, res) => {
     const { error } = schemaLogin.validate(req.body);
     if (error) return res.status(400).json({ error: error.details[0].message });
 
-    const user = await Usuario.findOne({ Email: req.body.email });
+    const user = await Usuario.findOne({ Email: req.body.Email });
     if (!user) return res.status(400).json({ error: "Usuario no encontrado" });
     //console.log(user);
-    const validPassword = await bcrypt.compare(req.body.contra, user.Contrasena);
+
+    const validPassword = await bcrypt.compare(
+        req.body.Contrasena,
+        user.Contrasena
+    );
+
     if (!validPassword)
         return res.status(400).json({ error: "contraseña no válida" });
 
     try {
         // create token
         /*
-                                                                                            const token = jwt.sign({
-                                                                                                    name: user.Nombre,
-                                                                                                    id: user._id,
-                                                                                                },
-                                                                                                "secret"
-                                                                                            );*/
+<<<<<<< HEAD
+                                                                                                const token = jwt.sign({
+                                                                                                        name: user.Nombre,
+                                                                                                        id: user._id,
+                                                                                                    },
+                                                                                                    "secret"
+                                                                                                );
+    
+        const token = jwt.sign({
+                name: user.Nombre,
+                id: user._id,
+            },
+            "secret"
+        ); */
 
         res.json({
             error: null,
@@ -165,7 +169,7 @@ router.get("/Ver/:id", async(req, res) => {
             Tipo: user.Tipo,
         });
     } catch (e) {
-        return status(400).json({
+        return res.status(400).json({
             error: "Hubo un error, por favor intenta de nuevo",
         });
     }

@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const Detalle = require("../Models/Detalle");
-const Pedido = require("../Models/Pedido");
 var mongoose = require("mongoose");
 
 router.post("/Insertar", async(req, res) => {
@@ -21,9 +20,8 @@ router.post("/Insertar", async(req, res) => {
     });
 
     if (isExist) {
-        return res.status(400).json({ error: "El producto esta en la lista" });
+        return res.json({ error: "El producto esta en la lista" });
     }
-
     try {
         const det = new Detalle({
             ID_Producto: id_prod,
@@ -60,7 +58,7 @@ router.put("/Modificar/:id", (req, res) => {
     const total = sub_total + iva - descuento * (sub_total + iva);
     const estado = req.body.estado;
 
-    Detalle.findByIdAndUpdate({ _id: id, ID_PRODDUCTO: id_prod }, {
+    Detalle.findByIdAndUpdate({ _id: id, ID_Producto: id_prod }, {
             $set: {
                 Cantidad: cantidad,
                 Precio: precio,

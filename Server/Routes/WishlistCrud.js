@@ -15,7 +15,7 @@ router.post("/Insertar", async(req, res) => {
     });
 
     if (isExist) {
-        return res.status(400).json({ error: "El producto esta en la lista" });
+        return res.json({ error: "El producto esta en la lista" });
     }
 
     try {
@@ -76,7 +76,7 @@ router.get("/Eliminar/:id_wish", (req, res) => {
 router.get("/MostrarWishes/:id_us", (req, res) => {
     const id = req.params.id_us;
 
-    Wish.find({ Id_Usuario: id }).then((doc) => {
+    Wish.find({ ID_Usuario: id }).then((doc) => {
         res.json({ wish: doc, error: null });
     });
 });

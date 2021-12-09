@@ -68,4 +68,12 @@ router.get("/Eliminar/:id", (req, res) => {
             console.log("error al cambiar", err.message);
         });
 });
+//Ver por coinciencia nombre
+router.get("/RegresarIDCod/:cod", (req, res) => {
+    const cod = req.params.cod;
+    Cod_postal.find({ ID_CP: cod }).then((doc) => {
+        res.json({ cod_postal: doc, error: null });
+    });
+});
+
 module.exports = router;

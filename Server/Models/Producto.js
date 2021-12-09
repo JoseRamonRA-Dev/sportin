@@ -14,7 +14,6 @@ const Producto = new Schema({
         default: undefined,
     },
     Nombre: { type: String, default: "" },
-    Imagen: { type: String, default: "" },
     Marca: { type: String, default: "" },
     Precio: { type: Number, default: 0 },
     Stock: { type: Number, default: 0 },

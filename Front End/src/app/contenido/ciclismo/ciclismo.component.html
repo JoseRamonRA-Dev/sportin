@@ -18,30 +18,30 @@
                         <div class="product">
                             <div class="product-img">
                                 <img width="80px" height="220px" src="../../../assets/images/bicicleta.jpeg" alt="">
-                                <div class="product-label">
+                                <!-- <div class="product-label">
                                     <span class="sale">-30%</span>
                                     <span class="new">NEW</span>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="product-body">
-                                <p class="product-category">Category</p>
-                                <h3 class="product-name"><a href="#">product name goes here</a></h3>
-                                <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                                <p class="product-category">Ciclismo</p>
+                                <h3 class="product-name"><a href="#"> {{item.Nombre}} </a></h3>
+                                <h4 class="product-price">$ {{item.Precio}} <del class="product-old-price">$  {{item.Precio + 12}} </del></h4>
                                 <div class="product-rating">
                                     <i class="fa fa-star"></i>
+                                    <!-- <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i> -->
                                 </div>
                                 <div class="product-btns">
-                                    <button class="add-to-wishlist"><i class="fas fa-heart"></i><span class="tooltipp">añadir a wishlist</span></button>
+                                    <button (click)="agregarwishlist(item)" class="add-to-wishlist"><i class="fas fa-heart"></i><span class="tooltipp">añadir a wishlist</span></button>
                                     <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">añadir a carrito</span></button>
                                     <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
                                 </div>
                             </div>
                             <div class="add-to-cart">
-                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> comprar</button>
+                                <button (click)="agregarCarrito(item)"  class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> comprar</button>
                             </div>
                         </div>
                         <!-- /product -->   

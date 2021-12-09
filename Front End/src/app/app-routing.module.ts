@@ -36,6 +36,9 @@ import { ActualizarrastreoComponent } from './contenido/Administrador/Rastreo/ac
 import { MenurastreoComponent } from './contenido/Administrador/menu/menurastreo/menurastreo.component';
 import { ChatComponent } from './contenido/chat/chat.component';
 import { PerfilComponent } from './contenido/usuario/perfil/perfil.component';
+import { InsertarDirComponent } from './contenido/Administrador/Direc/insertar-dir/insertar-dir.component';
+import { MostrarDirsComponent } from './contenido/Administrador/Direc/mostrar-dirs/mostrar-dirs.component';
+import { ActualizarDirComponent } from './contenido/Administrador/Direc/actualizar-dir/actualizar-dir.component';
 
 
 const routes: Routes = [
@@ -77,7 +80,6 @@ const routes: Routes = [
   },
   {path: 'carrito', component: CarritoComponent},
   {path: 'wishlist', component: WishlistComponent},
-  {path: 'chat', component: ChatComponent},
   {path: 'buscadorcat/:nom/:cat', component: BuscadorcategoriaComponent},
   {path: 'opcionespago', component: OpcionesComponent,
    children:[
@@ -88,6 +90,11 @@ const routes: Routes = [
   {path: 'altarastreo', component: InsertarrastreoComponent},
   {path: 'consultarastreo', component: ConsultarrastreoComponent},
   {path: 'actualizarrastreo/:id', component: ActualizarrastreoComponent},
+  {path: 'insertarDireccion/:iduser', component: InsertarDirComponent},
+  {path: 'mostrarDirecciones/:id', component: MostrarDirsComponent
+  },
+  {path: 'actualizarDir/:idDir', component: ActualizarDirComponent},
+
    {path: '**', pathMatch: 'full', redirectTo: 'home'},
 ];
 

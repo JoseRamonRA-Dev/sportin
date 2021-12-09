@@ -1,9 +1,9 @@
-<div class="container" style="margin-top: 20px;" class="card m-3" style="background-color: rgb(244, 245, 250);">
+<div *ngIf="this.load" class="container" style="margin-top: 20px;" class="card m-3" style="background-color: rgb(244, 245, 250);">
     <div class="card-body">
         <h1 style="color: #e43d0a; text-align: center;"> Actualizar Producto </h1>
     </div>
     <div class="row">
-        <form  [formGroup]="forma"   >
+        <form  [formGroup]="forma"   (ngSubmit)="guardarCambios()" >
 
             <div class="container">
              <div class="row mt-1">
@@ -13,11 +13,10 @@
                 <hr>
                   <hr>
               <div class="form-group row">
-                <label class="col-4 col-form-label">Nombre: {{this.datos2.Nombre}} </label>
+                <label class="col-4 col-form-label">Nombre: </label>
                 <div class="col-8">
           
                   <input class="form-control"
-                  value="{{this.nombre}}"
                   type="text"
                   placeholder="Nombre"
                   formControlName="nom">
@@ -88,34 +87,55 @@
                     </div>
                   </div>
                
-                <div class="form-group row">
-                  <label class="col-4 col-form-label">Nombre del proveedor: </label>
-                  <div class="col-8">
-                    <input class="form-control"
-                    type="text"
-                    placeholder="Proveedor que suministra el producto"
-                    formControlName="id_prov">
-                  </div>
-                </div>
-              
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">Departamento: </label>
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label">Nombre del proveedor actualmente: </label>
                     <div class="col-8">
-                        <select class="form-control" formControlName="id_dep" id="Departamento" name="Departamento" required>
-                            <option value="" selected> Seleccionar </option>
-                                <option value="Futbol"> Futbol </option>
-                                <option value="Basquetbol"> Basquetbol </option>
+                        <div>{{this.NomProveedor}}
+                         
+                        </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label">Nombre del proveedor: </label>
+                    <div class="col-8">
+                        <select class="form-control" formControlName="id_prov" id="id_prov" name="id_prov" required>
+                            <option value="" selected disabled> Seleccionar proveedor</option>
+                                <option value="{{item._id}}" *ngFor="let item of this.proveedores"> {{item.Nombre}} </option>
+                                <!-- <option value="Basquetbol"> Basquetbol </option>
                                 <option value="Natacion"> Natación </option>
                                 <option value="Running"> Running </option>
-                                <option value="Ciclismo"> Ciclismo </option>
+                                <option value="Ciclismo"> Ciclismo </option> -->
                             </select>
                     </div>
                   </div>
+
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label">Nombre del departamento actualmente: </label>
+                    <div class="col-8">
+                        <div>
+                          {{this.NomDepartamento}}
+                        </div>
+                    </div>
+                  </div>
+
+                <div class="form-group row">
+                  <label class="col-4 col-form-label">Departamento: </label>
+                  <div class="col-8">
+                      <select class="form-control" formControlName="id_dep" id="id_dep" name="id_dep" required>
+                          <option value="" selected disabled> Seleccionar departamento</option>
+                              <option value="{{item._id}}" *ngFor="let item of this.departamentos"> {{item.Nombre}} </option>
+                              <!-- <option value="Basquetbol"> Basquetbol </option>
+                              <option value="Natacion"> Natación </option>
+                              <option value="Running"> Running </option>
+                              <option value="Ciclismo"> Ciclismo </option> -->
+                          </select>
+                  </div>
+                </div>
                 
              <div class="form-group row">
               <label class="col-2 col-form-label">&nbsp;</label>
               <div class="input-group col-md-8">
-                <button clic="guardarCambios()" type="button" class="btn btn-warning mb-2 mr-3"><i class="fas fa-pencil-alt"> Actualizar producto</i></button>
+                <button  type="submit" class="btn btn-warning mb-2 mr-3"><i class="fas fa-pencil-alt"> Actualizar producto</i></button>
                 <!-- <button type="submit" class="btn btn-outline-success"  >
                   Actualizar producto
                 </button> -->

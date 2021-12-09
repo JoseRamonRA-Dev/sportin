@@ -1,4 +1,4 @@
-<div class="container" style="margin-top: 20px;" class="card m-3" style="background-color: rgb(244, 245, 250);">
+<div *ngIf="this.bandera" class="container" style="margin-top: 20px;" class="card m-3" style="background-color: rgb(244, 245, 250);">
     <div class="card-body">
         <h1 style="color: #e43d0a; text-align: center;"> Enlazar rastreo con pedido </h1>
         <div class="col-1"><button type="button" class="btn btn-lg" style="background-color: #e43d0a; color: white;" [routerLink]="['/menurastreo']"><i class="fas fa-undo-alt"></i> </button>
@@ -14,20 +14,16 @@
                 <h4>Registro  <small> Ingrese todos los datos que se solicitan a continuación, y despues dar clic en el botón "Insertar rastreo" para dar de alta en la base de datos</small></h4>
                 <hr>
                   <hr>
-              <div class="form-group row">
-                <label class="col-4 col-form-label">Número de rastreo:</label>
-                <div class="col-8">
-          
-                  <input class="form-control"
-          
-                  type="number"
-                  placeholder="Número de rastreo"
-                  formControlName="numrastreo">
-          
-          
-                </div>
-              </div>
-          
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label">Pedido </label>
+                    <div class="col-8">
+                        <select class="form-control" formControlName="id_ped" id="id_ped" name="id_ped" required>
+                            <option value="" selected disabled> Seleccionar</option>
+                                <option value="{{item._id}}" *ngFor="let item of this.pedidos"> Id: {{item._id}} Nombre usuario: {{this.nombreUsuario(item.ID_Usuario)}}</option>
+                                
+                            </select>
+                    </div>
+                  </div>
               <div class="form-group row">
                 <label class="col-4 col-form-label">Distribuidor:</label>
                 <div class="col-8">
@@ -35,7 +31,7 @@
                   <input class="form-control"
                          type="text"
                          placeholder="Distribuidor"
-                         formControlName="distribuidor">
+                         formControlName="dist">
                 </div>
               </div>
               <h4>Detalles</h4>
@@ -47,43 +43,11 @@
                   <input class="form-control"
                   type="text"
                   placeholder="Observaciones del rastreo"
-                  formControlName="observaciones">
+                  formControlName="obsv">
                 </div>
               </div>
 
-              <div class="form-group row">
-                <label class="col-4 col-form-label">Fecha: </label>
-                <div class="col-8">
           
-                  <input class="form-control"
-                  type="date"
-                  placeholder="Fecha"
-                  formControlName="fecha">
-                </div>
-              </div>
-                
-                <div class="form-group row">
-                  <label class="col-4 col-form-label">Hora: </label>
-                  <div class="col-8">
-            
-                    <input class="form-control"
-                    type="time"
-                    placeholder="Hora"
-                    formControlName="hora">
-                  </div>
-                </div>
-              
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">Estado: </label>
-                    <div class="col-8">
-                        <select class="form-control" formControlName="estado" id="estado" name="estado" required>
-                            <option value="" selected disabled> Seleccionar estado</option>
-                                <option value="0"> Procesando </option>
-                                <option value="1"> En camino </option>
-                                <option value="2"> Entregado </option>
-                            </select>
-                    </div>
-                  </div>
                 
              <div class="form-group row">
               <label class="col-2 col-form-label">&nbsp;</label>

@@ -49,17 +49,17 @@
             <tbody>
               <tr *ngFor="let item of datos; let index = index">
                 <th scope="row"> {{index+1}}  </th>
-                <td>Short</td>
-                <td>1
-                  <button (click)="incrementar('Producto')"  type="button" class="btn btn-warning mb-2 ml-3" data-toggle="tooltip"
+                <td> {{this.nombreProducto(item.ID_Producto, item.Total)}} </td>
+                <td> {{item.Cantidad}}
+                  <button (click)="incrementar(item)"  type="button" class="btn btn-warning mb-2 ml-3" data-toggle="tooltip"
                     data-placement="right" title="Eliminar"><i class="fas fa-plus-circle"></i></button>
                   
                 </td>
-                <td>129.34</td>
-                <td>129.34</td>
+                <td> {{item.Precio}} </td>
+                <td> {{item.Total}} </td>
                 <td>
                   <div class="col-2">
-                    <button (click)="eliminar('Producto')"  type="button" class="btn btn-danger mb-2 ml-3" data-toggle="tooltip"
+                    <button (click)="eliminar(item._id)"  type="button" class="btn btn-danger mb-2 ml-3" data-toggle="tooltip"
                     data-placement="right" title="Eliminar"><i class="far fa-trash-alt"></i></button>
                 </div>
                 </td>
@@ -101,17 +101,13 @@
     <div class="row">
         <hr color="black" size=3>
        <div class="col-9"></div>
-       <div class="col-3"> IVA: </div>
+       <div class="col-3"> IVA: 16% </div>
     </div>
+  
     <div class="row">
         <hr color="black" size=3>
        <div class="col-9"></div>
-       <div class="col-3"> Subtotal: </div>
-    </div>
-    <div class="row">
-        <hr color="black" size=3>
-       <div class="col-9"></div>
-       <div class="col-3"> Total: </div>
+       <div class="col-3"> Total: {{this.total}} </div>
     </div>
     <br><br>
     <div class="row">

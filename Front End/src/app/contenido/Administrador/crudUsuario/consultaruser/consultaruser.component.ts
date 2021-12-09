@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CruduserService } from 'src/app/contenido/servicios/cruduser.service';
 import Swal from 'sweetalert2'
 @Component({
   selector: 'app-consultaruser',
@@ -9,15 +10,15 @@ import Swal from 'sweetalert2'
 export class ConsultaruserComponent implements OnInit {
   public datos:any;
   public buscar = '';
-  constructor(private router: Router) {
+  constructor(private router: Router, public servicio: CruduserService) {
     this.datos = [];
-    for(let i=0; i<10; i++){
-      let producto = "prod";
-      let categoria = "Algo";
-      this.datos.push(producto);
-    }
+   
    }
   ngOnInit(): void {
+    this.servicio.obtenerUsuarios().subscribe((res)=>{
+      console.log(res);
+        this.datos = res;
+    });
   }
   eliminar(id:any){
     const swalWithBootstrapButtons = Swal.mixin({
@@ -38,12 +39,27 @@ export class ConsultaruserComponent implements OnInit {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        swalWithBootstrapButtons.fire(
-          '¡Eliminado!',
-          'El usuario ha sido eliminado..',
-          'success'
-        )
-        this.router.navigate(['/menuusuario']);
+
+        this.servicio.eliminarUsuario(id).subscribe((res)=>{
+              console.log(res["response"]);
+              if(res["response"]=="Eliminado"){
+                swalWithBootstrapButtons.fire(
+                  '¡Eliminado!',
+                  'El usuario ha sido eliminado..',
+                  'success'
+                )
+                this.router.navigate(['/menuusuario']);
+              }else{
+                Swal.fire({
+                  icon: 'error',
+                  title: 'ERROR',
+                  text: 'Ocurrio un error al intentar eliminar al usuario',
+                  footer: 'Intenta de nuevo'
+                })
+              }
+              
+        });
+       
       } else if (
         result.dismiss === Swal.DismissReason.cancel
       ) {

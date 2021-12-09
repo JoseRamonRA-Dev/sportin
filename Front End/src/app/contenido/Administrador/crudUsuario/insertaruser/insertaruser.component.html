@@ -65,18 +65,18 @@
                     <label class="col-4 col-form-label">Numero interior:</label>
                     <div class="col-8">
                       <input class="form-control"
-                      type="text"
+                      type="number"
                       placeholder="Numero interior"
-                      formControlName="numinterior">
+                      formControlName="int">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label class="col-4 col-form-label">Numero exterior:</label>
                     <div class="col-8">
                       <input class="form-control"
-                      type="text"
+                      type="number"
                       placeholder="Numero exterior"
-                      formControlName="numexterior">
+                      formControlName="ext">
                     </div>
                   </div>
                   <div class="form-group row">
@@ -85,7 +85,7 @@
                       <input class="form-control"
                       type="text"
                       placeholder="Código"
-                      formControlName="codigo">
+                      formControlName="cod">
                     </div>
                   </div>
         
@@ -95,7 +95,7 @@
             
                     <input class="form-control"
             
-                    type="text"
+                    type="email"
                     placeholder="Correo electronico"
                     formControlName="Email">
             
@@ -115,13 +115,36 @@
                 <div class="form-group row">
                   <label class="col-4 col-form-label">Tipo usuario: </label>
                   <div class="col-8">
-                      <select class="form-control" formControlName="Tipo" id="Tipo" name="Tipo" required>
+                      <select class="form-control" formControlName="nivel" id="nivel" name="nivel" required>
                         <option value="" selected disabled> Seleccionar tipo de usuario</option>
                               <option value="1"> Administrador </option>
                               <option value="0"> Cliente </option>
                           </select>
                   </div>
                 </div>
+
+                <h4>Administrador <small> Si el tipo que seleccionaste era administrador, ingresa la fecha de ingreso y el salario</small></h4>
+        <hr>
+              <div class="form-group row">
+                <label class="col-4 col-form-label">Fecha de ingreso: </label>
+                <div class="col-8">
+          
+                  <input class="form-control"
+                  type="date"
+                  placeholder="Fecha"
+                  formControlName="fi">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-4 col-form-label">Salario: </label>
+                <div class="col-8">
+                  <input class="form-control"
+                  type="number"
+                  placeholder="Salario del administrador"
+                  formControlName="sal">
+                </div>
+              </div>
+
                  <h4>Modo de ingreso <small> Para ingresar a al perfil el usuario solo necesitará su correo y contraseña</small></h4>
         <hr>
       <div class="form-group row">

@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const Detalle = new Schema({
-    Estado: { type: Number, default: 0 },
+    Estado: { type: String, default: 0 },
     Fecha: { type: Date, default: 0 },
-    Hora: { type: Date, default: 0 },
+    Hora: { type: String, default: 0 },
 });
 
 const Rastreo = new Schema({

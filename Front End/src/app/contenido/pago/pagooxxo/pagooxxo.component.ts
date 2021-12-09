@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 //import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 //import * as pdfMake from 'pdfmake/build/pdfmake';
 // import   pdfMake  from 'pdfmake/build/pdfmake';
@@ -8,6 +9,8 @@ import { Router } from '@angular/router';
 //import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { ServicioGeneralService } from '../../servicios/servicio-general.service';
+import { CrudproductoService } from '../../servicios/crudproducto.service';
 
 @Component({
   selector: 'app-pagooxxo',
@@ -16,16 +19,40 @@ import html2canvas from 'html2canvas';
 })
 export class PagooxxoComponent implements OnInit {
   public datos: any;
-  constructor(public router: Router) {
+  public productos:any
+  public total:number = 0;
+  constructor(public router: Router, public carrito: ServicioGeneralService, public servicio:CrudproductoService) {
     this.datos = [];
-    for(let i=0; i<3; i++){
-      let producto = "prod";
-      this.datos.push(producto);
-    }
+    this.servicio.obtenerProductos().subscribe((res)=>{
+       this.productos = res
+    });
+    this.carrito.mostrarDetalles(localStorage.getItem("id_carrito")).subscribe((respuesta)=>{
+       this.datos = respuesta;
+       console.log(respuesta)
+      
+    });
    }
-
+ 
+  nombreProducto(idprod, total:any){
+    this.total = this.total + total;
+    for(let dato of this.productos){
+      if(dato._id == idprod){
+        return dato.Nombre;
+      }
+    }
+    
+  }
 descargarPDF(){
-  //const doc = new jsPDF();
+  let body ={
+      id_us: localStorage.getItem("id_usuario"),
+      fp: new Date(),
+      de: "Se realizo la compra",
+      Tipo: "Pago Oxxo",
+      NoTarjeta: 0,
+      Banco: ""
+  }
+  this.carrito.carritoAcompra( localStorage.getItem("id_carrito"),body).subscribe((respuesta)=>{
+    //const doc = new jsPDF();
 
   //doc.text('Hello world!', 10, 10);
   //doc.save('hello-world.pdf');
@@ -52,6 +79,17 @@ descargarPDF(){
 }).then((docResult) => {
   docResult.save(`Sportin_${new Date().toISOString()}.pdf`);
 });
+    this.router.navigate(['/home']);
+    localStorage.setItem("id_carrito","" );
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Se realizo la compra',
+      showConfirmButton: false,
+      timer: 1500
+    })
+  });
+  
 
 }
   ngOnInit(): void {

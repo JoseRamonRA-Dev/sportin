@@ -1,0 +1,66 @@
+<div *ngIf="this.load" class="container" style="margin-top: 20px;" class="card m-3" style="background-color: rgb(244, 245, 250);">
+    <div class="card-body">
+        <h1 style="color: #e43d0a; text-align: center;"> Actualizar dirección </h1>
+        <div class="col-1"><button type="button" class="btn btn-lg" style="background-color: #e43d0a; color: white;" [routerLink]="['/administrador']"><i class="fas fa-undo-alt"></i> </button>
+        </div>
+    </div>
+    <div class="row">
+        <form  [formGroup]="forma" (ngSubmit)="guardarCambios()"  >
+
+            <div class="container">
+             <div class="row mt-3">
+                <div class="col-2"></div>
+               <div class="col-10">
+                <h4>Actualizar  <small>ingrese los datos a actualizar</small></h4>
+                <hr>
+                  <hr>
+           
+                <h4>Domicilio </h4>
+                  <hr>
+                <div class="form-group row">
+                  <label class="col-4 col-form-label">Calle:</label>
+                  <div class="col-8">
+            
+                    <input class="form-control"
+                    type="text"
+                    placeholder="Calle"
+                    formControlName="calle">
+                  </div>
+                </div>
+                
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label">Numero interior:</label>
+                    <div class="col-8">
+                      <input class="form-control"
+                      type="number"
+                      placeholder="Numero interior"
+                      formControlName="int">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-4 col-form-label">Numero exterior:</label>
+                    <div class="col-8">
+                      <input class="form-control"
+                      type="number"
+                      placeholder="Numero exterior"
+                      formControlName="ext">
+                    </div>
+                  </div>
+                 
+
+              <br><br><br>
+             <div class="form-group row">
+              <label class="col-2 col-form-label">&nbsp;</label>
+              <div class="input-group col-md-8">
+                <button type="submit" class="btn btn-outline-success"  >
+                  Actualizar dirección
+                </button>
+              </div>
+            </div>
+            </div>
+            
+          </div>
+          </div>
+          </form>
+    </div>
+  </div>

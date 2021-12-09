@@ -4,7 +4,7 @@ const Direccion = require("../Models/Direccion");
 var mongoose = require("mongoose");
 
 router.post("/Insertar", async(req, res) => {
-    const id_us = req.body.id_us;
+    const id_us = mongoose.Types.ObjectId(req.body.id_us);
     const calle = req.body.calle;
     const numero_int = req.body.int;
     const numero_ext = req.body.ext;
@@ -19,7 +19,7 @@ router.post("/Insertar", async(req, res) => {
             Codigo_postal: codigo,
         });
         const saved = await dir.save();
-
+        console.log(saved);
         res.json({
             error: null,
             response: "Añadido",
@@ -76,7 +76,12 @@ router.get("/MostrarPorUsuario/:id_us/:id_dir", (req, res) => {
         res.json({ dirs: doc, error: null });
     });
 });
-
+router.get("/MostrarPorDireccion/:id_dir", (req, res) => {
+    const id_dir = req.params.id_dir;
+    Direccion.find({ _id: id_dir }).then((doc) => {
+        res.json({ dirs: doc, error: null });
+    });
+});
 router.get("/MostrarTodasPorUsuario/:id_us", (req, res) => {
     const id = req.params.id_us;
 

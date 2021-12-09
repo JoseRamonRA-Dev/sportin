@@ -49,7 +49,6 @@ router.put("/Modificar/:id", (req, res) => {
                 Nombre: req.body.Nombre,
                 ApePat: req.body.ApePat,
                 ApeMat: req.body.ApeMat,
-                Contrasena: password,
                 Telefono: req.body.Telefono,
                 Email: req.body.Email,
             },
