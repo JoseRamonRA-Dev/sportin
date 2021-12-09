@@ -110,16 +110,12 @@ router.post("/login", async(req, res) => {
     const user = await Usuario.findOne({ Email: req.body.Email });
     if (!user) return res.status(400).json({ error: "Usuario no encontrado" });
     //console.log(user);
-<<<<<<< HEAD
 
     const validPassword = await bcrypt.compare(
         req.body.Contrasena,
         user.Contrasena
     );
 
-=======
-    const validPassword = await bcrypt.compare(req.body.Contrasena, user.Contrasena);
->>>>>>> parent of fe77de5 (ajuste)
     if (!validPassword)
         return res.status(400).json({ error: "contraseña no válida" });
 
@@ -132,15 +128,14 @@ router.post("/login", async(req, res) => {
                                                                                                         id: user._id,
                                                                                                     },
                                                                                                     "secret"
-                                                                                                );*/
-=======
-                                                                    const token = jwt.sign({
-                                                                            name: user.Nombre,
-                                                                            id: user._id,
-                                                                        },
-                                                                        "secret"
-                                                                    );*/
->>>>>>> parent of fe77de5 (ajuste)
+                                                                                                );
+    
+        const token = jwt.sign({
+                name: user.Nombre,
+                id: user._id,
+            },
+            "secret"
+        ); */
 
         res.json({
             error: null,
