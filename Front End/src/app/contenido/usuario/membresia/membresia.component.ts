@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CruduserService } from '../../servicios/cruduser.service';
 
 @Component({
   selector: 'app-membresia',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MembresiaComponent implements OnInit {
 
-  constructor() { }
+  membresia:any
+  propietarioID = localStorage.getItem("id_usuario");
+  propietario = localStorage.getItem("nombre");
+  
+  constructor(private crudUser:CruduserService) { }
 
   ngOnInit() {
+    this.crudUser.obtenerUsuarioActualizar(this.propietarioID).subscribe(
+      data => {
+        this.membresia = data
+        console.log("USER: ",this.membresia)
+      }
+    )
   }
 
 }
