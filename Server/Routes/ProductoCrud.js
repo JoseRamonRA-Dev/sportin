@@ -1,6 +1,22 @@
+const express = require("express");
 const router = require("express").Router();
 const Producto = require("../Models/Producto");
 var mongoose = require("mongoose");
+const multer = require("multer");
+
+const upload = multer({ dest: process.cwd() + "/uploads/images" });
+
+//Subir imagen
+router.post("/SubirImagen", upload.single("photo"), (req, res) => {
+    if (req.file) {
+        res.json(req.file);
+    } else {
+        res.status(400).json({ error: "No se pudo subir el archivo" });
+    }
+});
+
+//Mostrar imagen
+router.use("/Imagen", express.static(process.cwd() + "/uploads/images"));
 
 //Añadir producto
 router.post("/Insertar", async(req, res) => {
@@ -129,7 +145,7 @@ router.get("/MostrarNombre/:nom", (req, res) => {
 router.get("/Buscador1/:categoria/:prod", (req, res) => {
     const nom = req.params.prod;
     const cat = req.params.categoria;
-    Producto.find( { ID_Departamento: cat },{ Nombre: { $regex: nom, $options: "?" } }).then((doc) => {
+    Producto.find({ ID_Departamento: cat }, { Nombre: { $regex: nom, $options: "?" } }).then((doc) => {
         res.json({ Productos: doc, error: null });
     });
 });

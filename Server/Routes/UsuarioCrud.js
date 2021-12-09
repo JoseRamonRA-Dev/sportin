@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Usuario = require("../Models/Usuario");
+const Pedido = require("../Models/Pedido");
 var mongoose = require("mongoose");
 
 // constraseña
@@ -55,8 +56,7 @@ router.post("/Registro", async(req, res) => {
             ID_Usuario: savedUser._id,
             Total: 0,
         });
-
-        const saved = await ped.save();
+        const savedped = await ped.save();
         res.json({
             error: null,
             response: "Añadido",
