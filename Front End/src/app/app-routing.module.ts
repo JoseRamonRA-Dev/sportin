@@ -34,72 +34,75 @@ import { InsertarrastreoComponent } from './contenido/Administrador/Rastreo/inse
 import { ConsultarrastreoComponent } from './contenido/Administrador/Rastreo/consultarrastreo/consultarrastreo.component';
 import { ActualizarrastreoComponent } from './contenido/Administrador/Rastreo/actualizarrastreo/actualizarrastreo.component';
 import { MenurastreoComponent } from './contenido/Administrador/menu/menurastreo/menurastreo.component';
-import { ChatComponent } from './contenido/chat/chat.component';
+
 import { PerfilComponent } from './contenido/usuario/perfil/perfil.component';
 import { InsertarDirComponent } from './contenido/Administrador/Direc/insertar-dir/insertar-dir.component';
 import { MostrarDirsComponent } from './contenido/Administrador/Direc/mostrar-dirs/mostrar-dirs.component';
 import { ActualizarDirComponent } from './contenido/Administrador/Direc/actualizar-dir/actualizar-dir.component';
 
-
 const routes: Routes = [
-  
-  {path:'home',component:PrincipalComponent},
-  {path: "acercade", component:AcercaComponent},
-  {path: "contacto", component:ContactoComponent},
-  {path: "preguntasf", component:PreguntasfComponent},
-  {path: "perfil", component:PerfilComponent},
+  { path: 'home', component: PrincipalComponent },
+  { path: 'acercade', component: AcercaComponent },
+  { path: 'contacto', component: ContactoComponent },
+  { path: 'preguntasf', component: PreguntasfComponent },
+  { path: 'perfil', component: PerfilComponent },
 
-  {path: 'basquetbol', component: BasquetComponent},
-  {path: 'futbol', component: FutbolComponent},
-  {path: 'natacion', component: NatacionComponent},
-  {path: 'ciclismo', component: CiclismoComponent},
-  {path: 'run', component: RunComponent},
-  {path: 'registro', component: RegistroComponent},
-  {path: 'administrador', component: MenuComponent},
-  {path: 'menuusuario', component: MenuserComponent},
-  {path: 'menuproducto', component: MenuprodComponent},
-  {path: 'menuproveedor', component: MenuprovComponent},
-  {path: 'menurastreo', component: MenurastreoComponent},
-  {path: 'altaprod', component: InsertarprodComponent},
-  {path: 'consultaprod', component: ConsultarprodComponent,
-    children:[
-      {path: 'actualizarprod/:id', component: ActualizarprodComponent}
-    ]
+  { path: 'basquetbol', component: BasquetComponent },
+  { path: 'futbol', component: FutbolComponent },
+  { path: 'natacion', component: NatacionComponent },
+  { path: 'ciclismo', component: CiclismoComponent },
+  { path: 'run', component: RunComponent },
+  { path: 'registro', component: RegistroComponent },
+  { path: 'administrador', component: MenuComponent },
+  { path: 'menuusuario', component: MenuserComponent },
+  { path: 'menuproducto', component: MenuprodComponent },
+  { path: 'menuproveedor', component: MenuprovComponent },
+  { path: 'menurastreo', component: MenurastreoComponent },
+  { path: 'altaprod', component: InsertarprodComponent },
+  {
+    path: 'consultaprod',
+    component: ConsultarprodComponent,
+    children: [
+      { path: 'actualizarprod/:id', component: ActualizarprodComponent },
+    ],
   },
-  {path: 'altauser', component: InsertaruserComponent},
-  {path: 'consultauser', component: ConsultaruserComponent,
-  children:[
-    {path: 'actualizaruser/:id', component: ActualizaruserComponent},
-  ]
+  { path: 'altauser', component: InsertaruserComponent },
+  {
+    path: 'consultauser',
+    component: ConsultaruserComponent,
+    children: [
+      { path: 'actualizaruser/:id', component: ActualizaruserComponent },
+    ],
   },
-  {path: 'altaproveedor', component: InsertarComponent},
-  {path: 'consultapro', component: ConsultarComponent,
-  children:[
-    {path: 'actualizarpro/:id', component: ActualizarComponent},
-  ]
+  { path: 'altaproveedor', component: InsertarComponent },
+  {
+    path: 'consultapro',
+    component: ConsultarComponent,
+    children: [{ path: 'actualizarpro/:id', component: ActualizarComponent }],
   },
-  {path: 'carrito', component: CarritoComponent},
-  {path: 'wishlist', component: WishlistComponent},
-  {path: 'buscadorcat/:nom/:cat', component: BuscadorcategoriaComponent},
-  {path: 'opcionespago', component: OpcionesComponent,
-   children:[
-     {path: 'pagooxxo', component: PagooxxoComponent},
-     {path: 'pagobanco', component: PagobancoComponent}
-   ]
+  { path: 'carrito', component: CarritoComponent },
+  { path: 'wishlist', component: WishlistComponent },
+  { path: 'buscadorcat/:nom/:cat', component: BuscadorcategoriaComponent },
+  {
+    path: 'opcionespago',
+    component: OpcionesComponent,
+    children: [
+      { path: 'pagooxxo', component: PagooxxoComponent },
+      { path: 'pagobanco', component: PagobancoComponent },
+    ],
   },
-  {path: 'altarastreo', component: InsertarrastreoComponent},
-  {path: 'consultarastreo', component: ConsultarrastreoComponent},
-  {path: 'actualizarrastreo/:id', component: ActualizarrastreoComponent},
-  {path: 'insertarDireccion/:iduser', component: InsertarDirComponent},
-  {path: 'mostrarDirecciones/:id', component: MostrarDirsComponent
-  },
-  {path: 'actualizarDir/:idDir', component: ActualizarDirComponent},
+  { path: 'altarastreo', component: InsertarrastreoComponent },
+  { path: 'consultarastreo', component: ConsultarrastreoComponent },
+  { path: 'actualizarrastreo/:id', component: ActualizarrastreoComponent },
+  { path: 'insertarDireccion/:iduser', component: InsertarDirComponent },
+  { path: 'mostrarDirecciones/:id', component: MostrarDirsComponent },
+  { path: 'actualizarDir/:idDir', component: ActualizarDirComponent },
 
-   {path: '**', pathMatch: 'full', redirectTo: 'home'},
+  { path: '**', pathMatch: 'full', redirectTo: 'home' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
