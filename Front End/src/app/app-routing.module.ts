@@ -35,6 +35,7 @@ import { ConsultarrastreoComponent } from './contenido/Administrador/Rastreo/con
 import { ActualizarrastreoComponent } from './contenido/Administrador/Rastreo/actualizarrastreo/actualizarrastreo.component';
 import { MenurastreoComponent } from './contenido/Administrador/menu/menurastreo/menurastreo.component';
 import { ChatComponent } from './contenido/chat/chat.component';
+import { PerfilComponent } from './contenido/usuario/perfil/perfil.component';
 
 
 const routes: Routes = [
@@ -43,6 +44,7 @@ const routes: Routes = [
   {path: "acercade", component:AcercaComponent},
   {path: "contacto", component:ContactoComponent},
   {path: "preguntasf", component:PreguntasfComponent},
+  {path: "perfil", component:PerfilComponent},
 
   {path: 'basquetbol', component: BasquetComponent},
   {path: 'futbol', component: FutbolComponent},
