@@ -1,152 +1,124 @@
-<form  [formGroup]="forma" (ngSubmit)="guardarCambios()"  >
-
+<form [formGroup]="forma" (ngSubmit)="guardarCambios()">
     <div class="container">
-     <div class="row mt-5">
-        <div class="col-2">
-            <div style="text-align:left; margin-top: 20px;">
-                <img src="../../../assets/images/poster2.jpg" height="950px" width="150px" alt=""></div>
-        </div>
-       <div class="col-8">
-        <h4>Registro  <small> Ingrese todos los datos</small></h4>
-        <hr>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Nombre: *</label>
-        <div class="col-8">
-  
-          <input class="form-control"
-  
-          type="text"
-          placeholder="Nombre"
-          formControlName="Nombre">
-  
-  
-        </div>
-      </div>
-  
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Apellido Paterno: </label>
-        <div class="col-8">
-  
-          <input class="form-control"
-                 type="text"
-                 placeholder="Apellido"
-                 formControlName="ApePat">
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Apellido Materno: </label>
-        <div class="col-8">
-  
-          <input class="form-control"
-          type="text"
-          placeholder="Apellido Materno"
-          formControlName="ApeMat">
-        </div>
-      </div>
-        <h4>Domicilio y contacto</h4>
-          <hr>
-        <div class="form-group row">
-          <label class="col-2 col-form-label">Calle: *</label>
-          <div class="col-8">
-    
-            <input class="form-control"
-            type="text"
-            placeholder="Calle"
-            formControlName="calle">
-          </div>
-        </div>
-        
-          <div class="form-group row">
-            <label class="col-2 col-form-label">Numero interior: </label>
-            <div class="col-8">
-              <input class="form-control"
-              type="number"
-              placeholder="Numero interior"
-              formControlName="int">
+        <div class="row mt-5">
+            <div class="col-2">
+                <div style="text-align: left; margin-top: 20px">
+                    <img src="../../../assets/images/poster2.jpg" height="950px" width="150px" alt="" />
+                </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <label class="col-2 col-form-label">Numero exterior: *</label>
             <div class="col-8">
-              <input class="form-control"
-              type="number"
-              placeholder="Numero exterior"
-              formControlName="ext">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label class="col-2 col-form-label">Código postal: *</label>
-            <div class="col-8">
-              <input class="form-control"
-              type="text"
-              placeholder="Código"
-              formControlName="cod">
-            </div>
-          </div>
+                <h4>Registro <small> Ingrese todos los datos</small></h4>
+                <hr />
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Nombre: *</label>
+                    <div class="col-8">
+                        <input class="form-control" type="text" placeholder="Nombre" formControlName="Nombre" />
+                    </div>
+                </div>
 
-         <div class="form-group row">
-          <label class="col-2 col-form-label">Correo: *</label>
-          <div class="col-8">
-    
-            <input class="form-control"
-    
-            type="email"
-            placeholder="Correo electronico"
-            formControlName="Email">
-    
-    
-          </div>
-        </div>
-  
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Apellido Paterno: </label>
+                    <div class="col-8">
+                        <input class="form-control" type="text" placeholder="Apellido" formControlName="ApePat" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Apellido Materno: </label>
+                    <div class="col-8">
+                        <input class="form-control" type="text" placeholder="Apellido Materno" formControlName="ApeMat" />
+                    </div>
+                </div>
+                <h4>Domicilio y contacto</h4>
+                <hr />
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Calle: *</label>
+                    <div class="col-8">
+                        <input class="form-control" type="text" placeholder="Calle" formControlName="calle" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Numero interior: </label>
+                    <div class="col-8">
+                        <input class="form-control" type="number" placeholder="Numero interior" formControlName="int" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Numero exterior: *</label>
+                    <div class="col-8">
+                        <input class="form-control" type="number" placeholder="Numero exterior" formControlName="ext" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Código postal: *</label>
+                    <div class="col-8">
+                        <input class="form-control" type="text" placeholder="Código" formControlName="cod" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Correo: *</label>
+                    <div class="col-8">
+                        <input class="form-control" type="email" placeholder="Correo electronico" formControlName="Email" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-2 col-form-label">Numero de telefono: *</label>
+                    <div class="col-8">
+                        <input class="form-control" type="text" placeholder="Numero de celular" formControlName="Telefono" />
+                    </div>
+                </div>
+
+                <h4>
+                    Modo de ingreso
+                    <small>
+            Para ingresar a tu perfil, solo necesitaras tu correo y
+            contraseña</small
+          >
+        </h4>
+        <hr />
         <div class="form-group row">
-          <label class="col-2 col-form-label">Numero de telefono: *</label>
+          <label class="col-2 col-form-label">Contraseña: *</label>
           <div class="col-8">
-            <input class="form-control"
-            type="text"
-            placeholder="Numero de celular"
-            formControlName="Telefono">
+            <input
+              class="form-control"
+              type="password"
+              placeholder="Ingresa contraseña"
+              formControlName="Contrasena"
+            />
           </div>
-        </div>
-        
-          <h4>Modo de ingreso <small> Para ingresar a tu perfil, solo necesitaras tu correo y contraseña</small></h4>
-        <hr>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Contraseña: *</label>
-        <div class="col-8">
-  
-          <input class="form-control"
-  
-          type="password"
-          placeholder="Ingresa contraseña"
-          formControlName="Contrasena">
-  
-         </div>
         </div>
         <div class="form-group row">
           <label class="col-2 col-form-label">Confirma la contraseña: *</label>
           <div class="col-8">
-    
-            <input class="form-control"
-    
-            type="password"
-            placeholder="Ingresa nuevamente la contraseña"
-            formControlName="contra2">
-    
-           </div>
+            <input
+              class="form-control"
+              type="password"
+              placeholder="Ingresa nuevamente la contraseña"
+              formControlName="contra2"
+            />
           </div>
-     <div class="form-group row">
-      <label class="col-2 col-form-label">&nbsp;</label>
-      <div class="input-group col-md-8">
-        <button type="submit" class="btn btn-outline-primary"  >
-          Registrarme
-        </button>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 col-form-label">&nbsp;</label>
+          <div class="input-group col-md-8">
+            <button type="submit" class="btn btn-outline-primary">
+              Registrarme
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-2">
+        <div style="text-align: center; margin-top: 20px">
+          <img
+            src="../../../assets/images/poster3.jpg"
+            height="950px"
+            width="150px"
+            alt=""
+          />
+        </div>
       </div>
     </div>
-    </div>
-    <div class="col-2">
-        <div style="text-align: center; margin-top: 20px;">
-            <img src="../../../assets/images/poster3.jpg" height="950px" width="150px" alt=""></div>
-    </div>
   </div>
-  </div>
-  </form>
+</form>
