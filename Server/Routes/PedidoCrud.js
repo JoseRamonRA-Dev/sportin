@@ -2,8 +2,6 @@ const router = require("express").Router();
 const Pedido = require("../Models/Pedido");
 var mongoose = require("mongoose");
 
-
-
 //Crear carrito
 router.post("/Insertar", async(req, res) => {
     const id_us = req.body.id_us;
@@ -43,6 +41,13 @@ router.put("/Compra/:id_ped", async(req, res) => {
         Banco: req.body.banco,
     };
     const total = 0;
+
+    const ped = new Pedido({
+        ID_Usuario: id_us,
+        Total: 0,
+    });
+
+    const saved = await ped.save();
 
     Pedido.findByIdAndUpdate({ _id: id, ID_Usuario: id_us }, {
             $set: {
