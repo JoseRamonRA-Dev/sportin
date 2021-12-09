@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const Detalle = require("../Models/Detalle");
-const Pedido = require("../Models/Pedido");
 var mongoose = require("mongoose");
 
 router.post("/Insertar", async(req, res) => {
@@ -23,7 +22,6 @@ router.post("/Insertar", async(req, res) => {
     if (isExist) {
         return res.json({ error: "El producto esta en la lista" });
     }
-
     try {
         const det = new Detalle({
             ID_Producto: id_prod,
@@ -103,14 +101,4 @@ router.get("/Eliminar/:id", (req, res) => {
             console.log("error al cambiar", err.message);
         });
 });
-
-function sumaDetalles(id_ped) {
-    var sumatotal = 0;
-    Detalle.find({ ID_Pedido: id_ped }).then((doc) => {
-        doc.forEach((value) => {
-            sumatotal = value.Total;
-        });
-    });
-}
-
 module.exports = router;

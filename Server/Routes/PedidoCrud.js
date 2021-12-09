@@ -2,6 +2,8 @@ const router = require("express").Router();
 const Pedido = require("../Models/Pedido");
 var mongoose = require("mongoose");
 
+
+
 //Crear carrito
 router.post("/Insertar", async(req, res) => {
     const id_us = req.body.id_us;
@@ -40,14 +42,7 @@ router.put("/Compra/:id_ped", async(req, res) => {
         NoTarjeta: req.body.tar,
         Banco: req.body.banco,
     };
-    const total = 12;
-
-    const ped = new Pedido({
-        ID_Usuario: id_us,
-        Total: 0,
-    });
-
-    const saved = await ped.save();
+    const total = 0;
 
     Pedido.findByIdAndUpdate({ _id: id, ID_Usuario: id_us }, {
             $set: {
@@ -59,7 +54,7 @@ router.put("/Compra/:id_ped", async(req, res) => {
             },
         })
         .then((doc) => {
-            res.json({ response: "Modificado", carrito: saved, data: doc });
+            res.json({ response: "Modificado" });
         })
         .catch((err) => {
             console.log("error al cambiar", err.message);
@@ -183,18 +178,37 @@ router.put("/Modificar/:id_ped", async(req, res) => {
 });
 
 //Actualizar total
-router.put("/Total/:id_ped", async(req, res) => {
+router.put("/Modificar/:id_ped", async(req, res) => {
     const id = req.params.id_ped;
     const id_us = req.body.id_us;
+    const fp = req.body.fp;
+    const fe = req.body.fe;
+    const de = req.body.de;
+    const est = {
+        Confirmado: req.body.confi,
+        Pagado: req.body.pag,
+        Enviado: req.body.env,
+        Devolucion: req.body.dev,
+    };
+    const detallepago = {
+        Tipo: req.body.tip,
+        NoTarjeta: req.body.tar,
+        Banco: req.body.banco,
+    };
     const total = req.body.tot;
 
     Pedido.findByIdAndUpdate({ _id: id, ID_Usuario: id_us }, {
             $set: {
+                FechaPedido: fp,
+                FechaEntrega: fe,
+                Estado: est,
+                DetallePago: detallepago,
                 Total: total,
+                Detalle_Envio: de,
             },
         })
         .then((doc) => {
-            res.json({ response: "Modificado el total" });
+            res.json({ response: "Modificado" });
         })
         .catch((err) => {
             console.log("error al cambiar", err.message);

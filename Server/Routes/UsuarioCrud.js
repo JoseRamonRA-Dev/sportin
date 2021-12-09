@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const Usuario = require("../Models/Usuario");
-const Pedido = require("../Models/Pedido");
 var mongoose = require("mongoose");
 
 // constraseña
@@ -51,13 +50,6 @@ router.post("/Registro", async(req, res) => {
         });
 
         const savedUser = await user.save();
-
-        const ped = new Pedido({
-            ID_Usuario: savedUser._id,
-            Total: 0,
-        });
-        const savedped = await ped.save();
-
         res.json({
             error: null,
             response: "Añadido",
@@ -99,13 +91,6 @@ router.post("/Insertar", async(req, res) => {
 
         const savedUser = await user.save();
 
-        const ped = new Pedido({
-            ID_Usuario: savedUser._id,
-            Total: 0,
-        });
-
-        const savedped = await ped.save();
-
         res.json({
             error: null,
             response: "Añadido",
@@ -125,24 +110,37 @@ router.post("/login", async(req, res) => {
     const user = await Usuario.findOne({ Email: req.body.Email });
     if (!user) return res.status(400).json({ error: "Usuario no encontrado" });
     //console.log(user);
+<<<<<<< HEAD
 
     const validPassword = await bcrypt.compare(
         req.body.Contrasena,
         user.Contrasena
     );
 
+=======
+    const validPassword = await bcrypt.compare(req.body.Contrasena, user.Contrasena);
+>>>>>>> parent of fe77de5 (ajuste)
     if (!validPassword)
         return res.status(400).json({ error: "contraseña no válida" });
 
     try {
         // create token
         /*
+<<<<<<< HEAD
                                                                                                 const token = jwt.sign({
                                                                                                         name: user.Nombre,
                                                                                                         id: user._id,
                                                                                                     },
                                                                                                     "secret"
                                                                                                 );*/
+=======
+                                                                    const token = jwt.sign({
+                                                                            name: user.Nombre,
+                                                                            id: user._id,
+                                                                        },
+                                                                        "secret"
+                                                                    );*/
+>>>>>>> parent of fe77de5 (ajuste)
 
         res.json({
             error: null,
