@@ -57,8 +57,22 @@
         <li *ngIf="this.banderaAdmin" class="nav-item">
           <a class="nav-link" [routerLink]="['/administrador']">Administrador</a>
         </li>
-        <li *ngIf="this.banderaCliente" class="nav-item">
+        <!-- <li *ngIf="this.banderaCliente" class="nav-item">
           <a class="nav-link" [routerLink]="['/']">Mi Perfil</a>
+        </li> -->
+        <li *ngIf="this.banderaCliente" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Mi Perfil
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" [routerLink]="['/perfil']">Mi Perfil</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['/pedidios']">Pedidos</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['/rastreo']">Rastreos</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="['/membresia']">Membresia</a>
+          </div>
         </li>
       </ul>
       <div class="form-inline my-2 my-lg-0" *ngIf="this.banderaEstado">

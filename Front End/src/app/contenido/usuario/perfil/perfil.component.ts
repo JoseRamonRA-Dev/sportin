@@ -8,17 +8,20 @@ import { CruduserService } from '../../servicios/cruduser.service';
 })
 export class PerfilComponent implements OnInit {
   
-  id="61b181cd14cfb09a9a53458a"
+  id=localStorage.getItem('id_usuario')
   user:any
   constructor(private crudUser:CruduserService) { }
 
   ngOnInit() {
+    console.log(this.id)
     this.crudUser.obtenerUsuarioActualizar(this.id).subscribe(
       data => {
         this.user = data
         console.log("USER: ",this.user)
+        localStorage.setItem("nombre",this.user.Nombre)
       }
     )
+    
   }
 
 }
