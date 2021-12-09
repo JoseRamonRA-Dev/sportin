@@ -23,11 +23,28 @@ export class CrudproveedorService {
    obtenerProveedorActualizar(id:any){
     return this.http.get(`${environment.ip}/Proveedor/Ver/${id}`,{headers:this.getHeaders()}).pipe(map (  data => data['prov']));
   }
+  obtenerProveedorId(id:any){
+    return this.http.get(`${environment.ip}/Proveedor/Ver/${id}`,{headers:this.getHeaders()}).pipe(map (  data => data['prov']));
+  }
   eliminarProveedor(id:any){
     return this.http.get(`${environment.ip}/Proveedor/Eliminar/${id}`,{headers:this.getHeaders()});
   }
-  modificarProveedor(id:any){
-    return this.http.get(`${environment.ip}/Proveedor/Modificar/${id}`,{headers:this.getHeaders()});
+  modificarProveedor(id:any, data:any){
+    return this.http.put(`${environment.ip}/Proveedor/Modificar/${id}`,data,{headers:this.getHeaders()});
   }
-  
+  buscarCodigo(cod:any){
+    return this.http.get(`${environment.ip}/CP/RegresarIDCod/${cod}`,{headers:this.getHeaders()}).pipe(map (  data => data['cod_postal']));
+  }
+  crearDireccion(dir: any){
+    return this.http.post(`${environment.ip}/Direccion/Insertar`,dir,{headers:this.getHeaders()});
+  }
+  obtenerDireccioUser(id:any){
+    return this.http.get(`${environment.ip}/Direccion/MostrarTodasPorUsuario/${id}`,{headers:this.getHeaders()}).pipe(map (  data => data['dirs']));
+  }
+  buscarCodigoXiD(cod:any){
+    return this.http.get(`${environment.ip}/CP/Mostrar/${cod}`,{headers:this.getHeaders()}).pipe(map (  data => data['cod_postal']));
+  }
+  modificarDireccion(id:any, data:any){
+    return this.http.put(`${environment.ip}/Direccion/Modificar/${id}`,data,{headers:this.getHeaders()});
+  }
 }

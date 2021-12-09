@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CruduserService } from '../servicios/cruduser.service';
+import { CruduserService } from '../../servicios/cruduser.service';
 
 @Component({
   selector: 'app-perfil',
