@@ -39,13 +39,21 @@ import { PerfilComponent } from './contenido/usuario/perfil/perfil.component';
 import { InsertarDirComponent } from './contenido/Administrador/Direc/insertar-dir/insertar-dir.component';
 import { MostrarDirsComponent } from './contenido/Administrador/Direc/mostrar-dirs/mostrar-dirs.component';
 import { ActualizarDirComponent } from './contenido/Administrador/Direc/actualizar-dir/actualizar-dir.component';
+import { RastreoComponent } from './contenido/usuario/rastreo/rastreo.component';
+import { PedidosComponent } from './contenido/usuario/pedidos/pedidos.component';
+import { MembresiaComponent } from './contenido/usuario/membresia/membresia.component';
 
 const routes: Routes = [
   { path: 'home', component: PrincipalComponent },
   { path: 'acercade', component: AcercaComponent },
   { path: 'contacto', component: ContactoComponent },
   { path: 'preguntasf', component: PreguntasfComponent },
+  
   { path: 'perfil', component: PerfilComponent },
+  { path: 'rastreo', component: RastreoComponent },
+  { path: 'pedidios', component: PedidosComponent },
+  { path: 'membresia', component: MembresiaComponent },
+
 
   { path: 'basquetbol', component: BasquetComponent },
   { path: 'futbol', component: FutbolComponent },

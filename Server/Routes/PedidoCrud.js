@@ -280,6 +280,14 @@ router.get("/Carritos", async(req, res) => {
     });
 });
 
+//Obtener por usuario
+router.get("/Usuario/:id_us", async(req, res) => {
+    const id_us = req.params.id_us;
+    Pedido.find({ID_Usuario: id_us }).then((doc) => {
+        res.json({ ped: doc, error: null });
+    });
+});
+
 //Obtener confirmados por usuario
 router.get("/Confirmados/:id_us", async(req, res) => {
     const id_us = req.params.id_us;
@@ -316,5 +324,7 @@ router.get("/Devueltos/:id_us", async(req, res) => {
         res.json({ ped: doc, error: null });
     });
 });
+
+
 
 module.exports = router;
