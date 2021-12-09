@@ -103,14 +103,4 @@ router.get("/Eliminar/:id", (req, res) => {
             console.log("error al cambiar", err.message);
         });
 });
-
-function sumaDetalles(id_ped) {
-    var sumatotal = 0;
-    Detalle.find({ ID_Pedido: id_ped }).then((doc) => {
-        doc.forEach((value) => {
-            sumatotal = value.Total;
-        });
-    });
-}
-
 module.exports = router;
