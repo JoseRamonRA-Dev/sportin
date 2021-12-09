@@ -61,6 +61,14 @@ router.get("/Eliminar/:id_ras", (req, res) => {
         });
 });
 
+//Ver por id_pedido
+router.get("/MostrarxPedido/:id_ped", (req, res) => {
+    const id = req.params.id_ped;
+    Rastreo.find({ Id_Pedido: id }).then((doc) => {
+        res.json({ Rastreos: doc, error: null });
+    });
+});
+
 //Ver por id
 router.get("/Mostrar/:id_ras", (req, res) => {
     const id = req.params.id_ras;

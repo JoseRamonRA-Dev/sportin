@@ -216,9 +216,8 @@ router.put("/Modificar/:id_ped", async(req, res) => {
 });
 
 //Ver pedido
-router.get("/Mostrar/:idped", async(req, res) => {
+router.get("/Mostrar/:id_ped", async(req, res) => {
     const idped = req.params.id_ped;
-
     Pedido.findById({ _id: idped }).then((doc) => {
         res.json({ ped: doc, error: null });
     });
@@ -279,6 +278,23 @@ router.get("/Carritos", async(req, res) => {
 router.get("/Usuario/:id_us", async(req, res) => {
     const id_us = req.params.id_us;
     Pedido.find({ID_Usuario: id_us }).then((doc) => {
+        res.json({ ped: doc, error: null });
+    });
+});
+
+router.get("/MostrarU/:id_ped", async(req, res) => {
+    const idped = req.params.id_ped;
+    Pedido.findById({ ID_Usuario: idped }).then((doc) => {
+        res.json({ ped: doc, error: null });
+    });
+});
+
+
+
+
+//Obtener todos
+router.get("/Todos", async(req, res) => {
+    Pedido.find({}).then((doc) => {
         res.json({ ped: doc, error: null });
     });
 });

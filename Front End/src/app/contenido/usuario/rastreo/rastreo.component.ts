@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ServicioGeneralService } from '../../servicios/servicio-general.service';
 
 @Component({
   selector: 'app-rastreo',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RastreoComponent implements OnInit {
 
-  constructor() { }
+  idPedidos="61b181cd14cfb09a9a53458a"
+  rastreo:any
+
+  constructor(private router:Router, private crudPedido:ServicioGeneralService) { }
 
   ngOnInit() {
+    this.crudPedido.obtenerRastreo(this.idPedidos).subscribe(
+      data => {
+        this.rastreo = data
+        console.log("RASTREO: ",this.rastreo)
+      }
+    )
+  }
+  
+  regresar(){
+    this.router.navigate(['/pedido'])
   }
 
 }
