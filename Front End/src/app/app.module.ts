@@ -16,6 +16,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -24,7 +25,7 @@ import { MatInputModule } from '@angular/material/input';
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, CommonModule,
     AppRoutingModule,
     HeaderModule,
     FooterModule,

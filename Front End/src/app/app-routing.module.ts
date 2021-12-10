@@ -42,6 +42,8 @@ import { ActualizarDirComponent } from './contenido/Administrador/Direc/actualiz
 import { RastreoComponent } from './contenido/usuario/rastreo/rastreo.component';
 import { PedidosComponent } from './contenido/usuario/pedidos/pedidos.component';
 import { MembresiaComponent } from './contenido/usuario/membresia/membresia.component';
+import { Grafica1Component } from './contenido/graficas/grafica1/grafica1.component';
+import { Grafica2Component } from './contenido/graficas/grafica2/grafica2.component';
 
 const routes: Routes = [
   { path: 'home', component: PrincipalComponent },
@@ -104,6 +106,8 @@ const routes: Routes = [
   { path: 'actualizarrastreo/:id', component: ActualizarrastreoComponent },
   { path: 'insertarDireccion/:iduser', component: InsertarDirComponent },
   { path: 'mostrarDirecciones/:id', component: MostrarDirsComponent },
+  { path: 'grafica1', component: Grafica1Component },
+  { path: 'grafica2', component: Grafica2Component },
   { path: 'actualizarDir/:idDir', component: ActualizarDirComponent },
 
   { path: '**', pathMatch: 'full', redirectTo: 'home' },

@@ -84,4 +84,7 @@ export class ServicioGeneralService {
   obtenerDireccionUserUnica(iddir: any) {
     return this.http.get(`${environment.ip}/Direccion/MostrarPorDireccion/${iddir}`, { headers: this.getHeaders() }).pipe(map(data => data['dirs']));
   }
+  mostrarTodosDetalles() {
+    return this.http.get(`${environment.ip}/Detalle/MostrarTodos`, { headers: this.getHeaders() }).pipe(map(data => data['detalles']));
+  }
 }

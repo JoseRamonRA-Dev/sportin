@@ -56,4 +56,13 @@ export class CruduserService {
   modificarDireccion(id:any, data:any){
     return this.http.put(`${environment.ip}/Direccion/Modificar/${id}`,data,{headers:this.getHeaders()});
   }
+  verificarMembresia(id_user){
+    return this.http.get(`${environment.ip}/Membresia/VerificarExistencia/${id_user}`,{headers:this.getHeaders()}).pipe(map (  data => data['membresia']));
+  }
+  crearMembresia(usuario: any){
+    return this.http.post(`${environment.ip}/Membresia/Insertar`,usuario,{headers:this.getHeaders()});
+  }
+  todasMembresias(){
+    return this.http.get(`${environment.ip}/Membresia/MostrarTodos`,{headers:this.getHeaders()}).pipe(map (  data => data['membresia']));
+  }
 }

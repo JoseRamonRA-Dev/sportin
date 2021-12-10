@@ -67,6 +67,13 @@ router.get("/MembresiaUsuario/:id_us/:id_mem", (req, res) => {
         res.json({ membresia: doc, error: null });
     });
 });
+router.get("/VerificarExistencia/:id_us", (req, res) => {
+    const id = req.params.id_us
+    Membresia.find({ Id_usuario: id }).then((doc) => {
+        res.json({ membresia: doc, error: null });
+    });
+});
+
 
 router.get("/Eliminar/:id", (req, res) => {
     const id = req.params.id;

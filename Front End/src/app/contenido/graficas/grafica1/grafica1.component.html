@@ -1,0 +1,23 @@
+<div *ngIf="this.load" class="container" style="margin-top: 20px;" class="card m-3" style="background-color: rgb(244, 245, 250);">
+    <div class="card-body">
+        <h1 style="color: #f81111; text-align: center;"> 5 productos más vendidos </h1>
+        <div class="col-1"><button type="button" class="btn btn-lg" style="background-color: #f81111; color: white;" [routerLink]="['/administrador']"><i class="fas fa-undo-alt"></i> </button>
+        </div>
+    </div>
+    <div class="row">
+       
+            <ngx-charts-advanced-pie-chart
+            [view]="view"
+            scheme="cool"
+            
+            [results]="single"
+            [gradient]="gradient"
+            (select)="onSelect($event)"
+            (activate)="onActivate($event)"
+            (deactivate)="onDeactivate($event)"
+            >
+            </ngx-charts-advanced-pie-chart>
+        
+    </div>
+  </div>
+

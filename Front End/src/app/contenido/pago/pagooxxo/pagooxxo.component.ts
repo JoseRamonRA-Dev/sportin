@@ -79,15 +79,19 @@ descargarPDF(){
 }).then((docResult) => {
   docResult.save(`Sportin_${new Date().toISOString()}.pdf`);
 });
-    this.router.navigate(['/home']);
-    localStorage.setItem("id_carrito","" );
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Se realizo la compra',
-      showConfirmButton: false,
-      timer: 1500
-    })
+      this.carrito.obtenerCarrito(localStorage.getItem("id_usuario")).subscribe((resultado)=>{
+        //localStorage.setItem("id_carrito","" );
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Se realizo la compra',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        localStorage.setItem("id_carrito",resultado[0]._id );
+        this.router.navigate([`/home`]);
+      });
+    
   });
   
 

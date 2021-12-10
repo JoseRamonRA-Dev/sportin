@@ -49,6 +49,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { InsertarDirComponent } from './Administrador/Direc/insertar-dir/insertar-dir.component';
 import { MostrarDirsComponent } from './Administrador/Direc/mostrar-dirs/mostrar-dirs.component';
 import { ActualizarDirComponent } from './Administrador/Direc/actualizar-dir/actualizar-dir.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { Grafica1Component } from './graficas/grafica1/grafica1.component';
+import { Grafica2Component } from './graficas/grafica2/grafica2.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { MembresiaComponent } from './usuario/membresia/membresia.component';
 @NgModule({
   declarations: [
     PrincipalComponent,
@@ -82,10 +87,12 @@ import { ActualizarDirComponent } from './Administrador/Direc/actualizar-dir/act
     MenurastreoComponent,
     InsertarDirComponent,
     MostrarDirsComponent,
-    ActualizarDirComponent
+    ActualizarDirComponent, MembresiaComponent,
+    Grafica1Component,
+    Grafica2Component
   ],
   imports: [
-    CommonModule,
+    CommonModule, BrowserModule,
     AppRoutingModule,
     RouterModule,
     FormsModule,
@@ -95,7 +102,7 @@ import { ActualizarDirComponent } from './Administrador/Direc/actualizar-dir/act
     MatExpansionModule,
     MatDividerModule,
     MatFormFieldModule,
-    MatInputModule, HttpClientModule
+    MatInputModule, HttpClientModule, NgxChartsModule
 
   ],
   exports: [PrincipalComponent, BasquetComponent, AcercaComponent]
