@@ -15,84 +15,105 @@ import { CrudproductoService } from '../../servicios/crudproducto.service';
 @Component({
   selector: 'app-pagooxxo',
   templateUrl: './pagooxxo.component.html',
-  styleUrls: ['./pagooxxo.component.css']
+  styleUrls: ['./pagooxxo.component.css'],
 })
 export class PagooxxoComponent implements OnInit {
   public datos: any;
-  public productos:any
-  public total:number = 0;
-  constructor(public router: Router, public carrito: ServicioGeneralService, public servicio:CrudproductoService) {
+  public productos: any;
+  public total: number = 0;
+  public totalFinal: number = 0;
+  constructor(
+    public router: Router,
+    public carrito: ServicioGeneralService,
+    public servicio: CrudproductoService
+  ) {
     this.datos = [];
-    this.servicio.obtenerProductos().subscribe((res)=>{
-       this.productos = res
+    this.servicio.obtenerProductos().subscribe((res) => {
+      this.productos = res;
     });
-    this.carrito.mostrarDetalles(localStorage.getItem("id_carrito")).subscribe((respuesta)=>{
-       this.datos = respuesta;
-       console.log(respuesta)
-      
-    });
-   }
- 
-  nombreProducto(idprod, total:any){
+    this.carrito
+      .mostrarDetalles(localStorage.getItem('id_carrito'))
+      .subscribe((respuesta) => {
+        this.datos = respuesta;
+        console.log(respuesta);
+      });
+    this.carrito
+      .mostrarPedido(localStorage.getItem('id_carrito'))
+      .subscribe((respuesta: any) => {
+        console.log('carrito');
+        console.log(respuesta.ped);
+
+        this.totalFinal = respuesta.ped.Total;
+      });
+  }
+
+  nombreProducto(idprod, total: any) {
     this.total = this.total + total;
-    for(let dato of this.productos){
-      if(dato._id == idprod){
+    for (let dato of this.productos) {
+      if (dato._id == idprod) {
         return dato.Nombre;
       }
     }
-    
   }
-descargarPDF(){
-  let body ={
-      id_us: localStorage.getItem("id_usuario"),
+  descargarPDF() {
+    let body = {
+      id_us: localStorage.getItem('id_usuario'),
       fp: new Date(),
-      de: "Se realizo la compra",
-      Tipo: "Pago Oxxo",
+      de: 'Se realizo la compra',
+      Tipo: 'Pago Oxxo',
       NoTarjeta: 0,
-      Banco: ""
+      Banco: '',
+    };
+    this.carrito
+      .carritoAcompra(localStorage.getItem('id_carrito'), body)
+      .subscribe((respuesta) => {
+        //const doc = new jsPDF();
+
+        //doc.text('Hello world!', 10, 10);
+        //doc.save('hello-world.pdf');
+        // Extraemos el
+        const DATA = document.getElementById('htmlData');
+        const doc = new jsPDF('p', 'pt', 'a4');
+        const options = {
+          background: 'white',
+          scale: 3,
+        };
+
+        html2canvas(DATA, options)
+          .then((canvas) => {
+            const img = canvas.toDataURL('image/PNG');
+
+            // Add image Canvas to PDF
+            const bufferX = 15;
+            const bufferY = 15;
+            const imgProps = (doc as any).getImageProperties(img);
+            const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+            const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+            doc.addImage(
+              img,
+              'PNG',
+              bufferX,
+              bufferY,
+              pdfWidth,
+              pdfHeight,
+              undefined,
+              'FAST'
+            );
+            return doc;
+          })
+          .then((docResult) => {
+            docResult.save(`Sportin_${new Date().toISOString()}.pdf`);
+          });
+        this.router.navigate(['/home']);
+        localStorage.setItem('id_carrito', '');
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Se realizo la compra',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
   }
-  this.carrito.carritoAcompra( localStorage.getItem("id_carrito"),body).subscribe((respuesta)=>{
-    //const doc = new jsPDF();
-
-  //doc.text('Hello world!', 10, 10);
-  //doc.save('hello-world.pdf');
- // Extraemos el
- const DATA = document.getElementById('htmlData');
- const doc = new jsPDF('p', 'pt', 'a4');
- const options = {
-   background: 'white',
-   scale: 3
- };
-
- html2canvas(DATA, options).then((canvas) => {
-
-  const img = canvas.toDataURL('image/PNG');
-
-  // Add image Canvas to PDF
-  const bufferX = 15;
-  const bufferY = 15;
-  const imgProps = (doc as any).getImageProperties(img);
-  const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
-  const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-  doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
-  return doc;
-}).then((docResult) => {
-  docResult.save(`Sportin_${new Date().toISOString()}.pdf`);
-});
-    this.router.navigate(['/home']);
-    localStorage.setItem("id_carrito","" );
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Se realizo la compra',
-      showConfirmButton: false,
-      timer: 1500
-    })
-  });
-  
-
-}
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
