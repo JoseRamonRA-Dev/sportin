@@ -36,7 +36,7 @@ router.post("/Insertar", async(req, res) => {
             Estado: estado,
         });
         const saved = await det.save();
-
+        modificarTotal(id_ped);
         res.json({
             error: null,
             response: "Añadido",
@@ -102,4 +102,25 @@ router.get("/Eliminar/:id", (req, res) => {
             console.log("error al cambiar", err.message);
         });
 });
+
+function sumarTotal(id_ped) {
+    var sum = 0;
+    Detalle.find({ ID_Pedido: id_ped }).then((doc) => {
+        doc.forEach((val) => {
+            sum += val.Total;
+        });
+
+        Pedido.findByIdAndUpdate({ _id: id_ped }, {
+                $set: {
+                    Total: sum,
+                },
+            })
+            .then((doc) => {
+                res.json({ response: "Modificado" });
+            })
+            .catch((err) => {
+                console.log("error al cambiar", err.message);
+            });
+    });
+}
 module.exports = router;

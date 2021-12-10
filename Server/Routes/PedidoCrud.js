@@ -40,7 +40,6 @@ router.put("/Compra/:id_ped", async(req, res) => {
         NoTarjeta: req.body.tar,
         Banco: req.body.banco,
     };
-    const total = 0;
 
     const ped = new Pedido({
         ID_Usuario: id_us,
@@ -54,7 +53,6 @@ router.put("/Compra/:id_ped", async(req, res) => {
                 FechaPedido: fp,
                 Estado: est,
                 DetallePago: detallepago,
-                Total: total,
                 Detalle_Envio: de,
             },
         })
@@ -282,7 +280,7 @@ router.get("/Carritos", async(req, res) => {
 //Obtener por usuario
 router.get("/Usuario/:id_us", async(req, res) => {
     const id_us = req.params.id_us;
-    Pedido.find({ID_Usuario: id_us }).then((doc) => {
+    Pedido.find({ ID_Usuario: id_us }).then((doc) => {
         res.json({ ped: doc, error: null });
     });
 });
@@ -293,9 +291,6 @@ router.get("/MostrarU/:id_ped", async(req, res) => {
         res.json({ ped: doc, error: null });
     });
 });
-
-
-
 
 //Obtener todos
 router.get("/Todos", async(req, res) => {
@@ -340,7 +335,5 @@ router.get("/Devueltos/:id_us", async(req, res) => {
         res.json({ ped: doc, error: null });
     });
 });
-
-
 
 module.exports = router;

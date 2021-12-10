@@ -4,8 +4,13 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 const port = 3000;
+
 app.use(cors());
-const io = require("socket.io")(3001);
+const io = require("socket.io")(3001, {
+    cors: {
+        origin: ["http://localhost:4200"],
+    },
+});
 
 io.sockets.on("connection", (socket) => {
     socket.on("create", (room) => {
