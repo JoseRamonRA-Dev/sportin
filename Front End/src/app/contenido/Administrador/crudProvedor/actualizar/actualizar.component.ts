@@ -19,6 +19,7 @@ export class ActualizarComponent implements OnInit {
       this.id = this.activated.snapshot.params.id;
       this.servicio.obtenerProveedorActualizar(this.id).subscribe((r)=>{
         this.servicio.obtenerDireccioUser(this.id).subscribe((re)=>{
+          console.log(re);
           this.servicio.buscarCodigoXiD(re[0].Codigo_postal).subscribe((res)=>{
             this.id_dir = re[0]._id;
             this.forma = new FormGroup({
