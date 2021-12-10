@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { HttpHeaders } from '@angular/common/http';
 import { CrudproductoService } from '../servicios/crudproducto.service';
 import { ServicioGeneralService } from '../servicios/servicio-general.service';
 import * as io from 'socket.io-client';
@@ -16,6 +15,7 @@ export class CarritoComponent implements OnInit {
   public datos: any;
   public productos: any;
   public total: number = 0;
+  public totalFinal: number = 0;
 
   constructor(
     public router: Router,
@@ -25,14 +25,29 @@ export class CarritoComponent implements OnInit {
     this.datos = [];
 
     const socket = io.connect(`http://localhost:3001`);
-    socket.emit('create', `shop: ${localStorage.getItem('id_usuario')}`);
+    socket.emit('create', `ped:${localStorage.getItem('id_carrito')}`);
     socket.on('joined', (res) => {
       console.log('conectado');
+    });
+
+    socket.on(`pedUpdate:${localStorage.getItem('id_carrito')}`, (data) => {
+      this.totalFinal = data.total;
+      console.log(data);
     });
 
     this.servicio.obtenerProductos().subscribe((res) => {
       this.productos = res;
     });
+
+    this.carrito
+      .mostrarPedido(localStorage.getItem('id_carrito'))
+      .subscribe((respuesta: any) => {
+        console.log('carrito');
+        console.log(respuesta.ped);
+
+        this.totalFinal = respuesta.ped.Total;
+      });
+
     this.carrito
       .mostrarDetalles(localStorage.getItem('id_carrito'))
       .subscribe((respuesta) => {
@@ -46,6 +61,7 @@ export class CarritoComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
   nombreProducto(idprod, total: any) {
     this.total = this.total + total;
     for (let dato of this.productos) {
@@ -54,6 +70,7 @@ export class CarritoComponent implements OnInit {
       }
     }
   }
+
   incrementar(data: any) {
     console.log(data);
     let body = {
@@ -73,8 +90,21 @@ export class CarritoComponent implements OnInit {
           showConfirmButton: false,
           timer: 1500,
         });
+        this.actualizar();
       }
     });
+  }
+  actualizar() {
+    this.carrito
+      .mostrarDetalles(localStorage.getItem('id_carrito'))
+      .subscribe((respuesta) => {
+        this.datos = respuesta;
+        console.log(respuesta);
+        if (respuesta['length'] == 0) {
+        } else {
+          this.bandera = true;
+        }
+      });
   }
   eliminar(id: any) {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -106,6 +136,7 @@ export class CarritoComponent implements OnInit {
               );
               this.router.navigate(['/carrito']);
             }
+            this.actualizar();
           });
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           swalWithBootstrapButtons.fire(

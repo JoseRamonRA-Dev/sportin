@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const Pedido = require("../Models/Pedido");
+const Detalle = require("../Models/Detalle");
+const Producto = require("../Models/Producto");
 var mongoose = require("mongoose");
 
 //Crear carrito
@@ -53,11 +55,26 @@ router.put("/Compra/:id_ped", async(req, res) => {
                 FechaPedido: fp,
                 Estado: est,
                 DetallePago: detallepago,
+
                 Detalle_Envio: de,
             },
         })
         .then((doc) => {
-            res.json({ response: "Modificado" });
+            Detalle.find({ ID_Pedido: id })
+                .then((doc) => {
+                    doc.forEach((data) => {
+                        Producto.findByIdAndUpdate({ _id: data.ID_Producto }, {
+                            $inc: {
+                                Stock: -data.Cantidad,
+                            },
+                        }).then((doc) => {
+                            console.log("Producto modificado");
+                        });
+                    });
+                })
+                .then((doc) => {
+                    res.json({ response: "Modificado" });
+                });
         })
         .catch((err) => {
             console.log("error al cambiar", err.message);
@@ -143,44 +160,6 @@ router.put("/Devolucion/:id_ped", async(req, res) => {
 });
 
 //Cambiar pedido
-router.put("/Modificar/:id_ped", async(req, res) => {
-    const id = req.params.id_ped;
-    const id_us = req.body.id_us;
-    const fp = req.body.fp;
-    const fe = req.body.fe;
-    const de = req.body.de;
-    const est = {
-        Confirmado: req.body.confi,
-        Pagado: req.body.pag,
-        Enviado: req.body.env,
-        Devolucion: req.body.dev,
-    };
-    const detallepago = {
-        Tipo: req.body.tip,
-        NoTarjeta: req.body.tar,
-        Banco: req.body.banco,
-    };
-    const total = req.body.tot;
-
-    Pedido.findByIdAndUpdate({ _id: id, ID_Usuario: id_us }, {
-            $set: {
-                FechaPedido: fp,
-                FechaEntrega: fe,
-                Estado: est,
-                DetallePago: detallepago,
-                Total: total,
-                Detalle_Envio: de,
-            },
-        })
-        .then((doc) => {
-            res.json({ response: "Modificado" });
-        })
-        .catch((err) => {
-            console.log("error al cambiar", err.message);
-        });
-});
-
-//Actualizar total
 router.put("/Modificar/:id_ped", async(req, res) => {
     const id = req.params.id_ped;
     const id_us = req.body.id_us;
