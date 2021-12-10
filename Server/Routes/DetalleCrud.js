@@ -12,7 +12,7 @@ router.post("/Insertar", async(req, res) => {
     const sub_total = precio * cantidad;
     const iva = sub_total * 0.16;
     const descuento = req.body.descuento;
-    const total = sub_total + iva - descuento * (sub_total + iva);
+    const total = (sub_total + iva - descuento * (sub_total + iva)).toFixed(2);
     const estado = req.body.estado;
 
     const isExist = await Detalle.findOne({
@@ -23,6 +23,7 @@ router.post("/Insertar", async(req, res) => {
     if (isExist) {
         return res.json({ error: "El producto esta en la lista" });
     }
+
     try {
         const det = new Detalle({
             ID_Producto: id_prod,
@@ -36,7 +37,7 @@ router.post("/Insertar", async(req, res) => {
             Estado: estado,
         });
         const saved = await det.save();
-
+        insertarTotal(id_ped);
         res.json({
             error: null,
             response: "Añadido",
@@ -56,7 +57,7 @@ router.put("/Modificar/:id", (req, res) => {
     const sub_total = precio * cantidad;
     const iva = sub_total * 0.16;
     const descuento = req.body.descuento;
-    const total = sub_total + iva - descuento * (sub_total + iva);
+    const total = (sub_total + iva - descuento * (sub_total + iva)).toFixed(2);
     const estado = req.body.estado;
 
     Detalle.findByIdAndUpdate({ _id: id, ID_Producto: id_prod }, {
@@ -71,7 +72,8 @@ router.put("/Modificar/:id", (req, res) => {
             },
         })
         .then((doc) => {
-            res.json({ response: "Modificado" });
+            sumarTotal(doc.ID_Pedido, req.io);
+            res.json({ response: "Modificado", data: doc });
         })
         .catch((err) => {
             console.log("error al cambiar", err.message);
@@ -96,10 +98,54 @@ router.get("/Eliminar/:id", (req, res) => {
     const id = req.params.id;
     Detalle.findByIdAndDelete({ _id: id })
         .then((doc) => {
+            sumarTotal(doc.ID_Pedido, req.io);
             res.json({ response: "Eliminado" });
         })
         .catch((err) => {
             console.log("error al cambiar", err.message);
         });
 });
+
+function insertarTotal(id_ped) {
+    var sum = 0;
+    Detalle.find({ ID_Pedido: id_ped }).then((doc) => {
+        doc.forEach((val) => {
+            sum += val.Total;
+        });
+        sum = sum.toFixed(2);
+        Pedido.findByIdAndUpdate({ _id: id_ped }, {
+                $set: {
+                    Total: sum,
+                },
+            })
+            .then((doc) => {})
+            .catch((err) => {
+                console.log("error al cambiar", err.message);
+            });
+    });
+}
+
+function sumarTotal(id_ped, socket) {
+    var sum = 0;
+    Detalle.find({ ID_Pedido: id_ped }).then((doc) => {
+        doc.forEach((val) => {
+            sum += val.Total;
+        });
+        sum = sum.toFixed(2);
+
+        Pedido.findByIdAndUpdate({ _id: id_ped }, {
+                $set: {
+                    Total: sum,
+                },
+            })
+            .then((doc) => {
+                socket.to(`ped:${id_ped}`).emit(`pedUpdate:${id_ped}`, {
+                    total: sum,
+                });
+            })
+            .catch((err) => {
+                console.log("error al cambiar", err.message);
+            });
+    });
+}
 module.exports = router;

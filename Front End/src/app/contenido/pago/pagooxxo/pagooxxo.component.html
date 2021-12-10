@@ -1,30 +1,26 @@
 <div class="row">
-    <div class="profile-card-4 text-center"><img src="../../../../../assets/images/pdf.jpg" width="80px" height="80px" class="img img-responsive">
+    <div class="profile-card-4 text-center">
+        <img src="../../../../../assets/images/pdf.jpg" width="80px" height="80px" class="img img-responsive" />
         <div class="profile-content">
-            <div class="profile-name">
-                
+            <div class="profile-name"></div>
+            <div class="profile-description">
+                <b> <a (click)="descargarPDF()"> Descargar PDF</a> </b>
             </div>
-            <div class="profile-description"> <b> <a (click)="descargarPDF()"> Descargar PDF</a> </b> </div>
-        
         </div>
     </div>
 </div>
 
 <div id="htmlData">
     <div class="row">
-     <div class="col-12">
-         <img src="../../../../assets/images/header1.png" alt="">
-     </div>
+        <div class="col-12">
+            <img src="../../../../assets/images/header1.png" alt="" />
+        </div>
     </div>
     <div class="row">
-        
         <div class="profile-card-4 text-center">
-            <h1> Productos</h1>
+            <h1>Productos</h1>
             <div class="profile-content">
-                <div class="profile-name">
-                    
-                </div>
-                
+                <div class="profile-name"></div>
             </div>
         </div>
     </div>
@@ -33,32 +29,27 @@
         <div class="col-4 mb-5">
         </div> -->
         <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Producto</th>
-              <th scope="col">Cantidad</th>
-              <th scope="col">Precio Unitario</th>
-              <th scope="col">Total</th>
-            
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of datos; let index = index">
-              <th scope="row"> {{index+1}}  </th>
-              <td> {{this.nombreProducto(item.ID_Producto, item.Total)}} </td>
-              <td> {{item.Cantidad}}
-                
-                
-              </td>
-              <td> {{item.Precio}} </td>
-              <td> {{item.Total}} </td>
-           
-            </tr>
-          </tbody>
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Precio Unitario</th>
+                    <th scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of datos; let index = index">
+                    <th scope="row">{{ index + 1 }}</th>
+                    <td>{{ this.nombreProducto(item.ID_Producto, item.Total) }}</td>
+                    <td>{{ item.Cantidad }}</td>
+                    <td>{{ item.Precio }}</td>
+                    <td>{{ item.Total }}</td>
+                </tr>
+            </tbody>
         </table>
-          <br><br>
-          <!-- <table class="table table-hover table-dark">
+        <br /><br />
+        <!-- <table class="table table-hover table-dark">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -85,19 +76,17 @@
               </tr>
             </tbody>
           </table> -->
-          <br><br><br>
-          
+        <br /><br /><br />
+    </div>
+    <div class="row">
+        <hr color="black" size="3" />
+        <div class="col-9"></div>
+        <div class="col-3">IVA: 16%</div>
+    </div>
 
-    </div>
     <div class="row">
-        <hr color="black" size=3>
-       <div class="col-9"></div>
-       <div class="col-3"> IVA: 16% </div>
-    </div>
-   
-    <div class="row">
-        <hr color="black" size=3>
-       <div class="col-9"></div>
-       <div class="col-3"> Total: {{this.total}} </div>
+        <hr color="black" size="3" />
+        <div class="col-9"></div>
+        <div class="col-3">Total: {{ this.totalFinal }}</div>
     </div>
 </div>

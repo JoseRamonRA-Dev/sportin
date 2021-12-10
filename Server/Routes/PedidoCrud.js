@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const Pedido = require("../Models/Pedido");
+const Detalle = require("../Models/Detalle");
+const Producto = require("../Models/Producto");
 var mongoose = require("mongoose");
 
 //Crear carrito
@@ -40,7 +42,6 @@ router.put("/Compra/:id_ped", async(req, res) => {
         NoTarjeta: req.body.tar,
         Banco: req.body.banco,
     };
-    const total = 0;
 
     const ped = new Pedido({
         ID_Usuario: id_us,
@@ -54,12 +55,26 @@ router.put("/Compra/:id_ped", async(req, res) => {
                 FechaPedido: fp,
                 Estado: est,
                 DetallePago: detallepago,
-                Total: total,
+
                 Detalle_Envio: de,
             },
         })
         .then((doc) => {
-            res.json({ response: "Modificado" });
+            Detalle.find({ ID_Pedido: id })
+                .then((doc) => {
+                    doc.forEach((data) => {
+                        Producto.findByIdAndUpdate({ _id: data.ID_Producto }, {
+                            $inc: {
+                                Stock: -data.Cantidad,
+                            },
+                        }).then((doc) => {
+                            console.log("Producto modificado");
+                        });
+                    });
+                })
+                .then((doc) => {
+                    res.json({ response: "Modificado" });
+                });
         })
         .catch((err) => {
             console.log("error al cambiar", err.message);
@@ -182,44 +197,6 @@ router.put("/Modificar/:id_ped", async(req, res) => {
         });
 });
 
-//Actualizar total
-router.put("/Modificar/:id_ped", async(req, res) => {
-    const id = req.params.id_ped;
-    const id_us = req.body.id_us;
-    const fp = req.body.fp;
-    const fe = req.body.fe;
-    const de = req.body.de;
-    const est = {
-        Confirmado: req.body.confi,
-        Pagado: req.body.pag,
-        Enviado: req.body.env,
-        Devolucion: req.body.dev,
-    };
-    const detallepago = {
-        Tipo: req.body.tip,
-        NoTarjeta: req.body.tar,
-        Banco: req.body.banco,
-    };
-    const total = req.body.tot;
-
-    Pedido.findByIdAndUpdate({ _id: id, ID_Usuario: id_us }, {
-            $set: {
-                FechaPedido: fp,
-                FechaEntrega: fe,
-                Estado: est,
-                DetallePago: detallepago,
-                Total: total,
-                Detalle_Envio: de,
-            },
-        })
-        .then((doc) => {
-            res.json({ response: "Modificado" });
-        })
-        .catch((err) => {
-            console.log("error al cambiar", err.message);
-        });
-});
-
 //Ver pedido
 router.get("/Mostrar/:id_ped", async(req, res) => {
     const idped = req.params.id_ped;
@@ -282,7 +259,7 @@ router.get("/Carritos", async(req, res) => {
 //Obtener por usuario
 router.get("/Usuario/:id_us", async(req, res) => {
     const id_us = req.params.id_us;
-    Pedido.find({ID_Usuario: id_us }).then((doc) => {
+    Pedido.find({ ID_Usuario: id_us }).then((doc) => {
         res.json({ ped: doc, error: null });
     });
 });
@@ -293,9 +270,6 @@ router.get("/MostrarU/:id_ped", async(req, res) => {
         res.json({ ped: doc, error: null });
     });
 });
-
-
-
 
 //Obtener todos
 router.get("/Todos", async(req, res) => {
@@ -340,7 +314,5 @@ router.get("/Devueltos/:id_us", async(req, res) => {
         res.json({ ped: doc, error: null });
     });
 });
-
-
 
 module.exports = router;
