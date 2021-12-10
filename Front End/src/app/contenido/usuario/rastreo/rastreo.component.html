@@ -1,17 +1,27 @@
 <div class="container">
-  <h2>Rastreo del pedido {{rastreo.Id_Pedido}}</h2>
+  <h2>Rastreo del pedido {{this.idPedidos}}</h2>
   <div class="card">
     <div class="card-header">
       Caracteristicas
     </div>
     <div class="card-body">
-      <h3 class="card-title">Distribuidor: <small>{{rastreo.Id_Pedido}}</small></h3>
+      <h3 class="card-title">Distribuidor: <small>{{rastreo.Distribuidor}}</small></h3>
       <h3 class="card-title">Observaciones: <small>{{rastreo.Observaciones}}</small></h3>
       <h3 class="card-title">Detalle:</h3>
-      <h3 class="card-title">Estado: <small>{{rastreo.Detalle.Estado}}</small></h3>
-      <h3 class="card-title">Fecha: <small>{{rastreo.Detalle.Fecha}}</small></h3>
-      <h3 class="card-title">Hora: <small>{{rastreo.Detalle.Hora}}</small></h3>
-      <button (click)="regresar()" class="btn btn-primary">REGRESAR</button>
+      <h3 class="card-title">Estado: 
+        <small *ngIf="rastreo.Detalle[0].Estado == 0">
+            Procesando
+        </small>
+        <small *ngIf="rastreo.Detalle[0].Estado == 1">
+          En camino
+      </small>
+      <small *ngIf="rastreo.Detalle[0].Estado == 2">
+        Entregado
+    </small>
+      </h3>
+      <h3 class="card-title">Fecha: <small>{{rastreo.Detalle[0].Fecha | date: 'dd/MM/yyyy' }}</small></h3>
+      <h3 class="card-title">Hora: <small>{{rastreo.Detalle[0].Hora}}</small></h3>
+      <button [routerLink]="['/perfil']" class="btn btn-primary">REGRESAR</button>
     </div>
   </div>
 </div>

@@ -1,53 +1,36 @@
-<div class="container">
-  <h2>Pedidos</h2>
-  <hr>
-  <button (click)="rastreo()" class="btn btn-warning">RASTREO</button>
-  <table class="table table-hover">
-    <tr *ngFor="let item of pedidos">
-      <td>
-        Fecha Pedido: {{item.FechaPedido}} <br>
-        Fecha Entrega: {{item.FechaEntrega}} <br>
-        <b>Estado:</b>  <br>
-        Confirmado: {{item.Estado.Confirmado}}<br>
-        Pagado: {{item.Estado.Pagado}}<br>
-        Enviado: {{item.Estado.Enviado}}<br>
-        Devolucion: {{item.Estado.Devolucion}}<br><br>
-        <b>Detalle del Pago</b>: 
-        Tipo: {{item.DetallePago.Tipo}} <br>
-        No Tarjeta: {{item.DetallePago.NoTarjeta}} <br>
-        Banco: {{item.DetallePago.Banco}} <br><br>
-        Total: $ {{item.Total}} <br>
-        Detalle del Envio: {{item.Detalle_Envio}} <br>
-        <button (click)="rastreo()" class="btn btn-warning">RASTREO</button>
-      </td>
-      <td>
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">ID_Producto</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Sub_total</th>
-            <th scope="col">IVA</th>
-            <th scope="col">Descuento</th>
-            <th scope="col">Total</th>
-            <th scope="col">Estado</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of detalle">
-            <th scope="row">{{item}}</th>
-            <td>{{item.ID_Producto}}</td>
-            <td>{{item.Cantidad}}</td>
-            <td>{{item.Precio}}</td>
-            <td>{{item.Sub_total}}</td>
-            <td>{{item.IVA}}</td>
-            <td>{{item.Descuento}}</td>
-            <td>{{item.Total}}</td>
-            <td>{{item.Estado}}</td>
-          </tr>
-        </tbody>
-      </td>
-    </tr>
-  </table>
+<div class="container" style="margin-top: 20px;" class="card m-3" style="background-color: rgb(244, 245, 250);">
+  <div class="card-body">
+      <h1 style="color: #e43d0a; text-align: center;"> Pedidos </h1>
+      <div class="col-1"><button type="button" class="btn btn-lg" style="background-color: #e43d0a; color: white;" [routerLink]="['/perfil']"><i class="fas fa-undo-alt"></i> </button>
+      </div>
+  </div>
+  <div class="row">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Fecha Entrega</th>
+          <th scope="col">Detalle</th>
+          <th scope="col">Total</th>
+          <th scope="col"> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of this.pedidos; let index = index">
+          <th scope="row"> {{index+1}}  </th>
+          <td> {{item.FechaPedido | date: 'dd/MM/yyyy' }} </td>
+          <td> {{item.Detalle_Envio}}  
+          </td>
+          <td> {{item.Total}} </td>
+          <td>
+            <div class="col-2">
+              <button (click)="rastreo(item._id)"  type="button"  class="btn btn-outline-success mb-2 ml-3" data-toggle="tooltip"
+              data-placement="right" title="Eliminar"> Rastreo</button>
+          </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
+

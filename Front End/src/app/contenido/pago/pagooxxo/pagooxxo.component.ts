@@ -83,23 +83,6 @@ export class PagooxxoComponent implements OnInit {
           .then((canvas) => {
             const img = canvas.toDataURL('image/PNG');
 
-<<<<<<< HEAD
-  const img = canvas.toDataURL('image/PNG');
-
-  // Add image Canvas to PDF
-  const bufferX = 15;
-  const bufferY = 15;
-  const imgProps = (doc as any).getImageProperties(img);
-  const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
-  const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-  doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
-  return doc;
-}).then((docResult) => {
-  docResult.save(`Sportin_${new Date().toISOString()}.pdf`);
-});
-      this.carrito.obtenerCarrito(localStorage.getItem("id_usuario")).subscribe((resultado)=>{
-        //localStorage.setItem("id_carrito","" );
-=======
             // Add image Canvas to PDF
             const bufferX = 15;
             const bufferY = 15;
@@ -123,29 +106,14 @@ export class PagooxxoComponent implements OnInit {
           });
         this.router.navigate(['/home']);
         localStorage.setItem('id_carrito', '');
->>>>>>> cc1788c70a2ee1c5b020da59a1fa7e1bb4e9e1c5
         Swal.fire({
           position: 'top-end',
           icon: 'success',
           title: 'Se realizo la compra',
           showConfirmButton: false,
-<<<<<<< HEAD
-          timer: 1500
-        })
-        localStorage.setItem("id_carrito",resultado[0]._id );
-        this.router.navigate([`/home`]);
-      });
-    
-  });
-  
-
-}
-  ngOnInit(): void {
-=======
           timer: 1500,
         });
       });
->>>>>>> cc1788c70a2ee1c5b020da59a1fa7e1bb4e9e1c5
   }
   ngOnInit(): void {}
 }

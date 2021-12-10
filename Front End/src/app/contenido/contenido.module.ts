@@ -54,6 +54,9 @@ import { Grafica1Component } from './graficas/grafica1/grafica1.component';
 import { Grafica2Component } from './graficas/grafica2/grafica2.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { MembresiaComponent } from './usuario/membresia/membresia.component';
+import { Membresia2Component } from './usuario/membresia2/membresia2.component';
+import { PedidosComponent } from './usuario/pedidos/pedidos.component';
+import { RastreoComponent } from './usuario/rastreo/rastreo.component';
 @NgModule({
   declarations: [
     PrincipalComponent,
@@ -89,7 +92,8 @@ import { MembresiaComponent } from './usuario/membresia/membresia.component';
     MostrarDirsComponent,
     ActualizarDirComponent, MembresiaComponent,
     Grafica1Component,
-    Grafica2Component
+    Grafica2Component,
+    Membresia2Component, PedidosComponent, RastreoComponent
   ],
   imports: [
     CommonModule, BrowserModule,

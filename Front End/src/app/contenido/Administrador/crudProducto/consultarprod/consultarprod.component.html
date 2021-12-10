@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="row">
-            <div *ngFor="let item of datos | buscador:buscar" class="profile-card-4 text-center"><img src="../../../../../assets/images/balonbasquet.jpg" width="80px" height="80px" class="img img-responsive">
+            <div *ngFor="let item of datos | buscador:buscar" class="profile-card-4 text-center"><img src="../../../../../assets/images/{{item.Nombre}}.png"width="80px" height="80px" class="img img-responsive">
                 <div class="profile-content">
                     <div class="profile-name">
                         
@@ -48,15 +48,7 @@
                                 <h4> {{item.Stock}} </h4></div>
                         </div>
                     </div>
-                    <div class="row">
-                      <div class="col-2"></div>
-                      <div class="col-8">
-                          <div class="profile-overview">
-                              <p>Departamento: </p>
-                              <h4>Natación</h4></div>
-                      </div>
-                      <div class="col-2"></div>
-                  </div>
+                  
 
                     <div class="row">
                         <!-- <button   type="button" (click)="actualizar(item)" class="btn btn-warning mb-2 mr-3"><i class="fas fa-pencil-alt"></i></button>

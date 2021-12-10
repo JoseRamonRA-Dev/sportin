@@ -19,20 +19,20 @@ export class PedidosComponent implements OnInit {
   ngOnInit() {
     this.crudPedido.obtenerPedidos(this.idUser).subscribe(
       data => {
-        this.pedidos = data
+        this.pedidos = data["ped"];
         console.log("PEDIDOS: ",this.pedidos)
       }
     )
     this.crudPedido.obtenerDetalle(this.idPedidos).subscribe(
       data => {
-        this.detalle = data
+        this.detalle = data["detalles"];
         console.log("DETALLES: ",this.detalle)
       }
     )
   }
 
-  rastreo(){
-    this.router.navigate(['/rastreo'])
+  rastreo(id:any){
+    this.router.navigate(['/rastreo',id])
   }
 
 }

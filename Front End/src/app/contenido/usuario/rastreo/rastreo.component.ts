@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ServicioGeneralService } from '../../servicios/servicio-general.service';
 
 @Component({
@@ -9,15 +9,19 @@ import { ServicioGeneralService } from '../../servicios/servicio-general.service
 })
 export class RastreoComponent implements OnInit {
 
-  idPedidos="61b181cd14cfb09a9a53458a"
+  public idPedidos=""
+  rastreos:any
   rastreo:any
 
-  constructor(private router:Router, private crudPedido:ServicioGeneralService) { }
+  constructor(private router:Router, private crudPedido:ServicioGeneralService, public activated: ActivatedRoute) {
+    this.idPedidos = this.activated.snapshot.params.id;
+   }
 
   ngOnInit() {
     this.crudPedido.obtenerRastreo(this.idPedidos).subscribe(
       data => {
-        this.rastreo = data
+        this.rastreos = data["Rastreos"];
+        this.rastreo = this.rastreos[0];
         console.log("RASTREO: ",this.rastreo)
       }
     )

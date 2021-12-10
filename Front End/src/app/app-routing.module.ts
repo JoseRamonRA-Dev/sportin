@@ -44,6 +44,7 @@ import { PedidosComponent } from './contenido/usuario/pedidos/pedidos.component'
 import { MembresiaComponent } from './contenido/usuario/membresia/membresia.component';
 import { Grafica1Component } from './contenido/graficas/grafica1/grafica1.component';
 import { Grafica2Component } from './contenido/graficas/grafica2/grafica2.component';
+import { Membresia2Component } from './contenido/usuario/membresia2/membresia2.component';
 
 const routes: Routes = [
   { path: 'home', component: PrincipalComponent },
@@ -52,9 +53,10 @@ const routes: Routes = [
   { path: 'preguntasf', component: PreguntasfComponent },
   
   { path: 'perfil', component: PerfilComponent },
-  { path: 'rastreo', component: RastreoComponent },
+  { path: 'rastreo/:id', component: RastreoComponent },
   { path: 'pedidios', component: PedidosComponent },
   { path: 'membresia', component: MembresiaComponent },
+  { path: 'membresia2', component: Membresia2Component },
 
 
   { path: 'basquetbol', component: BasquetComponent },

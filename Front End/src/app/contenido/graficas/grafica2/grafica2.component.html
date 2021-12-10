@@ -1,4 +1,4 @@
-<div *ngIf="this.load" class="container" style="margin-top: 20px;" class="card m-3" style="background-color: rgb(244, 245, 250);">
+<div id="htmlData" *ngIf="this.load" class="container" style="margin-top: 20px;" class="card m-3" style="background-color: rgb(244, 245, 250);">
     <div class="card-body">
         <h1 style="color: #f81111; text-align: center;"> Usuarios por membresias </h1>
         <div class="col-1"><button type="button" class="btn btn-lg" style="background-color: #f81111; color: white;" [routerLink]="['/administrador']"><i class="fas fa-undo-alt"></i> </button>
@@ -23,5 +23,22 @@
       </ngx-charts-bar-vertical>
     </div>
     </div>
+   
+  </div>
+
+  <div class="container">
+    <br><hr>
+    <div class="row">
+      <div class="profile-card-4 text-center">
+          <img src="../../../../../assets/images/pdf.jpg" width="80px" height="80px" class="img img-responsive" />
+          <div class="profile-content">
+              <div class="profile-name"></div>
+              <div class="profile-description">
+                  <b> <a (click)="descargarPDF()"> Descargar PDF</a> </b>
+              </div>
+          </div>
+      </div>
+  </div>
+  <br><br><br>
   </div>
 
